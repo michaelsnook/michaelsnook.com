@@ -11,8 +11,8 @@ export default function Layout({ image, description, title, children }) {
         <meta name="description" content={description} />
         <meta property="og:image" content={image} />
       </Head>
-      <div>{children}</div>
-      <footer className="bg-gray-200 w-full py-10"></footer>
+      {children}
+      <footer className="bg-gray-200 w-full py-10 mt-10"></footer>
     </>
   )
 }

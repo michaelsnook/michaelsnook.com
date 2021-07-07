@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import Layout from '../../components/Layout'
 
 function getPost() {
@@ -14,6 +15,31 @@ function getPost() {
   }
 }
 
+const PostSidebar = ({pid}) => (
+  <div className="col-span-1 flex flex-col gap-4">
+    <img className="w-36 mx-auto rounded-full" src="/images/my-photo.jpg"
+      alt="A cartoon face of the author, Michael" />
+    <p className="mx-auto">By Michael Snook</p>
+    <Link
+      href={`/posts/${pid}/edit`}
+    >
+      <a className="text-blue-600 border rounded-md
+        hover:border-blue-600 hover:underline
+        py-3 px-6 mx-auto inline-block">
+        edit post
+      </a>
+    </Link>
+  </div>
+)
+
+const PostArticle = ({ title, created_at, content}) => (
+  <article className="container col-span-3">
+    <p className="h2">{title}</p>
+    <p className="text-sm">{created_at}</p>
+    <div dangerouslySetInnerHTML={{__html: content}} />
+  </article>
+)
+
 const Post = () => {
   const router = useRouter()
   const { pid } = router.query
@@ -28,11 +54,10 @@ const Post = () => {
         description={post.excerpt}
         image={post.image}
       >
-        <article className="container">
-          <p className="h2">{post.title}</p>
-          <p className="text-sm">{post.created_at}</p>
-          <div dangerouslySetInnerHTML={{__html: post.content}} />
-        </article>
+        <div className="container grid grid-cols-1 md:grid-cols-4 xl:grid-cols-5 gap-4 py-10">
+          <PostSidebar pid={pid} />
+          <PostArticle {...post} />
+        </div>
       </Layout>
     )
 }
