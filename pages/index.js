@@ -1,28 +1,24 @@
-import Head from 'next/head'
 import Banner from '../components/Banner'
 import PostList from '../components/PostList'
+import Layout from '../components/Layout'
 
 export default function Home() {
-  const title = `Michael Snook's site`
-  const description = `A personal weblog and project pad`
+  const meta = {
+    title: `Michael Snook's site`,
+    description: `A personal weblog and project pad`,
+    image: `/images/my-face-circle.png`
+  }
 
   return (
-    <>
-      <Head>
-        <title>Michael Snook's site</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+    <Layout {...meta}>
       <Banner
-        bgImage="/images/como.jpg" title={title} description={description}
-        smallImage="/images/my-face-circle.png" smallAlt="A cartoon face of the author, Michael"
+        bgImage="/images/como.jpg" title={meta.title} description={meta.description}
+        smallImage={meta.image} smallAlt="A cartoon face of the author, Michael"
       />
 
       <main className="container py-5">
         <PostList />
       </main>
-
-      <footer></footer>
-    </>
+    </Layout>
   )
 }

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Banner from '../../components/Banner'
+import Layout from '../../components/Layout'
 
 function getPost() {
   return { // some API call
@@ -24,11 +25,12 @@ const Post = () => {
   return post.error ? (<p>Error loading post {pid}.</p>) 
     : post === {} ? (<p>Post {pid} will load when it feels like loading.</p>)
     : (
-      <>
-        <Head>
-          <title>Michael Snook's site | {post.title}</title>
-        </Head>
-        <Banner 
+      <Layout
+        title={post.title}
+        description={post.excerpt}
+        image={post.image}
+      >
+        <Banner
           bgImage={post.image} title={post.title} description={post.excerpt}
         />
         <article className="container">
@@ -36,7 +38,7 @@ const Post = () => {
           <p className="text-sm">{post.created_at}</p>
           <div dangerouslySetInnerHTML={{__html: post.content}} />
         </article>
-      </>
+      </Layout>
     )
 }
 
