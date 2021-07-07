@@ -1,6 +1,4 @@
-const Banner = (props) => {  
-  const { title, description } = props
-
+export default function Banner({title, description}) {
   return (
     <header
       className="bg-gray-500 w-full h-96 bg-cover bg-bottom grid"
@@ -23,5 +21,3 @@ const Banner = (props) => {
     </header>
   )
 }
-
-export default Banner

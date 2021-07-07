@@ -1,4 +1,4 @@
-const PostList = () => {  
+export default function PostList() {
   const posts = [
       {
         "id": 32,
@@ -56,5 +56,3 @@ const PostList = () => {
     </>    
   )
 }
-
-export default PostList
