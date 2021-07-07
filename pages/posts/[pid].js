@@ -15,13 +15,14 @@ function getPost() {
   }
 }
 
-const PostSidebar = ({pid}) => (
-  <div className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14">
+const PostSidebar = ({id, created_at}) => (
+  <div className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
     <img className="w-36 mx-auto rounded-full" src="/images/my-photo.jpg"
       alt="A cartoon face of the author, Michael" />
     <p className="mx-auto">By Michael Snook</p>
+    <p className="mx-auto">Published {created_at}</p>
     <Link
-      href={`/posts/${pid}/edit`}
+      href={`/posts/${id}/edit`}
     >
       <a className="text-blue-600 border rounded-md
         hover:border-blue-600 hover:underline
@@ -32,11 +33,10 @@ const PostSidebar = ({pid}) => (
   </div>
 )
 
-const PostArticle = ({ title, image, created_at, content}) => (
-  <article className="md:col-span-3 lg:col-span-4 flex flex-col gap-4">
+const PostArticle = ({ title, image, content}) => (
+  <article className="md:col-span-3 lg:col-span-4 flex flex-col gap-4 max-w-prose">
     <h1 className="h1">{title}</h1>
-    <img src={image} />
-    <p className="text-sm">{created_at}</p>
+    <img src={image} alt="" />
     <div dangerouslySetInnerHTML={{__html: content}} />
   </article>
 )
@@ -56,7 +56,7 @@ const Post = () => {
         image={post.image}
       >
         <div className="container grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4 py-10">
-          <PostSidebar pid={pid} />
+          <PostSidebar {...post} />
           <PostArticle {...post} />
         </div>
       </Layout>
