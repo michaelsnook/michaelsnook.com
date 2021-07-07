@@ -10,7 +10,10 @@
   "dependencies": {
     "next": "^10.0.0",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "remark-parse": "^9.0.0",
+    "remark-react": "^8.0.0",
+    "unified": "^9.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
