@@ -16,7 +16,7 @@ function getPost() {
 }
 
 const PostSidebar = ({pid}) => (
-  <div className="col-span-1 flex flex-col gap-4">
+  <div className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14">
     <img className="w-36 mx-auto rounded-full" src="/images/my-photo.jpg"
       alt="A cartoon face of the author, Michael" />
     <p className="mx-auto">By Michael Snook</p>
@@ -32,9 +32,10 @@ const PostSidebar = ({pid}) => (
   </div>
 )
 
-const PostArticle = ({ title, created_at, content}) => (
-  <article className="container col-span-3">
-    <p className="h2">{title}</p>
+const PostArticle = ({ title, image, created_at, content}) => (
+  <article className="md:col-span-3 lg:col-span-4 flex flex-col gap-4">
+    <h1 className="h1">{title}</h1>
+    <img src={image} />
     <p className="text-sm">{created_at}</p>
     <div dangerouslySetInnerHTML={{__html: content}} />
   </article>
@@ -54,7 +55,7 @@ const Post = () => {
         description={post.excerpt}
         image={post.image}
       >
-        <div className="container grid grid-cols-1 md:grid-cols-4 xl:grid-cols-5 gap-4 py-10">
+        <div className="container grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4 py-10">
           <PostSidebar pid={pid} />
           <PostArticle {...post} />
         </div>
