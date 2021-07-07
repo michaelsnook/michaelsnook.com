@@ -13,9 +13,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
-      sm: '480px',
+      sm: '640px',
       md: '768px',
-      lg: '976px',
+      lg: '1024px',
     },
     container: {
       center: true,

@@ -11,11 +11,7 @@ export default function Home() {
 
   return (
     <Layout {...meta}>
-      <Banner
-        bgImage="/images/como.jpg" title={meta.title} description={meta.description}
-        smallImage={meta.image} smallAlt="A cartoon face of the author, Michael"
-      />
-
+      <Banner title={meta.title} description={meta.description} />
       <main className="container py-5">
         <PostList />
       </main>

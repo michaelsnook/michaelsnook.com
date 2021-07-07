@@ -7,16 +7,19 @@ body {
   @apply font-sans text-gray-800 font-light;
 }
 .h1 {
-  @apply text-6xl my-4 font-display;
+  @apply lg:text-6xl md:text-5xl sm:text-4xl text-3xl my-4 font-display;
+}
+.h1-sub {
+  @apply md:text-2xl sm:text-xl text-lg;
 }
 .h2 {
-  @apply text-4xl my-4 font-display font-bold;
+  @apply lg:text-4xl md:text-3xl text-2xl my-4 font-display font-bold;
 }
 .h3 {
-  @apply text-2xl my-3 font-display font-bold;
+  @apply md:text-2xl text-xl my-3 font-display font-bold;
 }
 .h4 {
-  @apply text-xl my-2 font-display font-bold;
+  @apply md:text-xl text-lg my-2 font-display font-bold;
 }
 .h5 {
   @apply text-lg my-2 font-bold;

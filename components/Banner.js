@@ -1,20 +1,24 @@
 const Banner = (props) => {  
-  const { bgImage, title, description, smallImage, smallAlt = '' } = props
+  const { title, description } = props
+
   return (
     <header
       className="bg-gray-500 w-full h-96 bg-cover bg-bottom grid"
-      style={{backgroundImage: `url(${bgImage})`}}
+      style={{
+        backgroundImage: 'url(/images/como.jpg)',
+        textShadow: '2px 2px 6px black',
+      }}
     >
-      <div className="container py-10 align-middle place-self-center text-white flex justify-between">
+      <div className="container p-10 align-middle place-self-center text-white
+          flex justify-between rounded-md">
         <div>
           <h1 className="h1">{title}</h1>
-          <p className="text-2xl">{description}</p>
+          <p className="h1-sub">{description}</p>
         </div>
-        {smallImage &&
-          <div>
-            <img className="w-36" src={smallImage} alt={smallAlt} />
-          </div>
-        }
+        <div>
+          <img className="w-36" src="/images/my-face-circle.png"
+            alt="A cartoon face of the author, Michael" />
+        </div>
       </div>
     </header>
   )

@@ -1,6 +1,4 @@
-import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Banner from '../../components/Banner'
 import Layout from '../../components/Layout'
 
 function getPost() {
@@ -30,9 +28,6 @@ const Post = () => {
         description={post.excerpt}
         image={post.image}
       >
-        <Banner
-          bgImage={post.image} title={post.title} description={post.excerpt}
-        />
         <article className="container">
           <p className="h2">{post.title}</p>
           <p className="text-sm">{post.created_at}</p>
