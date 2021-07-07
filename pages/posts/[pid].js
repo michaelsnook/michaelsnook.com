@@ -38,7 +38,9 @@ const PostArticle = ({ title, image, content}) => (
   <article className="md:col-span-3 lg:col-span-4 flex flex-col gap-4 max-w-prose">
     <h1 className="h1">{title}</h1>
     <img src={image} alt="" />
-    <PrintMarkdown markdown={content} />
+    <div className="prose lg:prose-lg prose-cyan">
+      <PrintMarkdown markdown={content} />
+    </div>
   </article>
 )
 
