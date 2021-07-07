@@ -1,0 +1,43 @@
+const colors = require('tailwindcss/colors')
+const production = process.env.NODE_ENV === 'production'
+
+module.exports = {
+  future: {
+    purgeLayersByDefault: true,
+    removeDeprecatedGapUtilities: true,
+  },
+  purge: {
+    content: ['./pages/**/*.js', './components/**/*.js'],
+    enabled: production // disable purge in dev
+  },
+  darkMode: false, // or 'media' or 'class'
+  theme: {
+    screens: {
+      sm: '480px',
+      md: '768px',
+      lg: '976px',
+    },
+    container: {
+      center: true,
+      padding: '1.25rem',
+    },
+    fontFamily: {
+      'sans': [
+        '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto',
+        'Oxygen-Sans', 'Ubuntu', 'Cantarell', '"Helvetica Neue"', 'sans-serif',
+      ],
+      'display': ['"Exo 2"', 'ui-serif'],
+    },
+    extend: {
+      colors: {
+        gray: colors.coolGray,
+        cyan: colors.cyan,
+      },
+      maxHeight: {},
+    },
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
+}

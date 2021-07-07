@@ -12,7 +12,7 @@ export default function Layout({ image, description, title, children }) {
         <meta property="og:image" content={image} />
       </Head>
       <div>{children}</div>
-      <footer></footer>
+      <footer className="bg-gray-200 w-full py-10"></footer>
     </>
   )
 }
