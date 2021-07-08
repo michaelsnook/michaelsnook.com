@@ -1,6 +1,7 @@
 import Banner from '../components/Banner'
 import PostList from '../components/PostList'
 import Layout from '../components/Layout'
+import { getAPI } from '../lib/api'
 
 export default function Home({ data }) {
   const meta = {
@@ -19,17 +20,12 @@ export default function Home({ data }) {
   )
 }
 
-export async function getStaticProps(context) {
-  const res = await fetch(`http://localhost:3000/api/v1/posts/index`)
-  const data = await res.json()
+export async function getStaticProps() {
+  const data = await getAPI(`posts/index`)
 
-  if (!data) {
-    return {
-      notFound: true,
-    }
-  }
-
-  return {
-    props: { data }, // will be passed to the page component as props
+  return !data ? {
+    notFound: true,
+  } : {
+    props: { data },
   }
 }
