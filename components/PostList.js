@@ -1,30 +1,4 @@
-export default function PostList() {
-  const posts = [
-      {
-        "id": 32,
-        "title": "Volunteer Project: The Blue Dawn Website",
-        "excerpt": "The Blue Dawn is a volunteer collective that connects Bahujan people with cast-aware mental health therapists.",
-        "image": "//snook.pub/static/images/thebluedawn-banner.png",
-      },
-      {
-        "id": 31,
-        "title": "Radiyr: If an RSS Reader Had a Baby with the Radio",
-        "excerpt": "",
-        "image": "https://base.imgix.net/files/base/ebm/electronicdesign/image/2016/02/electronicdesign_com_sites_electronicdesign.com_files_uploads_2016_02_Radio.png",
-      },
-      {
-        "id": 30,
-        "title": "Coming Out Again: Bisexual Edition",
-        "excerpt": "It was National Coming Out Day yesterday, so I'm coming out... again. And here's why.",
-        "image": "//snook.pub/static/images/bisexual-flag.png",
-      },
-      {
-        "id": 29,
-        "title": "My mixed feelings about Star Wars: The Last Jedi",
-        "excerpt": "I loved how the new Star Wars defied old tropes, weaved new themes about the Jedi and the Force, and had important, atypical character arcs, but I had some reservations...",
-        "image": "https://specials-images.forbesimg.com/imageserve/5e00ea474e2917000783c40e/960x0.jpg",
-      },
-  ]
+export default function PostList({ posts }) {
 
   // catch an error and return
   // <p>error loading posts: {JSON.stringify(error)}.</p>
