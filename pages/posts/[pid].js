@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Layout from '../../components/Layout'
 import PrintMarkdown from '../../components/PrintMarkdown'
+import DateSpan from '../../components/DateSpan'
 import { getAPI } from '../../lib/api'
 
 const PostSidebar = ({id, created_at}) => (
@@ -8,10 +9,8 @@ const PostSidebar = ({id, created_at}) => (
     <img className="w-36 mx-auto rounded-full" src="/images/my-photo.jpg"
       alt="A cartoon face of the author, Michael" />
     <p className="mx-auto">By Michael Snook</p>
-    <p className="mx-auto">Published {created_at}</p>
-    <Link
-      href={`/posts/${id}/edit`}
-    >
+    <p className="mx-auto">Published <DateSpan dateText={created_at} /></p>
+    <Link href={`/posts/${id}/edit`}>
       <a className="text-blue-600 border rounded-md
         hover:border-blue-600 hover:underline
         py-3 px-6 mx-auto inline-block">
