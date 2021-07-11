@@ -54,8 +54,10 @@ export async function getStaticProps({ params }) {
 
   return !data ? {
     notFound: true,
+    revalidate: 10,
   } : {
     props: { data },
+    revalidate: 10,
   }
 }
 
@@ -65,5 +67,5 @@ export async function getStaticPaths() {
     params: { pid: `${post.id}` }
   }))
 
-  return { paths, fallback: false }
+  return { paths, fallback: 'blocking' }
 }

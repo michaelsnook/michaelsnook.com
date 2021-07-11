@@ -25,7 +25,9 @@ export async function getStaticProps() {
 
   return !data ? {
     notFound: true,
+    revalidate: 10,
   } : {
     props: { data },
+    revalidate: 10,
   }
 }
