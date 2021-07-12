@@ -7,13 +7,11 @@ import { getAPI } from '../../lib/api'
 const PostSidebar = ({id, created_at}) => (
   <div className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
     <img className="w-36 mx-auto rounded-full" src="/images/my-photo.jpg"
-      alt="A cartoon face of the author, Michael" />
+      alt="A photo of the author, Michael, smiling" />
     <p className="mx-auto">By Michael Snook</p>
     <p className="mx-auto">Published <DateSpan dateText={created_at} /></p>
     <Link href={`/posts/${id}/edit`}>
-      <a className="text-blue-600 border rounded-md
-        hover:border-blue-600 hover:underline
-        py-3 px-6 mx-auto inline-block">
+      <a className="button outline mx-auto">
         edit post
       </a>
     </Link>
