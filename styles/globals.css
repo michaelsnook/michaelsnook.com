@@ -2,10 +2,37 @@
 
 @tailwind base;
 
+@tailwind components;
+
+@tailwind utilities;
+
 @layer base {
   body {
     @apply font-sans text-gray-800 font-light;
   }
+}
+
+@layer components {
+  form.form label {
+    @apply block text-gray-700 text-sm font-bold;
+  }
+  form.form input, textarea {
+    @apply appearance-none border rounded w-full py-2 px-3 text-gray-700
+      leading-tight focus:outline-none;
+  }
+  button.button, a.button {
+    @apply inline-block py-3 px-6 border rounded-md;
+  }
+  button.button.outline, a.button.outline {
+    @apply text-blue-600 hover:border-blue-600 hover:underline;
+  }
+  button.button.solid, a.button.solid {
+    @apply text-white border-white bg-blue-600
+      hover:border-blue-900 hover:bg-blue-500;
+  }
+}
+
+@layer utilities {
   .h1 {
     @apply lg:text-6xl md:text-5xl sm:text-4xl text-3xl my-4 font-display;
   }
@@ -25,7 +52,3 @@
     @apply text-lg my-2 font-bold;
   }
 }
-
-@tailwind components;
-
-@tailwind utilities;
