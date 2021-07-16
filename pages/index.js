@@ -14,6 +14,7 @@ export default function Home({ data }) {
     <Layout {...meta}>
       <Banner title={meta.title} description={meta.description} />
       <main className="container py-5">
+        <h2 className="h2">All Posts</h2>
         <PostList posts={data} />
       </main>
     </Layout>
