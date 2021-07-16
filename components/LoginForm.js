@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { postLogin } from '../lib/login.js'
 import { useForm } from "react-hook-form"
+import ErrorList from '../components/ErrorList'
+
 
 
 const ConfirmationMessage = ({user}) => (
@@ -19,13 +21,14 @@ export default function Login() {
     postLogin(data)
       .then(user => setLoggedIn(user))
       .catch(errors => setError(errors))
-
   }
 
   return (
     <section className="container">
       <div className="mx-auto max-w-lg py-10">
-        {user ? <ConfirmationMessage user={user} /> : (
+        {user
+          ? <ConfirmationMessage user={user} />
+          : (
           <>
             <h1 className="h3 text-gray-700">Please log in</h1>
             <form role="form" onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-4 form">
@@ -42,9 +45,9 @@ export default function Login() {
               <div>
                 <label htmlFor="password">Password</label>
                 <input
-                  id="password" 
-                  {...register('password', {required: 'required'})} 
-                  tabIndex="2" 
+                  id="password"
+                  {...register('password', {required: 'required'})}
+                  tabIndex="2"
                   type="password"
                   placeholder="****"
                 />
@@ -54,11 +57,7 @@ export default function Login() {
                   Log in
                 </button>
               </div>
-              {errorMsg.length > 0 &&
-                <ul className="text-red-600 list-disc">
-                  {errorMsg.map(m => <li key={m}>{m}</li>)}
-                </ul>
-              }
+              <ErrorList errors={errorMsg} />
             </form>
           </>
         )}

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import Layout from '../../components/Layout'
+import ErrorList from '../../components/ErrorList'
 import { InputContent, InputSlug } from '../../components/FormInputs'
 import { postAPI } from '../../lib/api'
 
@@ -75,11 +76,7 @@ export default function New() {
             </Link>
           </div>
 
-          {errorMsg.length > 0 &&
-            <ul className="text-red-600 list-disc">
-              {errorMsg.map(m => <li key={m}>{m}</li>)}
-            </ul>
-          }
+          <ErrorList errors={errorMsg} />
 
         </form>
       </section>

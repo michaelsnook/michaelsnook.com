@@ -1,11 +1,6 @@
 export default function PostList({ posts }) {
-
-  // catch an error and return
-  // <p>error loading posts: {JSON.stringify(error)}.</p>
-
   return (
     <>
-      <h2 className="h2">All Posts</h2>
       {posts.length === 0 ? (
         <p>loading posts...</p>
       ) : (
@@ -27,6 +22,6 @@ export default function PostList({ posts }) {
           ))}
         </div>
       )}
-    </>    
+    </>
   )
 }
