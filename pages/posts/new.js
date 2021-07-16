@@ -1,21 +1,29 @@
 import Link from 'next/link'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import Layout from '../../components/Layout'
-import { InputContent } from '../../components/FormInputs'
+import { InputContent, InputSlug } from '../../components/FormInputs'
 import { postAPI } from '../../lib/api'
 
 const urlRegex = /^https?:\/\/(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:\/[^\/#?]+)+\.(?:jpg|jpeg|gif|png|webp)$/i
 
-const onSubmit = async (data) => {
-  data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-  const post = await postAPI('posts/create', data)
-  if (post?.id) alert(`success. go to /posts/${post.id}/edit`)
-  else alert(`fail`)
-}
-
-export default function New() { 
+export default function New() {
   const { register, handleSubmit, formState: { errors } } = useForm()
+  const [errorMsg, setError] = useState([])
+  const router = useRouter()
+
+  const onSubmit = (data) => {
+    data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    postAPI('posts/create', data)
+      .then(post => {
+        router.push(`/posts/${post.id}/edit`)
+      })
+      .catch(error => {
+        setError(error)
+        console.log('Something went wrong creating this post', error)
+      })
+  }
 
   console.log(Object.keys(errors).length === 0 ? 'no errors' : errors)
 
@@ -41,6 +49,7 @@ export default function New() {
             </span>
           </div>
 
+          <InputSlug register={register} />
           <InputContent register={register} />
 
           <div>
@@ -65,6 +74,12 @@ export default function New() {
               <a className="button outline">Back to Home</a>
             </Link>
           </div>
+
+          {errorMsg.length > 0 &&
+            <ul className="text-red-600 list-disc">
+              {errorMsg.map(m => <li key={m}>{m}</li>)}
+            </ul>
+          }
 
         </form>
       </section>
