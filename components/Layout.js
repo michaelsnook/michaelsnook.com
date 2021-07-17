@@ -16,15 +16,13 @@ export default function Layout({ image, description, title, children }) {
       {children}
 
       <footer className="border w-full py-10 mt-10">
-        <div className="mx-auto text-center">
-          <nav className="space-x-4 space-y-10 py-4">
-            <a className="text-cyan-700 underline" href="/">home</a>
-            <a className="text-cyan-700 underline" href="https://twitter.com/michaelsnook">twitter</a>
-            <a className="text-cyan-700 underline" href="https://github.com/michaelsnook">github</a>
-            <span>CC0 1.0</span>
-            <span>&lt;/&gt; by me</span>
-          </nav>
-        </div>
+        <nav className="space-x-4 space-y-10 py-4 mx-auto text-center">
+          <a className="text-cyan-700 underline" href="/">home</a>
+          <a className="text-cyan-700 underline" href="https://twitter.com/michaelsnook">twitter</a>
+          <a className="text-cyan-700 underline" href="https://github.com/michaelsnook">github</a>
+          <span>CC0 1.0</span>
+          <span>&lt;/&gt; by me</span>
+        </nav>
       </footer>
     </>
   )
