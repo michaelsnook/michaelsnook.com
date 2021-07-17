@@ -5,7 +5,6 @@ export default function Layout({ image, description, title, children }) {
   return (
     <>
       <Head>
-        <html lang="en" />
         <meta name="author" content="Michael Snook" />
         <title>{siteTitle}</title>
         <link rel="icon" href="/favicon.ico" />
