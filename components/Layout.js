@@ -24,7 +24,7 @@ export default function Layout({
 
       {children}
 
-      <footer className="border w-full py-10 mt-10">
+      <footer className="border-t w-full py-10 mt-10">
         <nav className="space-x-4 space-y-10 py-4 mx-auto text-center">
           <a className="text-cyan-700 underline" href="/">home</a>
           <a className="text-cyan-700 underline" href="https://twitter.com/michaelsnook">twitter</a>
