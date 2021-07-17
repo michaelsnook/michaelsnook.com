@@ -21,7 +21,7 @@ export function InputSlug({register, error}) {
       <input
         id="postName"
         type="text"
-        {...register("name", {pattern: /^[a-z][a-z-_][a-z]+$/})}
+        {...register("name", {pattern: /^[a-z][a-z-_][a-z]+$/, required: 'required'})}
         aria-invalid={error ? 'true' : 'false'}
         className={error ? 'border-red-600' : ''}
       />
@@ -35,7 +35,7 @@ export function InputSlug({register, error}) {
 export function InputContent({register}) {
   return (
     <div>
-      <label htmlFor="content">Post Content</label>
+      <label htmlFor="content">Post content</label>
       <textarea
         id="content"
         rows="10"

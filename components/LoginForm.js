@@ -14,13 +14,17 @@ const ConfirmationMessage = ({user}) => (
 
 export default function Login() {
   const [user, setLoggedIn] = useState(null)
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, formState: { errors } } = useForm()
   const [errorMsg, setError] = useState([])
+  const [isSubmitting, setSubmitting] = useState(false)
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
+    setError([])
+    setSubmitting(true)
     postLogin(data)
       .then(user => setLoggedIn(user))
       .catch(errors => setError(errors))
+      .finally(() => setSubmitting(false))
   }
 
   return (
@@ -31,32 +35,43 @@ export default function Login() {
           : (
           <>
             <h1 className="h3 text-gray-700">Please log in</h1>
-            <form role="form" onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-4 form">
-              <div>
-                <label htmlFor="username">Username</label>
-                <input
-                  id="username"
-                  {...register('username', {required: 'required'})}
-                  tabIndex="1"
-                  type="slug"
-                  placeholder="username"
-                />
-              </div>
-              <div>
-                <label htmlFor="password">Password</label>
-                <input
-                  id="password"
-                  {...register('password', {required: 'required'})}
-                  tabIndex="2"
-                  type="password"
-                  placeholder="****"
-                />
-              </div>
-              <div>
-                <button tabIndex="3" className="button solid" type="submit">
-                  Log in
-                </button>
-              </div>
+            <form role="form" onSubmit={handleSubmit(onSubmit)} className="form">
+              <fieldset className="flex flex-col gap-y-4" disabled={isSubmitting ? 'disabled' : ''}>
+                <div>
+                  <label htmlFor="username">Username</label>
+                  <input
+                    id="username"
+                    {...register('username', {required: 'required'})}
+                    aria-invalid={errors.username ? 'true' : 'false'}
+                    className={errors.username ? 'border-red-600' : ''}
+                    tabIndex="1"
+                    type="slug"
+                    placeholder="username"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="password">Password</label>
+                  <input
+                    id="password"
+                    {...register('password', {required: 'required'})}
+                    aria-invalid={errors.password ? 'true' : 'false'}
+                    className={errors.password ? 'border-red-600' : ''}
+                    tabIndex="2"
+                    type="password"
+                    placeholder="****"
+                  />
+                </div>
+                <div>
+                  <button 
+                    tabIndex="3" 
+                    className="button solid" 
+                    type="submit" 
+                    disabled={isSubmitting ? 'disabled' : ''}
+                  >
+                    Log in
+                  </button>
+                </div>
+              </fieldset>
               <ErrorList errors={errorMsg} />
             </form>
           </>
