@@ -1,6 +1,13 @@
 import Head from 'next/head'
+import Banner from './Banner'
 
-export default function Layout({ image, description, title, children }) {
+export default function Layout({
+  image = `/images/my-face-circle.png`,
+  description = `A personal weblog and project pad`,
+  title = `Michael Snook's site`,
+  banner = false,
+  children,
+}) {
   const siteTitle = `Michael Snook dot com${title && ` | ${title}`}`
   return (
     <>
@@ -12,6 +19,8 @@ export default function Layout({ image, description, title, children }) {
         <meta name="description" content={description} />
         <meta property="og:image" content={image} />
       </Head>
+
+      {banner && <Banner title={title} description={description} />}
 
       {children}
 

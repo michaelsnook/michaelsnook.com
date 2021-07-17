@@ -4,15 +4,9 @@ import Layout from '../components/Layout'
 import { getAPI } from '../lib/api'
 
 export default function Home({ data }) {
-  const meta = {
-    title: `Michael Snook's site`,
-    description: `A personal weblog and project pad`,
-    image: `/images/my-face-circle.png`
-  }
 
   return (
-    <Layout {...meta}>
-      <Banner title={meta.title} description={meta.description} />
+    <Layout banner>
       <main className="container py-5">
         <h2 className="h2">All Posts</h2>
         <PostList posts={data} />
