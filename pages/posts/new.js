@@ -4,10 +4,8 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import Layout from '../../components/Layout'
 import ErrorList from '../../components/ErrorList'
-import { InputContent, InputSlug } from '../../components/FormInputs'
+import { InputTitle, InputContent, InputSlug, InputImage } from '../../components/FormInputs'
 import { postAPI } from '../../lib/api'
-
-const urlRegex = /^https?:\/\/(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:\/[^\/#?]+)+\.(?:jpg|jpeg|gif|png|webp)$/i
 
 export default function New() {
   const { register, handleSubmit, formState: { errors } } = useForm()
@@ -39,36 +37,10 @@ export default function New() {
         <form className="form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
           <fieldset disabled={isSubmitting ? 'disabled' : ''}>
 
-            <div>
-              <label htmlFor="postTitle">Post title</label>
-              <input
-                id="postTitle"
-                type="text"
-                {...register("title", {required: true, maxLength: 120})}
-                aria-invalid={errors.title ? 'true' : 'false'}
-                className={errors.title ? 'border-red-600' : ''}
-              />
-              <span className={!errors.title ? 'invisible' : ''} role="alert">
-                Your post needs a title, silly
-              </span>
-            </div>
-
-            <InputSlug register={register} error={errors.name}/>
+            <InputTitle register={register} error={errors.title} />
+            <InputSlug register={register} error={errors.name} />
             <InputContent register={register} />
-
-            <div>
-              <label htmlFor="postImage">Post image</label>
-              <input
-                id="postImage"
-                type="text"
-                {...register("image", {pattern: urlRegex})}
-                aria-invalid={errors.image ? 'true' : 'false'}
-                className={errors.image ? 'border-red-600' : ''}
-              />
-              <span className={!errors.image ? 'invisible' : ''} role="alert">
-                If you can't enter a valid image URL, just don't even bother
-              </span>
-            </div>
+            <InputImage register={register} error={errors.image} />
 
             <div className="flex justify-between">
               <button type="submit" className="button solid" disabled={isSubmitting ? 'disabled' : ''}>

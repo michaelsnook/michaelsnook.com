@@ -1,3 +1,23 @@
+const urlRegex = /^https?:\/\/(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:\/[^\/#?]+)+\.(?:jpg|jpeg|gif|png|webp)$/i
+
+export function InputTitle({ register, error}) {
+  return (
+    <div>
+      <label htmlFor="postTitle">Post title</label>
+      <input
+        id="postTitle"
+        type="text"
+        {...register("title", {required: true, maxLength: 120})}
+        aria-invalid={error ? 'true' : 'false'}
+        className={error ? 'border-red-600' : ''}
+      />
+      <span className={!error ? 'invisible' : ''} role="alert">
+        Your post needs a title, silly
+      </span>
+    </div>
+  )
+}
+
 export function InputExcerpt({register}) {
   return (
     <div>
@@ -43,6 +63,24 @@ export function InputContent({register}) {
       />
       <span className="invisible">
         &nbsp;
+      </span>
+    </div>
+  )
+}
+
+export function InputImage({register, error}) {
+  return (
+    <div>
+      <label htmlFor="postImage">Post image</label>
+      <input
+        id="postImage"
+        type="text"
+        {...register("image", {pattern: urlRegex})}
+        aria-invalid={error ? 'true' : 'false'}
+        className={error ? 'border-red-600' : ''}
+      />
+      <span className={!error ? 'invisible' : ''} role="alert">
+        If you can't enter a valid image URL, just don't even bother
       </span>
     </div>
   )
