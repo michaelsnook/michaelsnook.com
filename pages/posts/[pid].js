@@ -28,23 +28,19 @@ const PostArticle = ({ title, image, content}) => (
   </article>
 )
 
-export default function Post(props) {
-  const post = props.data
-
-  return post.error ? (<p>Error loading post.</p>)
-    : post === {} ? (<p>Post will load when it feels like loading.</p>)
-    : (
-      <Layout
-        title={post.title}
-        description={post.excerpt}
-        image={post.image}
-      >
-        <div className="container grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4 py-10">
-          <PostSidebar {...post} />
-          <PostArticle {...post} />
-        </div>
-      </Layout>
-    )
+export default function Post({post}) {
+  return (
+    <Layout
+      title={post.title}
+      description={post.excerpt}
+      image={post.image}
+    >
+      <div className="container grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4 py-10">
+        <PostSidebar {...post} />
+        <PostArticle {...post} />
+      </div>
+    </Layout>
+  )
 }
 
 export async function getStaticProps({ params }) {
@@ -54,7 +50,7 @@ export async function getStaticProps({ params }) {
     notFound: true,
     revalidate: 10,
   } : {
-    props: { data },
+    props: { post: data },
     revalidate: 10,
   }
 }
