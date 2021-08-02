@@ -18,8 +18,8 @@ const PostSidebar = ({id, created_at}) => (
   </div>
 )
 
-const PostArticle = ({ title, image, content}) => (
-  <article className="md:col-span-3 lg:col-span-4 flex flex-col gap-4 max-w-prose">
+export const PostArticle = ({ title, image, content }) => (
+  <article className="md:col-span-3 lg:col-span-4 flex flex-col gap-4 max-w-prose mx-auto">
     <h1 className="h1">{title}</h1>
     <img src={image} alt="" />
     <div className="prose lg:prose-lg prose-cyan">
