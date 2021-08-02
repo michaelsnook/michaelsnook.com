@@ -29,7 +29,7 @@ export default function Drafts() {
       <main className="container py-5">
         <h2 className="h2">Draft posts</h2>
         { postsData.errors.length > 0
-          ? <ErrorList errors={postsData.errors} />
+          ? <ErrorList summary="Can't load drafts" errors={postsData.errors} />
           : <PostList posts={postsData.posts} />
         }
       </main>

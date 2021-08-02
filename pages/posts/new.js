@@ -9,7 +9,7 @@ import { postAPI } from '../../lib/api'
 
 export default function New() {
   const { register, handleSubmit, formState: { errors } } = useForm()
-  const [errorMsg, setError] = useState([])
+  const [formErrors, setError] = useState([])
   const [isSubmitting, setSubmitting] = useState(false)
   const router = useRouter()
 
@@ -52,7 +52,7 @@ export default function New() {
             </div>
 
           </fieldset>
-          <ErrorList errors={errorMsg} />
+          <ErrorList summary="Error creating post" errors={formErrors} />
         </form>
       </section>
     </Layout>

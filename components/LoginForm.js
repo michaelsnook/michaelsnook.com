@@ -15,7 +15,7 @@ const ConfirmationMessage = ({user}) => (
 export default function Login() {
   const [user, setLoggedIn] = useState(null)
   const { register, handleSubmit, formState: { errors } } = useForm()
-  const [errorMsg, setError] = useState([])
+  const [loginErrors, setError] = useState([])
   const [isSubmitting, setSubmitting] = useState(false)
 
   const onSubmit = (data) => {
@@ -72,7 +72,7 @@ export default function Login() {
                   </button>
                 </div>
               </fieldset>
-              <ErrorList errors={errorMsg} />
+              <ErrorList summary="Failed to log in" errors={loginErrors} />
             </form>
           </>
         )}

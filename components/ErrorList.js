@@ -1,7 +1,8 @@
-export default function ErrorList({errors}) {
-  return errors.length === 0 ? <></> : (
+export default function ErrorList({summary, errors}) {
+  return !(summary && summary.length > 0 && errors && errors.length > 0) ? <></> : (
     <ul className="text-red-600 list-disc">
-      {errors.map(m => <li key={m}>{m}</li>)}
+      {summary ? <li className="bold">{summary}</li> : <></>}
+      {errors.length ? errors.map(m => <li key={m}>{m}</li>) : <></>}
     </ul>
   ) 
 }
