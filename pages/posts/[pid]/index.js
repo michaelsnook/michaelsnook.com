@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import Layout from '../../components/Layout'
-import PrintMarkdown from '../../components/PrintMarkdown'
-import DateSpan from '../../components/DateSpan'
-import { getAPI } from '../../lib/api'
+import Layout from '../../../components/Layout'
+import PrintMarkdown from '../../../components/PrintMarkdown'
+import DateSpan from '../../../components/DateSpan'
+import { getAPI } from '../../../lib/api'
 
 const PostSidebar = ({id, created_at}) => (
   <div className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
