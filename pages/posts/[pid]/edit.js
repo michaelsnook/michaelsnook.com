@@ -25,8 +25,8 @@ export default function EditPost() {
     setSubmitting(true)
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
     postAPI(`posts/update/${router.query.pid}`, data)
-      .then(post => {
-        setPost(post)
+      .then(() => {
+        setPost(data)
       })
       .catch(error => {
         setFormError(error)
@@ -55,7 +55,7 @@ export default function EditPost() {
         <div className="col-span-2">
           <h1 className="h3">Edit your post</h1>
           <form className="form flex flex-col gap-4 overflow-scroll" onSubmit={handleSubmit(onSubmit)}>
-            <fieldset disabled={isSubmitting ? 'disabled' : ''}>
+            <fieldset disabled={isSubmitting || isLoading ? 'disabled' : ''}>
 
               <InputTitle register={register} error={errors.title} />
               <InputContent register={register} />
@@ -75,13 +75,10 @@ export default function EditPost() {
           </form>
         </div>
         <div className="col-span-2 lg:col-span-3">
+          <ErrorList summary="Error loading post" errors={loadErrorMsg} />
           { isLoading
             ? <p>Loading...</p>
-            : 
-            <>
-              <ErrorList summary="Error loading post" errors={loadErrorMsg} />
-              <PostArticle {...thePost} />
-            </>
+            : <PostArticle {...thePost} />
           }
         </div>
       </div>
