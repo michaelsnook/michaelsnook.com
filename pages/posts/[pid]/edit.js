@@ -51,7 +51,7 @@ export default function EditPost() {
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 px-4">
         <div className="col-span-2">
           <h1 className="h3">Edit your post</h1>
-          <form className="form flex flex-col gap-4 overflow-scroll" onSubmit={handleSubmit(onSubmit)}>
+          <form className="form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
             <fieldset disabled={isSubmitting || isLoading ? 'disabled' : ''}>
 
               <InputTitle register={register} error={errors.title} />
