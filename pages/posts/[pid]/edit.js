@@ -14,7 +14,7 @@ export default function EditPost() {
   const [loadErrors, setLoadErrors] = useState([])
   const [formErrors, setFormErrors] = useState([])
   const [thePost, setPost] = useState()
-  const { register, handleSubmit, reset, formState: { errors } } = useForm()
+  const { register, handleSubmit, reset, formState: { errors, isDirty } } = useForm()
   const router = useRouter()
 
   const onSubmit = (data) => {
@@ -59,7 +59,7 @@ export default function EditPost() {
               <InputImage register={register} error={errors.image} />
 
               <div className="flex justify-between">
-                <button type="submit" className="button solid" disabled={isSubmitting ? 'disabled' : ''}>
+                <button type="submit" className="button solid" disabled={isSubmitting || !isDirty ? 'disabled' : ''}>
                   Save edits
                 </button>
                 <Link href={`/posts/${router.query.pid}`}>
