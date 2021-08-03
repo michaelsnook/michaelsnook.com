@@ -9,21 +9,21 @@ import { postAPI } from '../../lib/api'
 
 export default function New() {
   const { register, handleSubmit, formState: { errors } } = useForm()
-  const [formErrors, setError] = useState([])
+  const [formErrors, setErrors] = useState([])
   const [isSubmitting, setSubmitting] = useState(false)
   const router = useRouter()
 
   const onSubmit = (data) => {
-    setError([])
+    setErrors([])
     setSubmitting(true)
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
     postAPI('posts/create', data)
       .then(post => {
         router.push(`/posts/${post.id}/edit`)
       })
-      .catch(error => {
-        setError(error)
-        console.log('Something went wrong creating this post', error)
+      .catch(errors => {
+        setErrors(errors)
+        console.log('Something went wrong creating this post', errors)
       })
       .finally(() => setSubmitting(false))
   }

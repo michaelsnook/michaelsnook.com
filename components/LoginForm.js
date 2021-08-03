@@ -15,15 +15,15 @@ const ConfirmationMessage = ({user}) => (
 export default function Login() {
   const [user, setLoggedIn] = useState(null)
   const { register, handleSubmit, formState: { errors } } = useForm()
-  const [loginErrors, setError] = useState([])
+  const [loginErrors, setErrors] = useState([])
   const [isSubmitting, setSubmitting] = useState(false)
 
   const onSubmit = (data) => {
-    setError([])
+    setErrors([])
     setSubmitting(true)
     postLogin(data)
       .then(user => setLoggedIn(user))
-      .catch(errors => setError(errors))
+      .catch(errors => setErrors(errors))
       .finally(() => setSubmitting(false))
   }
 

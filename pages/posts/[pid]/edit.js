@@ -5,32 +5,29 @@ import { useForm } from 'react-hook-form'
 import { getAPI, postAPI } from '../../../lib/api'
 import Layout from '../../../components/Layout'
 import ErrorList from '../../../components/ErrorList'
-
 import { InputTitle, InputContent, InputImage } from '../../../components/FormInputs'
 import { PostArticle } from "../[pid]"
-
-
 
 export default function EditPost() {
   const [isLoading, setLoading] = useState()
   const [isSubmitting, setSubmitting] = useState(false)
-  const [loadErrorMsg, setLoadError] = useState([])
-  const [formErrorMsg, setFormError] = useState([])
+  const [loadErrors, setLoadErrors] = useState([])
+  const [formErrors, setFormErrors] = useState([])
   const [thePost, setPost] = useState()
   const { register, handleSubmit, reset, formState: { errors } } = useForm()
   const router = useRouter()
 
   const onSubmit = (data) => {
-    setFormError([])
+    setFormErrors([])
     setSubmitting(true)
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
     postAPI(`posts/update/${router.query.pid}`, data)
       .then(() => {
         setPost(data)
       })
-      .catch(error => {
-        setFormError(error)
-        console.log('Something went wrong updating this post', error)
+      .catch(errors => {
+        setFormErrors(errors)
+        console.log('Something went wrong updating this post', errors)
       })
       .finally(() => setSubmitting(false))
   }
@@ -40,12 +37,12 @@ export default function EditPost() {
     if (router.isReady) {
       getAPI(`posts/show/${router.query.pid}`)
         .then(post => {
-          setLoadError([])
+          setLoadErrors([])
           reset(post)
           setLoading(false)
           setPost(post)
         })
-        .catch(error => setLoadError(error))
+        .catch(errors => setLoadErrors(errors))
     }
   }, [router.isReady])
   
@@ -71,11 +68,11 @@ export default function EditPost() {
               </div>
 
             </fieldset>
-            <ErrorList summary="Error saving post" errors={formErrorMsg} />
+            <ErrorList summary="Error saving post" errors={formErrors} />
           </form>
         </div>
         <div className="col-span-2 lg:col-span-3">
-          <ErrorList summary="Error loading post" errors={loadErrorMsg} />
+          <ErrorList summary="Error loading post" errors={loadErrors} />
           { isLoading
             ? <p>Loading...</p>
             : <PostArticle {...thePost} />

@@ -28,10 +28,8 @@ export default function Drafts() {
     <Layout banner>
       <main className="container py-5">
         <h2 className="h2">Draft posts</h2>
-        { postsData.errors.length > 0
-          ? <ErrorList summary="Can't load drafts" errors={postsData.errors} />
-          : <PostList posts={postsData.posts} />
-        }
+        <ErrorList summary="Can't load drafts" errors={postsData.errors} />
+        <PostList posts={postsData.posts} />
       </main>
     </Layout>
   )
