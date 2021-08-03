@@ -18,13 +18,31 @@ const PostSidebar = ({id, created_at}) => (
   </div>
 )
 
-export const PostArticle = ({ title, image, content }) => (
-  <article className="md:col-span-3 lg:col-span-4 flex flex-col gap-4 max-w-prose mx-auto">
-    <h1 className="h1">{title}</h1>
-    <img src={image} alt="" />
-    <div className="prose lg:prose-lg prose-cyan">
-      <PrintMarkdown markdown={content} />
+const PostLoading = () => (
+  <>
+    <div className="flex flex-wrap gap-4">
+      <span className="inline-block h-14 w-full bg-gray-200 rounded-md" />
+      <span className="inline-block h-14 w-1/3 bg-gray-200 rounded-md" />
     </div>
+    <div className="h-48 w-full bg-gray-200 rounded-md" />
+    <div className="h-96 w-full bg-gray-200 rounded-md" />
+    <div className="invisible">
+      This invisible filler content is here only so that the browser will
+      allow it to wrap comfortably, thereby setting a width for the flex
+      container above.
+    </div>
+  </>
+)
+
+export const PostArticle = ({ title, image, content, isLoading }) => (
+  <article className="md:col-span-3 lg:col-span-4 flex flex-col gap-4 max-w-prose mx-auto">
+    {isLoading ? <PostLoading /> : (<>
+      <h1 className="h1">{title}</h1>
+      <img src={image} alt="" />
+      <div className="prose lg:prose-lg prose-cyan">
+        <PrintMarkdown markdown={content} />
+      </div>
+    </>)}
   </article>
 )
 

@@ -73,10 +73,7 @@ export default function EditPost() {
         </div>
         <div className="col-span-2 lg:col-span-3">
           <ErrorList summary="Error loading post" errors={loadErrors} />
-          { isLoading
-            ? <p>Loading...</p>
-            : <PostArticle {...thePost} />
-          }
+          <PostArticle {...thePost} isLoading={isLoading} />
         </div>
       </div>
     </Layout>
