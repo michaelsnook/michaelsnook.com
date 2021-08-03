@@ -36,7 +36,7 @@ export default function Login() {
           <>
             <h1 className="h3 text-gray-700">Please log in</h1>
             <form role="form" onSubmit={handleSubmit(onSubmit)} className="form">
-              <fieldset className="flex flex-col gap-y-4" disabled={isSubmitting ? 'disabled' : ''}>
+              <fieldset className="flex flex-col gap-y-4" disabled={isSubmitting}>
                 <div>
                   <label htmlFor="username">Username</label>
                   <input
@@ -62,11 +62,12 @@ export default function Login() {
                   />
                 </div>
                 <div>
-                  <button 
+                  <button
                     tabIndex="3" 
                     className="button solid" 
                     type="submit" 
-                    disabled={isSubmitting ? 'disabled' : ''}
+                    disabled={isSubmitting}
+                    aria-disabled={isSubmitting}
                   >
                     Log in
                   </button>

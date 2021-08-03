@@ -52,14 +52,19 @@ export default function EditPost() {
         <div className="col-span-2">
           <h1 className="h3">Edit your post</h1>
           <form className="form flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-            <fieldset disabled={isSubmitting || isLoading ? 'disabled' : ''}>
+            <fieldset disabled={isSubmitting || isLoading}>
 
               <InputTitle register={register} error={errors.title} />
               <InputContent register={register} />
               <InputImage register={register} error={errors.image} />
 
               <div className="flex justify-between">
-                <button type="submit" className="button solid" disabled={isSubmitting || !isDirty ? 'disabled' : ''}>
+                <button
+                  type="submit"
+                  className="button solid"
+                  disabled={!isDirty || isSubmitting}
+                  aria-disabled={!isDirty || isSubmitting}
+                >
                   Save edits
                 </button>
                 <Link href={`/posts/${router.query.pid}`}>
