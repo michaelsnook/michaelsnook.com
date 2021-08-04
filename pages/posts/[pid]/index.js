@@ -5,7 +5,7 @@ import DateSpan from '../../../components/DateSpan'
 import { getAPI } from '../../../lib/api'
 
 const PostSidebar = ({id, created_at}) => (
-  <div className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
+  <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
     <img className="w-36 mx-auto rounded-full" src="/images/my-photo.jpg"
       alt="A photo of the author, Michael, smiling" />
     <p className="mx-auto">By Michael Snook</p>
@@ -15,7 +15,7 @@ const PostSidebar = ({id, created_at}) => (
         edit post
       </a>
     </Link>
-  </div>
+  </aside>
 )
 
 const PostLoading = () => (
