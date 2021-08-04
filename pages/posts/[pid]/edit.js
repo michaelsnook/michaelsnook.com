@@ -15,13 +15,13 @@ export default function EditPost() {
   const [formErrors, setFormErrors] = useState([])
   const [thePost, setPost] = useState()
   const { register, handleSubmit, reset, formState: { errors, isDirty } } = useForm()
-  const router = useRouter()
+  const { isReady, query: { pid } } = useRouter()
 
   const onSubmit = (data) => {
     setFormErrors([])
     setSubmitting(true)
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    postAPI(`posts/update/${router.query.pid}`, data)
+    postAPI(`posts/update/${pid}`, data)
       .then(() => {
         setPost(data)
       })
@@ -34,8 +34,8 @@ export default function EditPost() {
 
   useEffect(() => {
     setLoading(true)
-    if (router.isReady) {
-      getAPI(`posts/show/${router.query.pid}`)
+    if (isReady) {
+      getAPI(`posts/show/${pid}`)
         .then(post => {
           setLoadErrors([])
           reset(post)
@@ -44,7 +44,7 @@ export default function EditPost() {
         })
         .catch(errors => setLoadErrors(errors))
     }
-  }, [router.isReady])
+  }, [isReady])
   
   return (
     <Layout>
@@ -67,7 +67,7 @@ export default function EditPost() {
                 >
                   Save edits
                 </button>
-                <Link href={`/posts/${router.query.pid}`}>
+                <Link href={`/posts/${pid}`}>
                   <a className="button outline">Cancel</a>
                 </Link>
               </div>
