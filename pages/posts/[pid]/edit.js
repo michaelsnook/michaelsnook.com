@@ -10,16 +10,14 @@ import { PostArticle } from "../[pid]"
 
 export default function EditPost() {
   const [isLoading, setLoading] = useState()
-  const [isSubmitting, setSubmitting] = useState(false)
   const [loadErrors, setLoadErrors] = useState([])
   const [formErrors, setFormErrors] = useState([])
   const [thePost, setPost] = useState()
-  const { register, handleSubmit, reset, formState: { errors, isDirty } } = useForm()
+  const { register, handleSubmit, reset, formState: { errors, isDirty, isSubmitting } } = useForm()
   const { isReady, query: { pid } } = useRouter()
 
   const onSubmit = (data) => {
     setFormErrors([])
-    setSubmitting(true)
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
     postAPI(`posts/update/${pid}`, data)
       .then(() => {
@@ -29,7 +27,6 @@ export default function EditPost() {
         setFormErrors(errors)
         console.log('Something went wrong updating this post', errors)
       })
-      .finally(() => setSubmitting(false))
   }
 
   useEffect(() => {
