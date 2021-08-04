@@ -12,17 +12,22 @@ export default function EditPost() {
   const [isLoading, setLoading] = useState()
   const [loadErrors, setLoadErrors] = useState([])
   const [formErrors, setFormErrors] = useState([])
-  const [thePost, setPost] = useState()
-  const { register, handleSubmit, reset, formState: { errors, isDirty, isSubmitting } } = useForm()
+  const {
+    register,
+    watch,
+    handleSubmit,
+    reset,
+    formState: { errors, isDirty, isSubmitting }
+  } = useForm()
   const { isReady, query: { pid } } = useRouter()
+
+  const thePost = watch()
 
   const onSubmit = (data) => {
     setFormErrors([])
+    reset(data) // reset isDirty immediately, before fetch
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
     postAPI(`posts/update/${pid}`, data)
-      .then(() => {
-        setPost(data)
-      })
       .catch(errors => {
         setFormErrors(errors)
         console.log('Something went wrong updating this post', errors)
@@ -37,7 +42,6 @@ export default function EditPost() {
           setLoadErrors([])
           reset(post)
           setLoading(false)
-          setPost(post)
         })
         .catch(errors => setLoadErrors(errors))
     }
