@@ -3,3 +3,5 @@ Allow: /
 
 User-agent: *
 Disallow: /**/edit$
+
+Sitemap: https://michaelsnook.com/sitemap.txt
