@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import { getAPI, postAPI } from '../../../lib/api'
+import { fetchPost, postAPI } from '../../../lib/api'
 import Layout from '../../../components/Layout'
 import ErrorList from '../../../components/ErrorList'
 import { InputTitle, InputContent, InputImage } from '../../../components/FormInputs'
@@ -37,7 +37,7 @@ export default function EditPost() {
   useEffect(() => {
     setLoading(true)
     if (isReady) {
-      getAPI(`posts/show/${pid}`)
+      fetchPost(pid)
         .then(post => {
           setLoadErrors([])
           reset(post)

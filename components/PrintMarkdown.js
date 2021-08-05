@@ -6,7 +6,5 @@ export default function PrintMarkdown({ markdown }) {
   return unified()
     .use(parse)
     .use(remark2react)
-    .processSync(
-      markdown?.replace('&lt;', '<').replace('&gt;', '>')
-    ).result
+    .processSync(markdown).result
 }

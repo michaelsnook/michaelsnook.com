@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Layout from '../../../components/Layout'
 import PrintMarkdown from '../../../components/PrintMarkdown'
 import DateSpan from '../../../components/DateSpan'
-import { getAPI } from '../../../lib/api'
+import { getAPI, fetchPost } from '../../../lib/api'
 
 const PostSidebar = ({id, created_at}) => (
   <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
@@ -63,7 +63,7 @@ export default function Post({post}) {
 }
 
 export async function getStaticProps({ params }) {
-  const data = await getAPI(`posts/show/${params.pid}`)
+  const data = await fetchPost(params.pid)
 
   return !data ? {
     notFound: true,
