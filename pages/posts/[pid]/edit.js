@@ -69,7 +69,9 @@ export default function EditPost() {
                   Save edits
                 </button>
                 <Link href={`/posts/${pid}`}>
-                  <a className="button outline">Cancel</a>
+                  <a className="button outline">
+                    {isDirty ? 'Cancel' : 'Go back'}
+                  </a>
                 </Link>
               </div>
 
