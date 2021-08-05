@@ -10,6 +10,9 @@
   body {
     @apply font-sans text-gray-800 font-light;
   }
+  .prose img {
+    @apply shadow-lg;
+  }
 }
 
 @layer components {

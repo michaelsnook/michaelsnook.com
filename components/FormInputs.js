@@ -1,4 +1,4 @@
-const urlRegex = /^https?:\/\/(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:\/[^\/#?]+)+\.(?:jpg|jpeg|gif|png|webp)$/i
+const urlRegex = /^\S+\.(?:jpg|jpeg|gif|png|webp)$/i
 
 export function InputTitle({ register, error}) {
   return (
