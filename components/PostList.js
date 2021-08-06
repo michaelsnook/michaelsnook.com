@@ -1,6 +1,6 @@
 export default function PostList({ posts }) {
   return posts.length === 0 ? <p>loading posts...</p> : (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 place-content-stretch">
+    <div role="list" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 place-content-stretch">
       {posts.map(post => (
         <a key={`post-${post.id}`} className="border rounded" href={`/posts/${post.id}`}>
           {post.image &&
