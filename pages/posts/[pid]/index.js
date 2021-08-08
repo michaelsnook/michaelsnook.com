@@ -3,12 +3,22 @@ import Layout from '../../../components/Layout'
 import PrintMarkdown from '../../../components/PrintMarkdown'
 import DateSpan from '../../../components/DateSpan'
 import { getAPI, fetchPost } from '../../../lib/api'
+import Image from 'next/image'
+
 
 const PostSidebar = ({id, created_at}) => (
   <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
     <Link href="/"><a className="text-cyan-700 hover:underline">« Back to home</a></Link>
-    <img className="w-36 mx-auto rounded-full" src="/images/my-photo.jpg"
-      alt="A photo of the author, Michael, smiling" />
+    <div className="mx-auto">
+      <Image
+        src="/images/my-photo.jpg"
+        alt="A photo of the author, Michael, smiling"
+        className="rounded-full"
+        height="144"
+        width="144"
+      />
+    </div>
+
     <p className="mx-auto">By Michael Snook</p>
     <p className="mx-auto">Published <DateSpan dateText={created_at} /></p>
     <Link href={`/posts/${id}/edit`}>
