@@ -34,6 +34,10 @@ module.exports = {
         cyan: colors.cyan,
       },
       maxHeight: {},
+      minHeight: {
+        '40': '10rem',
+        '64': '16rem',
+       }
     },
   },
   variants: {
