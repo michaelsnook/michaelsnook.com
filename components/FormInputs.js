@@ -41,7 +41,7 @@ export function InputSlug({register, error}) {
       <input
         id="postName"
         type="text"
-        {...register("name", {pattern: /^[a-z][a-z-_][a-z]+$/, required: 'required'})}
+        {...register("name", {pattern: /^[a-z0-9][a-z0-9-_]+[a-z0-9]$/, required: 'required'})}
         aria-invalid={error ? 'true' : 'false'}
         className={error ? 'border-red-600' : ''}
       />
