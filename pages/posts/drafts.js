@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import Banner from '../../components/Banner'
 import PostList from '../../components/PostList'
 import Layout from '../../components/Layout'
 import ErrorList from '../../components/ErrorList'

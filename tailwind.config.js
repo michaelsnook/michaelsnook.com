@@ -37,6 +37,7 @@ module.exports = {
       minHeight: {
         '40': '10rem',
         '64': '16rem',
+        '50vh': '50vh',
        }
     },
   },

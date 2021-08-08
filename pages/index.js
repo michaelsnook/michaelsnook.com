@@ -1,4 +1,3 @@
-import Banner from '../components/Banner'
 import PostList from '../components/PostList'
 import Layout from '../components/Layout'
 import { getAPI } from '../lib/api'
