@@ -17,7 +17,7 @@ export default function EditPost() {
     watch,
     handleSubmit,
     reset,
-    formState: { errors, isDirty, isSubmitting }
+    formState: { errors, isDirty, isSubmitting, isSubmitSuccessful }
   } = useForm()
   const { isReady, query: { pid } } = useRouter()
 
@@ -60,14 +60,20 @@ export default function EditPost() {
               <InputImage register={register} error={errors.image} />
 
               <div className="flex justify-between">
-                <button
-                  type="submit"
-                  className="button solid"
-                  disabled={!isDirty || isSubmitting}
-                  aria-disabled={!isDirty || isSubmitting}
-                >
-                  Save edits
-                </button>
+                <span>
+                  <button
+                    type="submit"
+                    className="button solid"
+                    disabled={!isDirty || isSubmitting}
+                    aria-disabled={!isDirty || isSubmitting}
+                  >
+                    {isSubmitting
+                      ? 'Saving...'
+                      : 'Save edits'
+                    }
+                  </button>
+                  {isSubmitSuccessful && !isDirty && <span className="mx-2">☑️</span>}
+                </span>
                 <Link href={`/posts/${pid}`}>
                   <a className="button outline">
                     {isDirty ? 'Cancel' : 'Go back'}
