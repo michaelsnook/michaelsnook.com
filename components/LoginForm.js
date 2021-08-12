@@ -8,7 +8,7 @@ import ErrorList from '../components/ErrorList'
 const ConfirmationMessage = ({user}) => (
   <div className="bg-green-200 border rounded border-green-600 text-green-800 p-10">
     <h1 className="my-4 h3">Success</h1>
-    <p className="my-4">You're logged in as user <em>{user?.username}</em></p>
+    <p className="my-4">You&apos;re logged in as user <em>{user?.username}</em></p>
   </div>
 )
 

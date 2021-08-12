@@ -45,7 +45,7 @@ export default function EditPost() {
         })
         .catch(errors => setLoadErrors(errors))
     }
-  }, [isReady])
+  }, [isReady, pid, reset])
   
   return (
     <Layout>

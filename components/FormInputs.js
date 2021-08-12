@@ -80,7 +80,7 @@ export function InputImage({register, error}) {
         className={error ? 'border-red-600' : ''}
       />
       <span className={!error ? 'invisible' : ''} role="alert">
-        If you can't enter a valid image URL, just don't even bother
+        If you can&apos;t enter a valid image URL, just don&apos;t even bother
       </span>
     </div>
   )
