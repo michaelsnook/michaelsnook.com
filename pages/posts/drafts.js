@@ -22,7 +22,6 @@ export default function Drafts() {
       })
   }, [])
 
-
   return (
     <Layout banner>
       <main className="container py-5">

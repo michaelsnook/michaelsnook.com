@@ -5,10 +5,11 @@ import DateSpan from '../../../components/DateSpan'
 import { getAPI, fetchPost } from '../../../lib/api'
 import Image from 'next/image'
 
-
-const PostSidebar = ({id, created_at}) => (
+const PostSidebar = ({ id, created_at }) => (
   <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
-    <Link href="/"><a className="text-cyan-700 hover:underline">« Back to home</a></Link>
+    <Link href="/">
+      <a className="text-cyan-700 hover:underline">« Back to home</a>
+    </Link>
     <div className="mx-auto">
       <Image
         src="/images/my-photo.jpg"
@@ -20,11 +21,11 @@ const PostSidebar = ({id, created_at}) => (
     </div>
 
     <p className="mx-auto">By Michael Snook</p>
-    <p className="mx-auto">Published <DateSpan dateText={created_at} /></p>
+    <p className="mx-auto">
+      Published <DateSpan dateText={created_at} />
+    </p>
     <Link href={`/posts/${id}/edit`}>
-      <a className="button outline mx-auto">
-        edit post
-      </a>
+      <a className="button outline mx-auto">edit post</a>
     </Link>
   </aside>
 )
@@ -38,32 +39,32 @@ const PostLoading = () => (
     <div className="h-24 sm:h-32 md:h-40 lg:h-48 w-full bg-gray-200 rounded-md" />
     <div className="h-60 sm:h-68 md:h-80 lg:h-96 w-full bg-gray-200 rounded-md" />
     <div className="invisible">
-      This invisible filler content is here only so that the browser will
-      allow it to wrap comfortably, thereby setting a width for the flex
-      container above.
+      This invisible filler content is here only so that the browser will allow
+      it to wrap comfortably, thereby setting a width for the flex container
+      above.
     </div>
   </>
 )
 
 export const PostArticle = ({ title, image, content, isLoading }) => (
   <article className="md:col-span-3 lg:col-span-4 flex flex-col gap-4 max-w-prose mx-auto">
-    {isLoading ? <PostLoading /> : (<>
-      <h1 className="h1">{title}</h1>
-      {image && <img src={image} alt="" />}
-      <div className="prose lg:prose-lg prose-cyan">
-        <PrintMarkdown markdown={content} />
-      </div>
-    </>)}
+    {isLoading ? (
+      <PostLoading />
+    ) : (
+      <>
+        <h1 className="h1">{title}</h1>
+        {image && <img src={image} alt="" />}
+        <div className="prose lg:prose-lg prose-cyan">
+          <PrintMarkdown markdown={content} />
+        </div>
+      </>
+    )}
   </article>
 )
 
-export default function Post({post}) {
+export default function Post({ post }) {
   return (
-    <Layout
-      title={post.title}
-      description={post.excerpt}
-      image={post.image}
-    >
+    <Layout title={post.title} description={post.excerpt} image={post.image}>
       <div className="container grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4 py-10">
         <PostSidebar {...post} />
         <PostArticle {...post} />
@@ -75,19 +76,21 @@ export default function Post({post}) {
 export async function getStaticProps({ params }) {
   const data = await fetchPost(params.pid)
 
-  return !data ? {
-    notFound: true,
-    revalidate: 10,
-  } : {
-    props: { post: data },
-    revalidate: 10,
-  }
+  return !data
+    ? {
+        notFound: true,
+        revalidate: 10,
+      }
+    : {
+        props: { post: data },
+        revalidate: 10,
+      }
 }
 
 export async function getStaticPaths() {
   const data = await getAPI(`posts/index`)
   const paths = data.map(post => ({
-    params: { pid: `${post.id}` }
+    params: { pid: `${post.id}` },
   }))
 
   return { paths, fallback: 'blocking' }

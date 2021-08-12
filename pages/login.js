@@ -5,7 +5,6 @@ import LoginForm from '../components/LoginForm'
 // const user = useContext(UserContext)
 
 export default function Login() {
-
   return (
     <Layout>
       <LoginForm />

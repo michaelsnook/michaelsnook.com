@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function Banner({title, description}) {
+export default function Banner({ title, description }) {
   return (
     <header
       className="bg-gray-500 w-full min-h-50vh grid relative"
@@ -15,8 +15,10 @@ export default function Banner({title, description}) {
         objectFit="cover"
         objectPosition="center"
       />
-      <div className="z-10 container p-10 align-middle place-self-center text-white
-          flex justify-between rounded-md">
+      <div
+        className="z-10 container p-10 align-middle place-self-center text-white
+          flex justify-between rounded-md"
+      >
         <div>
           <h1 className="h1">{title}</h1>
           <p className="h1-sub">{description}</p>
@@ -26,7 +28,8 @@ export default function Banner({title, description}) {
             src="/images/my-face-circle.png"
             alt="A cartoon face of the author, Michael"
             className="w-36"
-            width="144" height="144"
+            width="144"
+            height="144"
           />
         </div>
       </div>

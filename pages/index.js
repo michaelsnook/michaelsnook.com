@@ -3,7 +3,6 @@ import Layout from '../components/Layout'
 import { getAPI } from '../lib/api'
 
 export default function Home({ data }) {
-
   return (
     <Layout banner>
       <main className="container py-5">
@@ -17,11 +16,13 @@ export default function Home({ data }) {
 export async function getStaticProps() {
   const data = await getAPI(`posts/index`)
 
-  return !data ? {
-    notFound: true,
-    revalidate: 10,
-  } : {
-    props: { data },
-    revalidate: 10,
-  }
+  return !data
+    ? {
+        notFound: true,
+        revalidate: 10,
+      }
+    : {
+        props: { data },
+        revalidate: 10,
+      }
 }

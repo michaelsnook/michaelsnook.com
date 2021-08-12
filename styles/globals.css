@@ -19,17 +19,21 @@
   form.form label {
     @apply block text-gray-700 text-sm my-1;
   }
-  form.form input, form.form textarea {
+  form.form input,
+  form.form textarea {
     @apply appearance-none border rounded w-full py-2 px-3 text-gray-700
       leading-tight focus:outline-none;
   }
-  button.button, a.button {
+  button.button,
+  a.button {
     @apply inline-block py-3 px-6 border rounded-md;
   }
-  button.button.outline, a.button.outline {
+  button.button.outline,
+  a.button.outline {
     @apply text-cyan-700 hover:border-cyan-700 hover:underline;
   }
-  button.button.solid, a.button.solid {
+  button.button.solid,
+  a.button.solid {
     @apply text-white border-white bg-cyan-700
       hover:border-cyan-900 hover:bg-cyan-600;
   }

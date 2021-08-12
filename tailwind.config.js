@@ -8,7 +8,7 @@ module.exports = {
   },
   purge: {
     content: ['./pages/**/*.js', './components/**/*.js'],
-    enabled: production // disable purge in dev
+    enabled: production, // disable purge in dev
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -22,11 +22,18 @@ module.exports = {
       padding: '1.25rem',
     },
     fontFamily: {
-      'sans': [
-        '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto',
-        'Oxygen-Sans', 'Ubuntu', 'Cantarell', '"Helvetica Neue"', 'sans-serif',
+      sans: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        'Oxygen-Sans',
+        'Ubuntu',
+        'Cantarell',
+        '"Helvetica Neue"',
+        'sans-serif',
       ],
-      'display': ['"Exo 2"', 'ui-serif'],
+      display: ['"Exo 2"', 'ui-serif'],
     },
     extend: {
       colors: {
@@ -35,16 +42,14 @@ module.exports = {
       },
       maxHeight: {},
       minHeight: {
-        '40': '10rem',
-        '64': '16rem',
+        40: '10rem',
+        64: '16rem',
         '50vh': '50vh',
-       }
+      },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/typography')],
 }
