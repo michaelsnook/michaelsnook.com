@@ -49,7 +49,7 @@ const PostLoading = () => (
 )
 
 export const PostArticle = ({ title, image, content, isLoading }) => (
-  <article className="md:col-span-3 lg:col-span-4 flex flex-col gap-4 max-w-prose mx-auto">
+  <article className="md:col-span-3 lg:col-span-4 flex flex-col gap-4 md:max-w-prose md:mx-auto">
     {isLoading ? (
       <PostLoading />
     ) : (
