@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import faceImage from '../public/images/my-face-circle.png'
+import bannerImage from '../public/images/como.jpg'
 
 export default function Banner({ title, description }) {
   return (
@@ -7,7 +9,7 @@ export default function Banner({ title, description }) {
       style={{ textShadow: '2px 2px 6px black' }}
     >
       <Image
-        src="/images/como.jpg"
+        src={bannerImage}
         alt="A background image for the top section, a photo of mountains next
           to a lake, with clouds overhead"
         className="z-0"
@@ -25,7 +27,7 @@ export default function Banner({ title, description }) {
         </div>
         <div className="relative">
           <Image
-            src="/images/my-face-circle.png"
+            src={faceImage}
             alt="A cartoon face of the author, Michael"
             className="w-36"
             width="144"

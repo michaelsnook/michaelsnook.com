@@ -1,9 +1,11 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Layout from '../../../components/Layout'
 import PrintMarkdown from '../../../components/PrintMarkdown'
 import DateSpan from '../../../components/DateSpan'
 import { getAPI, fetchPost } from '../../../lib/api'
-import Image from 'next/image'
+import authorPhoto from '../../../public/images/my-photo.jpg'
+
 
 const PostSidebar = ({ id, created_at }) => (
   <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
@@ -12,7 +14,7 @@ const PostSidebar = ({ id, created_at }) => (
     </Link>
     <div className="mx-auto">
       <Image
-        src="/images/my-photo.jpg"
+        src={authorPhoto}
         alt="A photo of the author, Michael, smiling"
         className="rounded-full"
         height="144"
