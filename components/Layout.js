@@ -19,6 +19,7 @@ export default function Layout({
         <meta name="og:title" content={siteTitle} />
         <meta name="description" content={description} />
         <meta property="og:image" content={image} />
+        <meta name="theme-color" content="#0e7490" />
       </Head>
 
       {banner && <Banner title={title} description={description} />}
