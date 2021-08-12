@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 const PostCard = ({ id, image, title, excerpt }) => (
-  <a key={`post-${id}`} className="border rounded" href={`/posts/${id}`}>
+  <a role="listitem" className="border rounded" href={`/posts/${id}`}>
     {image && (
       <div className="relative min-h-64 sm:min-h-40">
         <Image
