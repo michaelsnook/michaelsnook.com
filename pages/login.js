@@ -7,7 +7,9 @@ import LoginForm from '../components/LoginForm'
 export default function Login() {
   return (
     <Layout>
-      <LoginForm />
+      <section className="container">
+        <LoginForm />
+      </section>
     </Layout>
   )
 }

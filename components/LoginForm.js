@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { postLogin } from '../lib/login.js'
+import { postLogin, useUser } from '../lib/login.js'
 import { useForm } from 'react-hook-form'
 import ErrorList from '../components/ErrorList'
+import Modal from '../components/Modal'
 
 const ConfirmationMessage = ({ user }) => (
   <div className="bg-green-200 border rounded border-green-600 text-green-800 p-10">
@@ -11,6 +12,15 @@ const ConfirmationMessage = ({ user }) => (
     </p>
   </div>
 )
+
+export function LoginChallenge() {
+  const { user, isLoading:isUserLoading } = useUser()
+  return user || isUserLoading ? <></> : (
+    <Modal showing={true}>
+      <Login />
+    </Modal>
+  )
+}
 
 export default function Login() {
   const [user, setLoggedIn] = useState(null)
@@ -32,63 +42,61 @@ export default function Login() {
   }
 
   return (
-    <section className="container">
-      <div className="mx-auto max-w-lg py-10">
-        {user ? (
-          <ConfirmationMessage user={user} />
-        ) : (
-          <>
-            <h1 className="h3 text-gray-700">Please log in</h1>
-            <form
-              role="form"
-              onSubmit={handleSubmit(onSubmit)}
-              className="form"
+    <div className="mx-auto max-w-lg py-10">
+      {user ? (
+        <ConfirmationMessage user={user} />
+      ) : (
+        <>
+          <h1 className="h3 text-gray-700">Please log in</h1>
+          <form
+            role="form"
+            onSubmit={handleSubmit(onSubmit)}
+            className="form"
+          >
+            <fieldset
+              className="flex flex-col gap-y-4"
+              disabled={isSubmitting}
             >
-              <fieldset
-                className="flex flex-col gap-y-4"
-                disabled={isSubmitting}
-              >
-                <div>
-                  <label htmlFor="username">Username</label>
-                  <input
-                    id="username"
-                    {...register('username', { required: 'required' })}
-                    aria-invalid={errors.username ? 'true' : 'false'}
-                    className={errors.username ? 'border-red-600' : ''}
-                    tabIndex="1"
-                    type="slug"
-                    placeholder="username"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="password">Password</label>
-                  <input
-                    id="password"
-                    {...register('password', { required: 'required' })}
-                    aria-invalid={errors.password ? 'true' : 'false'}
-                    className={errors.password ? 'border-red-600' : ''}
-                    tabIndex="2"
-                    type="password"
-                    placeholder="****"
-                  />
-                </div>
-                <div>
-                  <button
-                    tabIndex="3"
-                    className="button solid"
-                    type="submit"
-                    disabled={isSubmitting}
-                    aria-disabled={isSubmitting}
-                  >
-                    Log in
-                  </button>
-                </div>
-              </fieldset>
-              <ErrorList summary="Failed to log in" errors={loginErrors} />
-            </form>
-          </>
-        )}
-      </div>
-    </section>
+              <div>
+                <label htmlFor="username">Username</label>
+                <input
+                  id="username"
+                  {...register('username', { required: 'required' })}
+                  aria-invalid={errors.username ? 'true' : 'false'}
+                  className={errors.username ? 'border-red-600' : ''}
+                  tabIndex="1"
+                  type="slug"
+                  placeholder="username"
+                />
+              </div>
+              <div>
+                <label htmlFor="password">Password</label>
+                <input
+                  id="password"
+                  {...register('password', { required: 'required' })}
+                  aria-invalid={errors.password ? 'true' : 'false'}
+                  className={errors.password ? 'border-red-600' : ''}
+                  tabIndex="2"
+                  type="password"
+                  placeholder="****"
+                />
+              </div>
+              <div>
+                <button
+                  tabIndex="3"
+                  className="button solid"
+                  type="submit"
+                  disabled={isSubmitting}
+                  aria-disabled={isSubmitting}
+                >
+                  Log in
+                </button>
+              </div>
+            </fieldset>
+            <ErrorList summary="Failed to log in" errors={loginErrors} />
+          </form>
+        </>
+      )}
+    </div>
   )
 }

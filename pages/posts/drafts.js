@@ -3,12 +3,14 @@ import PostList from '../../components/PostList'
 import Layout from '../../components/Layout'
 import ErrorList from '../../components/ErrorList'
 import { getAPI } from '../../lib/api'
+import { LoginChallenge } from '../../components/LoginForm'
 
 export default function Drafts() {
   const { data, error } = useSWR(`posts/drafts`, getAPI)
 
   return (
     <Layout banner>
+      <LoginChallenge />
       <main className="container py-5">
         <h2 className="h2">Draft posts</h2>
         {error && <ErrorList summary="Can't load drafts" errors={[error]} />}

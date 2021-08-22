@@ -3,9 +3,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { fetchPost, postAPI } from '../../../lib/api'
-import { checkLogin } from '../../../lib/login'
+import { useUser } from '../../../lib/login'
 import Layout from '../../../components/Layout'
 import ErrorList from '../../../components/ErrorList'
+import { LoginChallenge } from '../../../components/LoginForm'
 import {
   InputTitle,
   InputContent,
@@ -17,14 +18,7 @@ export default function EditPost() {
   const [isLoading, setLoading] = useState()
   const [loadErrors, setLoadErrors] = useState([])
   const [formErrors, setFormErrors] = useState([])
-  const [isLoggedIn, setLoggedIn] = useState(false)
-
-  useEffect(() => {
-    checkLogin()
-    .then(res => {
-      setLoggedIn(res.logged_in)
-    })
-  }, [])
+  const { user } = useUser()
 
   const {
     register,
@@ -66,6 +60,7 @@ export default function EditPost() {
 
   return (
     <Layout>
+      <LoginChallenge />
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 px-4">
         <div className="col-span-2">
           <h1 className="h3">Edit your post</h1>
@@ -73,7 +68,7 @@ export default function EditPost() {
             className="form flex flex-col gap-4"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <fieldset disabled={!isLoggedIn || isSubmitting || isLoading}>
+            <fieldset disabled={!user || isSubmitting || isLoading}>
               <InputTitle register={register} error={errors.title} />
               <InputContent register={register} />
               <InputImage register={register} error={errors.image} />
@@ -83,8 +78,8 @@ export default function EditPost() {
                   <button
                     type="submit"
                     className="button solid"
-                    disabled={!isDirty || isSubmitting || !isLoggedIn}
-                    aria-disabled={!isDirty || isSubmitting || !isLoggedIn}
+                    disabled={!isDirty || isSubmitting || !user}
+                    aria-disabled={!isDirty || isSubmitting || !user}
                   >
                     {isSubmitting ? 'Saving...' : 'Save edits'}
                   </button>
