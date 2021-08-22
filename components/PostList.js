@@ -24,7 +24,7 @@ const PostCard = ({ id, image, title, excerpt }) => (
 )
 
 export default function PostList({ posts }) {
-  return posts.length === 0 ? (
+  return !posts ? (
     <p>loading posts...</p>
   ) : (
     <div
