@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
+import useSWR from 'swr'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { fetchPost, postAPI } from '../../../lib/api'
@@ -15,11 +16,9 @@ import {
 import { PostArticle } from '../[pid]'
 
 export default function EditPost() {
-  const [isLoading, setLoading] = useState()
-  const [loadErrors, setLoadErrors] = useState([])
   const [formErrors, setFormErrors] = useState([])
+  const { query: { pid } } = useRouter()
   const { user } = useUser()
-
   const {
     register,
     watch,
@@ -27,13 +26,13 @@ export default function EditPost() {
     reset,
     formState: { errors, isDirty, isSubmitting, isSubmitSuccessful },
   } = useForm()
-
+  const { data:post, error:loadErrors } = useSWR(
+    pid ?? null,
+    fetchPost,
+    { onSuccess: (p) => reset(p) }
+  )
   const thePost = watch()
-
-  const {
-    isReady,
-    query: { pid },
-  } = useRouter()
+  const isLoading = !post && !loadErrors
 
   const onSubmit = data => {
     setFormErrors([])
@@ -44,19 +43,6 @@ export default function EditPost() {
       console.log('Something went wrong updating this post', errors)
     })
   }
-
-  useEffect(() => {
-    setLoading(true)
-    if (isReady) {
-      fetchPost(pid)
-        .then(post => {
-          setLoadErrors([])
-          reset(post)
-          setLoading(false)
-        })
-        .catch(errors => setLoadErrors(errors))
-    }
-  }, [isReady, pid, reset])
 
   return (
     <Layout>
