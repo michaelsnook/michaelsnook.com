@@ -28,13 +28,13 @@ const ConfirmationMessage = ({ user, asModal }) => (
   <div className="bg-green-200 border rounded border-green-600 text-green-800 p-10">
     <h1 className="my-4 h3">Success</h1>
     <p className="my-4">
-      You&apos;re logged in as user <em><strong>{user?.username}</strong></em>.
+      You&apos;re logged in as user{' '}
+      <em>
+        <strong>{user?.username}</strong>
+      </em>
+      .
     </p>
-    {asModal ? (
-      <p className="my-4">
-        You may need to refresh the page.
-      </p>
-    ) : null}
+    {asModal ? <p className="my-4">You may need to refresh the page.</p> : null}
   </div>
 )
 
