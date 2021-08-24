@@ -5,18 +5,19 @@ import { postLogin, checkLogin } from '../lib/login'
 import ErrorList from './ErrorList'
 import Modal from './Modal'
 
-function useUser() {
+export function useUser() {
   const { data, error } = useSWR(`logged_in`, checkLogin)
   return {
     user: data?.user,
+    isLoggedIn: data?.logged_in,
     isLoading: !error && !data,
     isError: error,
   }
 }
 
 export function LoginChallenge() {
-  const { user, isLoading } = useUser()
-  return !user && !isLoading ? (
+  const { isLoggedIn } = useUser()
+  return !isLoggedIn ? (
     <Modal showing>
       <Login asModal />
     </Modal>
@@ -38,21 +39,18 @@ const ConfirmationMessage = ({ user, asModal }) => (
 )
 
 export default function Login({ asModal }) {
-  const [user, setLoggedIn] = useState(null)
+  const { user, isLoggedIn, error } = useUser()
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const [loginErrors, setErrors] = useState([])
+
   const [isSubmitting, setSubmitting] = useState(false)
 
   const onSubmit = data => {
-    setErrors([])
     setSubmitting(true)
     postLogin(data)
-      .then(user => setLoggedIn(user))
-      .catch(errors => setErrors(errors))
       .finally(() => setSubmitting(false))
   }
 
@@ -101,7 +99,7 @@ export default function Login({ asModal }) {
                 </button>
               </div>
             </fieldset>
-            <ErrorList summary="Failed to log in" errors={loginErrors} />
+            <ErrorList summary="Failed to log in" errors={error ? [error] : []} />
           </form>
         </>
       )}

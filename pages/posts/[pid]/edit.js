@@ -3,9 +3,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { fetchPost, postAPI } from '../../../lib/api'
-import { checkLogin } from '../../../lib/login'
 import Layout from '../../../components/Layout'
-import { LoginChallenge } from '../../../components/LoginForm'
+import { LoginChallenge, useUser } from '../../../components/LoginForm'
 import ErrorList from '../../../components/ErrorList'
 import {
   InputTitle,
@@ -18,14 +17,7 @@ export default function EditPost() {
   const [isLoading, setLoading] = useState()
   const [loadErrors, setLoadErrors] = useState([])
   const [formErrors, setFormErrors] = useState([])
-  const [isLoggedIn, setLoggedIn] = useState(false)
-
-  useEffect(() => {
-    checkLogin().then(res => {
-      setLoggedIn(res.logged_in)
-    })
-  }, [])
-
+  const { isLoggedIn } = useUser()
   const {
     register,
     watch,
