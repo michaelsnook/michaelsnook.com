@@ -1,18 +1,43 @@
 import { useState } from 'react'
-import { postLogin } from '../lib/login.js'
+import useSWR from 'swr'
 import { useForm } from 'react-hook-form'
-import ErrorList from '../components/ErrorList'
+import { postLogin, checkLogin } from '../lib/login'
+import ErrorList from './ErrorList'
+import Modal from './Modal'
 
-const ConfirmationMessage = ({ user }) => (
+function useUser() {
+  const { data, error } = useSWR(`logged_in`, checkLogin)
+  return {
+    user: data?.user,
+    isLoading: !error && !data,
+    isError: error,
+  }
+}
+
+export function LoginChallenge() {
+  const { user, isLoading } = useUser()
+  return !user && !isLoading ? (
+    <Modal showing>
+      <Login asModal />
+    </Modal>
+  ) : null
+}
+
+const ConfirmationMessage = ({ user, asModal }) => (
   <div className="bg-green-200 border rounded border-green-600 text-green-800 p-10">
     <h1 className="my-4 h3">Success</h1>
     <p className="my-4">
-      You&apos;re logged in as user <em>{user?.username}</em>
+      You&apos;re logged in as user <em><strong>{user?.username}</strong></em>.
     </p>
+    {asModal ? (
+      <p className="my-4">
+        You may need to refresh the page.
+      </p>
+    ) : null}
   </div>
 )
 
-export default function Login() {
+export default function Login({ asModal }) {
   const [user, setLoggedIn] = useState(null)
   const {
     register,
@@ -34,7 +59,7 @@ export default function Login() {
   return (
     <div className="mx-auto max-w-lg my-6">
       {user ? (
-        <ConfirmationMessage user={user} />
+        <ConfirmationMessage user={user} asModal={asModal} />
       ) : (
         <>
           <h1 className="h3 text-gray-700">Please log in</h1>

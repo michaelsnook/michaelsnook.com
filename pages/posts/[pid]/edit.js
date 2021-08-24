@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { fetchPost, postAPI } from '../../../lib/api'
 import { checkLogin } from '../../../lib/login'
 import Layout from '../../../components/Layout'
+import { LoginChallenge } from '../../../components/LoginForm'
 import ErrorList from '../../../components/ErrorList'
 import {
   InputTitle,
@@ -65,6 +66,7 @@ export default function EditPost() {
 
   return (
     <Layout>
+      <LoginChallenge />
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 px-4">
         <div className="col-span-2">
           <h1 className="h3">Edit your post</h1>

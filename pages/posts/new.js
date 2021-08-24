@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import Layout from '../../components/Layout'
+import { LoginChallenge } from '../../components/LoginForm'
 import ErrorList from '../../components/ErrorList'
 import {
   InputTitle,
@@ -39,6 +40,7 @@ export default function New() {
 
   return (
     <Layout>
+      <LoginChallenge />
       <section className="max-w-prose mx-auto">
         <h1 className="h1">Draft a new post</h1>
         <form
