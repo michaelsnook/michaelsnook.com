@@ -20,8 +20,7 @@ export default function EditPost() {
   const [isLoggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
-    checkLogin()
-    .then(res => {
+    checkLogin().then(res => {
       setLoggedIn(res.logged_in)
     })
   }, [])

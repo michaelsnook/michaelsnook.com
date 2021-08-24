@@ -6,7 +6,6 @@ import DateSpan from '../../../components/DateSpan'
 import { getAPI, fetchPost } from '../../../lib/api'
 import authorPhoto from '../../../public/images/my-photo.jpg'
 
-
 const PostSidebar = ({ id, created_at }) => (
   <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
     <Link href="/">

@@ -27,7 +27,6 @@ This site mostly uses left-alignment within centered layout areas. When there
 are two items to place next to one another, default to justify-between so items
 are pushed to the edges of their respective containers.
 
-
 ## Code patterns
 
 The site uses NextJS's built-ins wherever possible, including the `useSWR`
@@ -64,18 +63,18 @@ it may not be leading to the simplest, most maintainable code base.)
 
 ## Details to cover
 
-* There are no tests.
-* Some of the error handling isn't quite right – 500s being treated as 401s,
-etc. – and may be clunky and overly redundant.
-* The modal needs to be cleaned up with arias, click-away and escape-key
-bindings, etc.
-* As mentioned above, it may be beneficial to switch to global user state.
-* ESLint and Prettier are both in use; should add husky to automate.
-* Posts are identified by a numeric ID like `21` and should switch to a slug.
-* There are not buttons/links/navigation for things like login/logout,
-view drafts, draft a new post.
-* The Rails API server does not currently accept file/image uploads, so the
-client app is also not handling these. Post images are just a text url.
-* On mobiles, the post page's "About the author" section just shows up at the
-top of the page, large, centered, feeling kind of out of place and inconsistent
-with the rest of the layout of the site.
+- There are no tests.
+- Some of the error handling isn't quite right – 500s being treated as 401s,
+  etc. – and may be clunky and overly redundant.
+- The modal needs to be cleaned up with arias, click-away and escape-key
+  bindings, etc.
+- As mentioned above, it may be beneficial to switch to global user state.
+- ESLint and Prettier are both in use; should add husky to automate.
+- Posts are identified by a numeric ID like `21` and should switch to a slug.
+- There are not buttons/links/navigation for things like login/logout,
+  view drafts, draft a new post.
+- The Rails API server does not currently accept file/image uploads, so the
+  client app is also not handling these. Post images are just a text url.
+- On mobiles, the post page's "About the author" section just shows up at the
+  top of the page, large, centered, feeling kind of out of place and inconsistent
+  with the rest of the layout of the site.

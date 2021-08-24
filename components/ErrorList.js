@@ -1,7 +1,5 @@
 export default function ErrorList({ summary, errors }) {
-  return typeof errors !== 'object' || errors.length === 0 ? (
-    <></>
-  ) : (
+  return typeof errors !== 'object' || errors.length === 0 ? null : (
     <div>
       {summary && <p className="font-bold text-red-600">{summary}</p>}
       <ul className="pl-5 text-red-600 list-disc">

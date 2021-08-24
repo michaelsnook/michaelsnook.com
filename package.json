@@ -6,7 +6,8 @@
     "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pretty": "npx prettier --write ."
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.4.1",
