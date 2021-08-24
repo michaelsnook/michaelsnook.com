@@ -43,16 +43,8 @@ export default function Login({ asModal }) {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm()
-
-  const [isSubmitting, setSubmitting] = useState(false)
-
-  const onSubmit = data => {
-    setSubmitting(true)
-    postLogin(data)
-      .finally(() => setSubmitting(false))
-  }
 
   return (
     <div className="mx-auto max-w-lg my-6">
@@ -61,7 +53,7 @@ export default function Login({ asModal }) {
       ) : (
         <>
           <h1 className="h3 text-gray-700">Please log in</h1>
-          <form role="form" onSubmit={handleSubmit(onSubmit)} className="form">
+          <form role="form" onSubmit={handleSubmit(postLogin)} className="form">
             <fieldset className="flex flex-col gap-y-4" disabled={isSubmitting}>
               <div>
                 <label htmlFor="username">Username</label>
