@@ -32,63 +32,54 @@ export default function Login() {
   }
 
   return (
-    <section className="container">
-      <div className="mx-auto max-w-lg py-10">
-        {user ? (
-          <ConfirmationMessage user={user} />
-        ) : (
-          <>
-            <h1 className="h3 text-gray-700">Please log in</h1>
-            <form
-              role="form"
-              onSubmit={handleSubmit(onSubmit)}
-              className="form"
-            >
-              <fieldset
-                className="flex flex-col gap-y-4"
-                disabled={isSubmitting}
-              >
-                <div>
-                  <label htmlFor="username">Username</label>
-                  <input
-                    id="username"
-                    {...register('username', { required: 'required' })}
-                    aria-invalid={errors.username ? 'true' : 'false'}
-                    className={errors.username ? 'border-red-600' : ''}
-                    tabIndex="1"
-                    type="slug"
-                    placeholder="username"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="password">Password</label>
-                  <input
-                    id="password"
-                    {...register('password', { required: 'required' })}
-                    aria-invalid={errors.password ? 'true' : 'false'}
-                    className={errors.password ? 'border-red-600' : ''}
-                    tabIndex="2"
-                    type="password"
-                    placeholder="****"
-                  />
-                </div>
-                <div>
-                  <button
-                    tabIndex="3"
-                    className="button solid"
-                    type="submit"
-                    disabled={isSubmitting}
-                    aria-disabled={isSubmitting}
-                  >
-                    Log in
-                  </button>
-                </div>
-              </fieldset>
-              <ErrorList summary="Failed to log in" errors={loginErrors} />
-            </form>
-          </>
-        )}
-      </div>
-    </section>
+    <div className="mx-auto max-w-lg my-6">
+      {user ? (
+        <ConfirmationMessage user={user} />
+      ) : (
+        <>
+          <h1 className="h3 text-gray-700">Please log in</h1>
+          <form role="form" onSubmit={handleSubmit(onSubmit)} className="form">
+            <fieldset className="flex flex-col gap-y-4" disabled={isSubmitting}>
+              <div>
+                <label htmlFor="username">Username</label>
+                <input
+                  id="username"
+                  {...register('username', { required: 'required' })}
+                  aria-invalid={errors.username ? 'true' : 'false'}
+                  className={errors.username ? 'border-red-600' : ''}
+                  tabIndex="1"
+                  type="slug"
+                  placeholder="username"
+                />
+              </div>
+              <div>
+                <label htmlFor="password">Password</label>
+                <input
+                  id="password"
+                  {...register('password', { required: 'required' })}
+                  aria-invalid={errors.password ? 'true' : 'false'}
+                  className={errors.password ? 'border-red-600' : ''}
+                  tabIndex="2"
+                  type="password"
+                  placeholder="****"
+                />
+              </div>
+              <div>
+                <button
+                  tabIndex="3"
+                  className="button solid"
+                  type="submit"
+                  disabled={isSubmitting}
+                  aria-disabled={isSubmitting}
+                >
+                  Log in
+                </button>
+              </div>
+            </fieldset>
+            <ErrorList summary="Failed to log in" errors={loginErrors} />
+          </form>
+        </>
+      )}
+    </div>
   )
 }

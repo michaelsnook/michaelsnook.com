@@ -7,7 +7,9 @@ import LoginForm from '../components/LoginForm'
 export default function Login() {
   return (
     <Layout>
-      <LoginForm />
+      <main className="container py-6">
+        <LoginForm />
+      </main>
     </Layout>
   )
 }
