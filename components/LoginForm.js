@@ -16,8 +16,8 @@ export function useUser() {
 }
 
 export function LoginChallenge() {
-  const { isLoggedIn } = useUser()
-  return !isLoggedIn ? (
+  const { isLoggedIn, isLoading } = useUser()
+  return !isLoggedIn && !isLoading ? (
     <Modal showing>
       <Login asModal />
     </Modal>
@@ -39,12 +39,18 @@ const ConfirmationMessage = ({ user, asModal }) => (
 )
 
 export default function Login({ asModal }) {
-  const { user, isLoggedIn, error } = useUser()
+  const { user } = useUser()
+  const [loginErrors, setLoginErrors] = useState()
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm()
+
+  const onSubmit = data => {
+    setLoginErrors([])
+    postLogin(data).catch(setLoginErrors)
+  }
 
   return (
     <div className="mx-auto max-w-lg my-6">
@@ -53,7 +59,7 @@ export default function Login({ asModal }) {
       ) : (
         <>
           <h1 className="h3 text-gray-700">Please log in</h1>
-          <form role="form" onSubmit={handleSubmit(postLogin)} className="form">
+          <form role="form" onSubmit={handleSubmit(onSubmit)} className="form">
             <fieldset className="flex flex-col gap-y-4" disabled={isSubmitting}>
               <div>
                 <label htmlFor="username">Username</label>
@@ -91,7 +97,7 @@ export default function Login({ asModal }) {
                 </button>
               </div>
             </fieldset>
-            <ErrorList summary="Failed to log in" errors={error ? [error] : []} />
+            <ErrorList summary="Failed to log in" errors={loginErrors || []} />
           </form>
         </>
       )}

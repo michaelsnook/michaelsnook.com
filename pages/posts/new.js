@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import Layout from '../../components/Layout'
-import { LoginChallenge } from '../../components/LoginForm'
+import { LoginChallenge, useUser } from '../../components/LoginForm'
 import ErrorList from '../../components/ErrorList'
 import {
   InputTitle,
@@ -17,30 +17,29 @@ export default function New() {
   const {
     register,
     handleSubmit,
+    isSubmitting,
     formState: { errors },
   } = useForm()
+  const { isLoggedIn } = useUser()
   const [formErrors, setErrors] = useState([])
-  const [isSubmitting, setSubmitting] = useState(false)
   const router = useRouter()
 
   const onSubmit = data => {
     setErrors([])
-    setSubmitting(true)
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
     postAPI('posts/create', data)
       .then(post => {
         router.push(`/posts/${post.id}/edit`)
       })
-      .catch(errors => {
-        setErrors(errors)
+      .catch(formErrors => {
+        setErrors(formErrors)
         console.log('Something went wrong creating this post', errors)
       })
-      .finally(() => setSubmitting(false))
   }
 
   return (
     <Layout>
-      <LoginChallenge />
+      {!isLoggedIn ? <LoginChallenge /> : null}
       <section className="max-w-prose mx-auto">
         <h1 className="h1">Draft a new post</h1>
         <form

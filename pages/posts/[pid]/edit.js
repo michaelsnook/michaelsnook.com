@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
+import useSWR from 'swr'
 import { fetchPost, postAPI } from '../../../lib/api'
 import Layout from '../../../components/Layout'
 import { LoginChallenge, useUser } from '../../../components/LoginForm'
@@ -14,8 +15,6 @@ import {
 import { PostArticle } from '../[pid]'
 
 export default function EditPost() {
-  const [isLoading, setLoading] = useState()
-  const [loadErrors, setLoadErrors] = useState([])
   const [formErrors, setFormErrors] = useState([])
   const { isLoggedIn } = useUser()
   const {
@@ -27,9 +26,7 @@ export default function EditPost() {
   } = useForm()
 
   const thePost = watch()
-
   const {
-    isReady,
     query: { pid },
   } = useRouter()
 
@@ -43,22 +40,14 @@ export default function EditPost() {
     })
   }
 
-  useEffect(() => {
-    setLoading(true)
-    if (isReady) {
-      fetchPost(pid)
-        .then(post => {
-          setLoadErrors([])
-          reset(post)
-          setLoading(false)
-        })
-        .catch(errors => setLoadErrors(errors))
-    }
-  }, [isReady, pid, reset])
+  const { data: post, error: loadErrors } = useSWR(pid ?? null, fetchPost, {
+    onSuccess: post => reset(post),
+  })
+  const isLoading = !post && !loadErrors
 
   return (
     <Layout>
-      <LoginChallenge />
+      {!isLoggedIn ? <LoginChallenge /> : null}
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 px-4">
         <div className="col-span-2">
           <h1 className="h3">Edit your post</h1>
