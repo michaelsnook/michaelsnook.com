@@ -40,7 +40,7 @@ export default function New() {
   return (
     <Layout>
       {!isLoggedIn ? <LoginChallenge /> : null}
-      <section className="max-w-prose mx-auto">
+      <section className="max-w-prose mx-auto px-2">
         <h1 className="h1">Draft a new post</h1>
         <form
           className="form flex flex-col gap-4"
