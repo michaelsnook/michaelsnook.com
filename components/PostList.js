@@ -33,7 +33,7 @@ export default function PostList({ posts }) {
           gap-4 place-content-stretch"
     >
       {posts.map(post => (
-        <PostCard key={`post=${post.id}`} {...post} />
+        <PostCard key={`post-${post.id}`} {...post} />
       ))}
     </div>
   )
