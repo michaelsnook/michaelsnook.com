@@ -97,7 +97,7 @@ export default function Login({ asModal }) {
                 </button>
               </div>
             </fieldset>
-            <ErrorList summary="Failed to log in" errors={loginErrors || []} />
+            <ErrorList summary="Failed to log in" errors={loginErrors} />
           </form>
         </>
       )}

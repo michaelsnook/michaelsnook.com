@@ -34,10 +34,7 @@ export default function EditPost() {
     setFormErrors([])
     reset(data) // reset isDirty immediately, before fetch
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    postAPI(`posts/update/${pid}`, data).catch(errors => {
-      setFormErrors(errors)
-      console.log('Something went wrong updating this post', errors)
-    })
+    postAPI(`posts/update/${pid}`, data).catch(setFormErrors)
   }
 
   const { data: post, error: loadError } = useSWR(pid ?? null, fetchPost, {
@@ -47,7 +44,7 @@ export default function EditPost() {
 
   return (
     <Layout>
-      {!isLoggedIn ? <LoginChallenge /> : null}
+      <LoginChallenge />
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 px-4">
         <div className="col-span-2">
           <h1 className="h3">Edit your post</h1>

@@ -31,15 +31,12 @@ export default function New() {
       .then(post => {
         router.push(`/posts/${post.id}/edit`)
       })
-      .catch(formErrors => {
-        setErrors(formErrors)
-        console.log('Something went wrong creating this post', errors)
-      })
+      .catch(setErrors)
   }
 
   return (
     <Layout>
-      {!isLoggedIn ? <LoginChallenge /> : null}
+      <LoginChallenge />
       <section className="max-w-prose mx-auto px-2">
         <h1 className="h1">Draft a new post</h1>
         <form

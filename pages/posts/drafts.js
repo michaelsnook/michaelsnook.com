@@ -11,7 +11,7 @@ export default function Drafts() {
 
   return (
     <Layout banner>
-      {!isLoggedIn ? <LoginChallenge /> : null}
+      <LoginChallenge />
       <main className="container py-5">
         <h2 className="h2">Draft posts</h2>
         <ErrorList summary="Can't load drafts" error={error} />
