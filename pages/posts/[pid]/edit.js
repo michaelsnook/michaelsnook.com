@@ -40,10 +40,10 @@ export default function EditPost() {
     })
   }
 
-  const { data: post, error: loadErrors } = useSWR(pid ?? null, fetchPost, {
+  const { data: post, error: loadError } = useSWR(pid ?? null, fetchPost, {
     onSuccess: post => reset(post),
   })
-  const isLoading = !post && !loadErrors
+  const isLoading = !post && !loadError
 
   return (
     <Layout>
@@ -96,7 +96,7 @@ export default function EditPost() {
           </form>
         </div>
         <div className="col-span-2 lg:col-span-3">
-          <ErrorList summary="Error loading post" errors={loadErrors} />
+          <ErrorList summary="Error loading post" error={loadError} />
           <PostArticle {...thePost} isLoading={isLoading} />
         </div>
       </div>

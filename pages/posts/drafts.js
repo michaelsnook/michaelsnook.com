@@ -14,7 +14,7 @@ export default function Drafts() {
       {!isLoggedIn ? <LoginChallenge /> : null}
       <main className="container py-5">
         <h2 className="h2">Draft posts</h2>
-        {error && <ErrorList summary="Can't load drafts" errors={[error]} />}
+        <ErrorList summary="Can't load drafts" error={error} />
         <PostList posts={data} />
       </main>
     </Layout>
