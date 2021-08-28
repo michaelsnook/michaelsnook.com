@@ -20,7 +20,6 @@ export default function New() {
     isSubmitting,
     formState: { errors },
   } = useForm()
-  const { isLoggedIn } = useUser()
   const [formErrors, setErrors] = useState([])
   const router = useRouter()
 

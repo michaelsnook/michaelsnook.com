@@ -78,7 +78,7 @@ export async function getStaticProps({ params }) {
   let data = null
   try {
     data = await fetchPost(params.slug)
-  } catch(e) {
+  } catch (e) {
     console.log(e)
   }
 
