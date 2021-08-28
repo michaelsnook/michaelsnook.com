@@ -29,7 +29,7 @@ export default function New() {
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
     postAPI('posts/create', data)
       .then(post => {
-        router.push(`/posts/${post.id}/edit`)
+        router.push(`/posts/${post.name}/edit`)
       })
       .catch(setErrors)
   }

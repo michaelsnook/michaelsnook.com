@@ -12,7 +12,7 @@ import {
   InputContent,
   InputImage,
 } from '../../../components/FormInputs'
-import { PostArticle } from '../[pid]'
+import { PostArticle } from './index'
 
 export default function EditPost() {
   const [formErrors, setFormErrors] = useState([])
@@ -27,17 +27,17 @@ export default function EditPost() {
 
   const thePost = watch()
   const {
-    query: { pid },
+    query: { slug },
   } = useRouter()
 
   const onSubmit = data => {
     setFormErrors([])
     reset(data) // reset isDirty immediately, before fetch
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    postAPI(`posts/update/${pid}`, data).catch(setFormErrors)
+    postAPI(`posts/update/${data.id}`, data).catch(setFormErrors)
   }
 
-  const { data: post, error: loadError } = useSWR(pid ?? null, fetchPost, {
+  const { data: post, error: loadError } = useSWR(slug ?? null, fetchPost, {
     onSuccess: post => reset(post),
   })
   const isLoading = !post && !loadError
@@ -52,6 +52,7 @@ export default function EditPost() {
             className="form flex flex-col gap-4"
             onSubmit={handleSubmit(onSubmit)}
           >
+            <input type="hidden" {...register('id')} />
             <fieldset disabled={!isLoggedIn || isSubmitting || isLoading}>
               <InputTitle register={register} error={errors.title} />
               <InputContent register={register} />
@@ -82,7 +83,7 @@ export default function EditPost() {
                     </svg>
                   )}
                 </span>
-                <Link href={`/posts/${pid}`}>
+                <Link href={`/posts/${slug}`}>
                   <a className="button outline">
                     {isDirty ? 'Cancel' : 'Go back'}
                   </a>

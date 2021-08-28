@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const PostCard = ({ id, image, title, excerpt }) => (
-  <Link href={`/posts/${id}`}>
+const PostCard = ({ name, image, title, excerpt }) => (
+  <Link href={`/posts/${name}`}>
     <a role="listitem" className="border rounded">
       {image && (
         <div className="relative min-h-64 sm:min-h-40">
@@ -33,7 +33,7 @@ export default function PostList({ posts }) {
           gap-4 place-content-stretch"
     >
       {posts.map(post => (
-        <PostCard key={`post-${post.id}`} {...post} />
+        <PostCard key={`${post.name}`} {...post} />
       ))}
     </div>
   )

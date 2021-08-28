@@ -6,7 +6,7 @@ import DateSpan from '../../../components/DateSpan'
 import { getAPI, fetchPost } from '../../../lib/api'
 import authorPhoto from '../../../public/images/my-photo.jpg'
 
-const PostSidebar = ({ id, created_at }) => (
+const PostSidebar = ({ name, created_at }) => (
   <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
     <Link href="/">
       <a className="text-cyan-700 hover:underline">« Back to home</a>
@@ -25,7 +25,7 @@ const PostSidebar = ({ id, created_at }) => (
     <p className="mx-auto">
       Published <DateSpan dateText={created_at} />
     </p>
-    <Link href={`/posts/${id}/edit`}>
+    <Link href={`/posts/${name}/edit`}>
       <a className="button outline mx-auto">edit post</a>
     </Link>
   </aside>
@@ -77,7 +77,7 @@ export default function Post({ post }) {
 export async function getStaticProps({ params }) {
   let data = null
   try {
-    data = await fetchPost(params.pid)
+    data = await fetchPost(params.slug)
   } catch(e) {
     console.log(e)
   }
@@ -96,7 +96,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const data = await getAPI(`posts/index`)
   const paths = data.map(post => ({
-    params: { pid: `${post.id}` },
+    params: { slug: `${post.name}` },
   }))
 
   return { paths, fallback: 'blocking' }
