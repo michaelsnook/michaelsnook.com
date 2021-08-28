@@ -31,11 +31,11 @@ export function InputExcerpt({ register }) {
 export function InputSlug({ register, error }) {
   return (
     <div>
-      <label htmlFor="postName">Post slug e.g. `/posts/[slug-post-name]`</label>
+      <label htmlFor="postSlug">Post slug e.g. `/posts/[slug-post-name]`</label>
       <input
-        id="postName"
+        id="postSlug"
         type="text"
-        {...register('name', {
+        {...register('slug', {
           pattern: /^[a-z0-9][a-z0-9-_]+[a-z0-9]$/,
           required: 'required',
         })}

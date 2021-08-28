@@ -29,7 +29,7 @@ export default function New() {
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
     postAPI('posts/create', data)
       .then(post => {
-        router.push(`/posts/${post.name}/edit`)
+        router.push(`/posts/${post.slug}/edit`)
       })
       .catch(setErrors)
   }
@@ -45,7 +45,7 @@ export default function New() {
         >
           <fieldset disabled={isSubmitting}>
             <InputTitle register={register} error={errors.title} />
-            <InputSlug register={register} error={errors.name} />
+            <InputSlug register={register} error={errors.slug} />
             <InputContent register={register} />
             <InputImage register={register} error={errors.image} />
 
