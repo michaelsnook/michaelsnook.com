@@ -92,7 +92,7 @@ export default function EditPost() {
             <ErrorList summary="Error saving post" errors={formErrors} />
           </form>
         </div>
-        <div className="col-span-2 lg:col-span-3">
+        <div className="col-span-2 lg:col-span-3 flex flex-col place-content-center">
           <ErrorList summary="Error loading post" error={loadError} />
           <PostArticle {...thePost} isLoading={isLoading} />
         </div>

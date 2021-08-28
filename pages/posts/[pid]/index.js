@@ -75,7 +75,12 @@ export default function Post({ post }) {
 }
 
 export async function getStaticProps({ params }) {
-  const data = await fetchPost(params.pid)
+  let data = null
+  try {
+    data = await fetchPost(params.pid)
+  } catch(e) {
+    console.log(e)
+  }
 
   return !data
     ? {
