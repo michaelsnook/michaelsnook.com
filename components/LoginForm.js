@@ -38,18 +38,21 @@ const ConfirmationMessage = ({ user, asModal }) => {
         </em>
         .
       </p>
-      {asModal
-        ? <p className="my-4">You may need to refresh the page.</p>
-        : (
-          <p className="my-4">
-            <a className="link" onClick={() => router.back()}>
-              Return to previous screen.
-            </a>
-          </p>
-        )
-      }
+      {asModal ? (
+        <p className="my-4">You may need to refresh the page.</p>
+      ) : (
+        <p className="my-4">
+          <a className="link" onClick={() => router.back()}>
+            Return to previous screen.
+          </a>
+        </p>
+      )}
       <p className="my-4">
-        Or click here to <Link href="/logout"><a className="link">logout</a></Link>.
+        Or click here to{' '}
+        <Link href="/logout">
+          <a className="link">logout</a>
+        </Link>
+        .
       </p>
     </div>
   )

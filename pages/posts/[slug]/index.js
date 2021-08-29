@@ -32,8 +32,7 @@ const PostSidebar = ({ slug, created_at }) => {
         <Link href={`/posts/${slug}/edit`}>
           <a className="button outline mx-auto">edit post</a>
         </Link>
-      ) : null }
-
+      ) : null}
     </aside>
   )
 }

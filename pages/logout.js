@@ -12,16 +12,24 @@ export default function Logout() {
   return (
     <Layout>
       <main className="container py-6">
-        {!isFinished 
-          ? <h1 className="h5">Logging out...</h1>
-          : (<>
+        {!isFinished ? (
+          <h1 className="h5">Logging out...</h1>
+        ) : (
+          <>
             <h1 className="h3">Logged out</h1>
-            <p className="my-4">Congratulations, you may now{' '}
-              <Link href="/"><a className="link">return to the home page</a></Link> or{' '}
-              <Link href="/login"><a className="link">log in again</a></Link>.
+            <p className="my-4">
+              Congratulations, you may now{' '}
+              <Link href="/">
+                <a className="link">return to the home page</a>
+              </Link>{' '}
+              or{' '}
+              <Link href="/login">
+                <a className="link">log in again</a>
+              </Link>
+              .
             </p>
-          </>)
-        }
+          </>
+        )}
       </main>
     </Layout>
   )

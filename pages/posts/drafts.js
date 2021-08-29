@@ -16,10 +16,11 @@ export default function Drafts() {
       <main className="container py-5">
         <div className="flex flex-row justify-between items-center">
           <h2 className="h2">Draft posts</h2>
-          {isLoggedIn
-            ? <Link href="/posts/new"><a className="button outline">New post</a></Link>
-            : null
-          }
+          {isLoggedIn ? (
+            <Link href="/posts/new">
+              <a className="button outline">New post</a>
+            </Link>
+          ) : null}
         </div>
         <ErrorList summary="Can't load drafts" error={error} />
         <PostList posts={data} />

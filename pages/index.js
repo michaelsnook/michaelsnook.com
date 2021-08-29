@@ -11,10 +11,11 @@ export default function Home({ data }) {
       <main className="container py-5">
         <div className="flex flex-row justify-between items-center">
           <h2 className="h2">All Posts</h2>
-          {isLoggedIn ?
-            <Link href="/posts/drafts"><a className="button outline">See drafts</a></Link>
-            : null
-          }
+          {isLoggedIn ? (
+            <Link href="/posts/drafts">
+              <a className="button outline">See drafts</a>
+            </Link>
+          ) : null}
         </div>
         <PostList posts={data} />
       </main>
