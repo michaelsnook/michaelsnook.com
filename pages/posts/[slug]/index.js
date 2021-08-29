@@ -3,33 +3,40 @@ import Image from 'next/image'
 import Layout from '../../../components/Layout'
 import PrintMarkdown from '../../../components/PrintMarkdown'
 import DateSpan from '../../../components/DateSpan'
+import { useUser } from '../../../components/LoginForm'
 import { getAPI, fetchPost } from '../../../lib/api'
 import authorPhoto from '../../../public/images/my-photo.jpg'
 
-const PostSidebar = ({ slug, created_at }) => (
-  <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
-    <Link href="/">
-      <a className="text-cyan-700 hover:underline">« Back to home</a>
-    </Link>
-    <div className="mx-auto">
-      <Image
-        src={authorPhoto}
-        alt="A photo of the author, Michael, smiling"
-        className="rounded-full"
-        height="144"
-        width="144"
-      />
-    </div>
+const PostSidebar = ({ slug, created_at }) => {
+  const { isLoggedIn } = useUser()
+  return (
+    <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
+      <Link href="/">
+        <a className="text-cyan-700 hover:underline">« Back to home</a>
+      </Link>
+      <div className="mx-auto">
+        <Image
+          src={authorPhoto}
+          alt="A photo of the author, Michael, smiling"
+          className="rounded-full"
+          height="144"
+          width="144"
+        />
+      </div>
 
-    <p className="mx-auto">By Michael Snook</p>
-    <p className="mx-auto">
-      Published <DateSpan dateText={created_at} />
-    </p>
-    <Link href={`/posts/${slug}/edit`}>
-      <a className="button outline mx-auto">edit post</a>
-    </Link>
-  </aside>
-)
+      <p className="mx-auto">By Michael Snook</p>
+      <p className="mx-auto">
+        Published <DateSpan dateText={created_at} />
+      </p>
+      {isLoggedIn ? (
+        <Link href={`/posts/${slug}/edit`}>
+          <a className="button outline mx-auto">edit post</a>
+        </Link>
+      ) : null }
+
+    </aside>
+  )
+}
 
 const PostLoading = () => (
   <>

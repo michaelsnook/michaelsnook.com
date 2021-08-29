@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import useSWR from 'swr'
 import PostList from '../../components/PostList'
 import Layout from '../../components/Layout'
@@ -13,7 +14,13 @@ export default function Drafts() {
     <Layout banner>
       <LoginChallenge />
       <main className="container py-5">
-        <h2 className="h2">Draft posts</h2>
+        <div className="flex flex-row justify-between items-center">
+          <h2 className="h2">Draft posts</h2>
+          {isLoggedIn
+            ? <Link href="/posts/new"><a className="button outline">New post</a></Link>
+            : null
+          }
+        </div>
         <ErrorList summary="Can't load drafts" error={error} />
         <PostList posts={data} />
       </main>

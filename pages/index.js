@@ -1,12 +1,21 @@
+import Link from 'next/link'
 import PostList from '../components/PostList'
 import Layout from '../components/Layout'
+import { useUser } from '../components/LoginForm'
 import { getAPI } from '../lib/api'
 
 export default function Home({ data }) {
+  const { isLoggedIn } = useUser()
   return (
     <Layout banner>
       <main className="container py-5">
-        <h2 className="h2">All Posts</h2>
+        <div className="flex flex-row justify-between items-center">
+          <h2 className="h2">All Posts</h2>
+          {isLoggedIn ?
+            <Link href="/posts/drafts"><a className="button outline">See drafts</a></Link>
+            : null
+          }
+        </div>
         <PostList posts={data} />
       </main>
     </Layout>
