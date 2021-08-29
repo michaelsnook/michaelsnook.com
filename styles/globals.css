@@ -43,6 +43,9 @@
   .button.solid[disabled] {
     @apply opacity-50 cursor-not-allowed;
   }
+  a.link {
+    @apply font-bold hover:underline text-cyan-700 cursor-pointer;
+  }
 }
 
 @layer utilities {
