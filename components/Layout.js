@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import Banner from './Banner'
+import Menu from './Menu'
 
 export default function Layout({
   image = `/images/my-face-circle.png`,
@@ -21,6 +22,8 @@ export default function Layout({
         <meta property="og:image" content={image} />
         <meta name="theme-color" content="#0e7490" />
       </Head>
+
+      <Menu />
 
       {banner && <Banner title={title} description={description} />}
 
