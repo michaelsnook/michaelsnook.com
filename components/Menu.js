@@ -11,12 +11,12 @@ export default function Menu() {
         ['Compose', '/posts/new'],
       ]
     : []
-
   const menuItems = [
     ['Home', '/'],
     isLoggedIn ? ['Logout', '/logout'] : ['Login', '/login'],
     ...loggedInLinks,
   ]
+
   return (
     <>
       <div
@@ -32,13 +32,13 @@ export default function Menu() {
       <div className="fixed bottom-4 right-3 z-30 flex flex-col gap-4">
         <nav className={`${isOpen ? '' : 'hidden'} bg-white rounded`}>
           <ul className="">
-            <li className="py-3 px-4">
+            <li className="py-3 px-10">
               {user?.username ? `Hi, ${user.username}` : 'Hello 👋🏼'}
             </li>
             {menuItems.map(([label, path], i) => (
               <li key={path} className="border-t py-1">
                 <Link href={path}>
-                  <a className="list-item py-2 text-cyan-700 hover:underline px-4">
+                  <a className="list-item py-2 text-cyan-700 hover:underline px-10">
                     {label}
                   </a>
                 </Link>
@@ -50,7 +50,7 @@ export default function Menu() {
           <a
             className={`border rounded-full inline-block ${
               isOpen
-                ? 'bg-cyan-600 hover:border-white border-cyan-600 text-white'
+                ? 'bg-cyan-600 hover:border-white border-gray-400 text-white'
                 : 'bg-white text-cyan-700 hover:border-cyan-700'
             } p-2 z-50`}
             role="button"
