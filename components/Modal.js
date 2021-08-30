@@ -1,5 +1,14 @@
 import { useState, useEffect, useCallback } from 'react'
 
+export const Overlay = ({ close, children }) => (
+  <div
+    className="z-20 bg-black bg-opacity-50 px-2 pt-10 fixed top-0 left-0 right-0 bottom-0"
+    onClick={close}
+  >
+    {children}
+  </div>
+)
+
 const CloseButton = ({ close }) => (
   <button
     onClick={close}
@@ -38,11 +47,10 @@ export default function Modal({ showing, children }) {
   }, [isShowing, escFunction])
 
   return isShowing ? (
-    <div
-      onClick={event => {
+    <Overlay
+      close={event => {
         if (event.target === event.currentTarget) setIsShowing(false)
       }}
-      className="z-40 bg-black bg-opacity-50 px-2 pt-10 fixed top-0 left-0 right-0 bottom-0"
     >
       <div
         role="dialog"
@@ -51,6 +59,6 @@ export default function Modal({ showing, children }) {
         {children}
         <CloseButton close={() => setIsShowing(false)} />
       </div>
-    </div>
+    </Overlay>
   ) : null
 }
