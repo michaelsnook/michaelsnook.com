@@ -26,8 +26,13 @@ export default function Layout({
       <Menu />
 
       {banner && <Banner title={title} description={description} />}
-
-      {children}
+      <div
+        className={`${
+          banner ? '' : 'min-h-80vh flex flex-col place-content-center'
+        }`}
+      >
+        {children}
+      </div>
 
       <footer className="border-t w-full py-10 mt-10">
         <nav className="space-x-4 space-y-10 py-4 mx-auto text-center">

@@ -11,7 +11,7 @@ export default function Logout() {
 
   return (
     <Layout>
-      <main className="container py-6">
+      <main className="container">
         {!isFinished ? (
           <h1 className="h5">Logging out...</h1>
         ) : (
