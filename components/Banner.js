@@ -27,17 +27,13 @@ export default function Banner({ title, description }) {
           <p className="h1-sub">{description}</p>
         </div>
         <div className="relative">
-          <Link href="/login">
-            <a>
-              <Image
-                src={faceImage}
-                alt="A cartoon face of the author, Michael"
-                className="w-36"
-                width="144"
-                height="144"
-              />
-            </a>
-          </Link>
+          <Image
+            src={faceImage}
+            alt="A cartoon face of the author, Michael"
+            className="w-36"
+            width="144"
+            height="144"
+          />
         </div>
       </div>
     </header>
