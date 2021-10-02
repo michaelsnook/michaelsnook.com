@@ -34,7 +34,7 @@ export default function New() {
   }
 
   return (
-    <Layout>
+    <Layout noFooter>
       <LoginChallenge />
       <section className="max-w-prose mx-auto px-2">
         <h1 className="h1">Draft a new post</h1>

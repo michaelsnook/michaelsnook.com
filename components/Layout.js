@@ -8,6 +8,7 @@ export default function Layout({
   description = `A personal weblog and project pad`,
   title = `Michael Snook's site`,
   banner = false,
+  noFooter = false,
   children,
 }) {
   const siteTitle = `Michael Snook dot com${title && ` | ${title}`}`
@@ -34,27 +35,29 @@ export default function Layout({
         {children}
       </div>
 
-      <footer className="border-t w-full py-10 mt-10">
-        <nav className="space-x-4 space-y-10 py-4 mx-auto text-center">
-          <Link href="/">
-            <a className="text-cyan-700 underline">home</a>
-          </Link>
-          <a
-            className="text-cyan-700 underline"
-            href="https://twitter.com/michaelsnook"
-          >
-            twitter
-          </a>
-          <a
-            className="text-cyan-700 underline"
-            href="https://github.com/michaelsnook"
-          >
-            github
-          </a>
-          <span>CC0 1.0</span>
-          <span>&lt;/&gt; by me</span>
-        </nav>
-      </footer>
+      {noFooter ? null : (
+        <footer className="border-t w-full py-10 mt-10">
+          <nav className="space-x-4 space-y-10 py-4 mx-auto text-center">
+            <Link href="/">
+              <a className="text-cyan-700 underline">home</a>
+            </Link>
+            <a
+              className="text-cyan-700 underline"
+              href="https://twitter.com/michaelsnook"
+            >
+              twitter
+            </a>
+            <a
+              className="text-cyan-700 underline"
+              href="https://github.com/michaelsnook"
+            >
+              github
+            </a>
+            <span>CC0 1.0</span>
+            <span>&lt;/&gt; by me</span>
+          </nav>
+        </footer>
+      )}
     </>
   )
 }

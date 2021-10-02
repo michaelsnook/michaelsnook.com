@@ -48,7 +48,7 @@ export default function EditPost() {
   const isLoading = !post && !loadError
 
   return (
-    <Layout>
+    <Layout noFooter>
       <LoginChallenge />
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 px-4">
         <div className="col-span-2">
