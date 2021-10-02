@@ -39,6 +39,11 @@ export default function EditPost() {
 
   const { data: post, error: loadError } = useSWR(slug ?? null, fetchPost, {
     onSuccess: post => reset(post),
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+    refreshWhenOffline: false,
+    refreshWhenHidden: false,
+    refreshInterval: 0,
   })
   const isLoading = !post && !loadError
 
