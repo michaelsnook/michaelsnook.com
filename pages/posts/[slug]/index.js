@@ -3,12 +3,12 @@ import Image from 'next/image'
 import Layout from '../../../components/Layout'
 import PrintMarkdown from '../../../components/PrintMarkdown'
 import DateSpan from '../../../components/DateSpan'
-import { useUser } from '../../../components/LoginForm'
-import { getAPI, fetchPost } from '../../../lib/api'
+import { useSession } from '../../../lib/auth'
+import { fetchPostList, fetchOnePost } from '../../../lib/api'
 import authorPhoto from '../../../public/images/my-photo.jpg'
 
 const PostSidebar = ({ slug, created_at }) => {
-  const { isLoggedIn } = useUser()
+  const { session } = useSession()
   return (
     <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
       <Link href="/">
@@ -28,7 +28,7 @@ const PostSidebar = ({ slug, created_at }) => {
       <p className="mx-auto">
         Published <DateSpan dateText={created_at} />
       </p>
-      {isLoggedIn ? (
+      {session ? (
         <Link href={`/posts/${slug}/edit`}>
           <a className="button outline mx-auto">edit post</a>
         </Link>
@@ -83,7 +83,7 @@ export default function Post({ post }) {
 export async function getStaticProps({ params }) {
   let data = null
   try {
-    data = await fetchPost(params.slug)
+    data = await fetchOnePost(params.slug)
   } catch (e) {
     console.log(e)
   }
@@ -100,7 +100,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const data = await getAPI(`posts/index`)
+  const data = await fetchPostList()
   const paths = data.map(post => ({
     params: { slug: `${post.slug}` },
   }))

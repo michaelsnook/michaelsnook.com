@@ -1,17 +1,17 @@
 import Link from 'next/link'
 import PostList from '../components/PostList'
 import Layout from '../components/Layout'
-import { useUser } from '../components/LoginForm'
-import { getAPI } from '../lib/api'
+import { useSession } from '../lib/auth'
+import { fetchPostList } from '../lib/api'
 
 export default function Home({ data }) {
-  const { isLoggedIn } = useUser()
+  const { session } = useSession()
   return (
     <Layout banner>
       <main className="container py-5">
         <div className="flex flex-row justify-between items-center">
           <h2 className="h2">All Posts</h2>
-          {isLoggedIn ? (
+          {session ? (
             <Link href="/posts/drafts">
               <a className="button outline">See drafts</a>
             </Link>
@@ -24,7 +24,7 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps() {
-  const data = await getAPI(`posts/index`)
+  const data = await fetchPostList()
 
   return !data
     ? {

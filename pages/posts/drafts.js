@@ -2,13 +2,17 @@ import Link from 'next/link'
 import useSWR from 'swr'
 import PostList from '../../components/PostList'
 import Layout from '../../components/Layout'
-import { LoginChallenge, useUser } from '../../components/LoginForm'
+import { LoginChallenge } from '../../components/LoginForm'
 import ErrorList from '../../components/ErrorList'
-import { getAPI } from '../../lib/api'
+import { useSession } from '../../lib/auth'
+import { fetchDraftPosts } from '../../lib/api'
 
 export default function Drafts() {
-  const { isLoggedIn } = useUser()
-  const { data, error } = useSWR(isLoggedIn ? `posts/drafts` : null, getAPI)
+  const { session } = useSession()
+  const { data, error } = useSWR(
+    session ? `posts/drafts` : null,
+    fetchDraftPosts
+  )
 
   return (
     <Layout banner>
@@ -16,7 +20,7 @@ export default function Drafts() {
       <main className="container py-5">
         <div className="flex flex-row justify-between items-center">
           <h2 className="h2">Draft posts</h2>
-          {isLoggedIn ? (
+          {session ? (
             <Link href="/posts/new">
               <a className="button outline">New post</a>
             </Link>

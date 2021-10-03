@@ -12,6 +12,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^1.24.0",
     "@tailwindcss/typography": "^0.4.1",
     "next": "^11.1.0",
     "react": "^17.0.2",

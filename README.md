@@ -2,7 +2,8 @@
 
 This is my website! The react client, at least.
 It's built with NextJS and hosted on Vercel so the "client" actually does
-have some server-site action like pre-rendering most pages.
+have some server-side action like pre-rendering most pages. The back end
+is Supabase so the client uses their supabase-js client library.
 
 ## Design patterns
 
@@ -31,6 +32,13 @@ are pushed to the edges of their respective containers.
 
 The site uses NextJS's built-ins wherever possible, including the `useSWR`
 hook to manage data fetching. Forms are handled by `react-hook-forms`.
+Although `supabase-js` handles all the fetcher functions, client-side fetching
+is still routed through useSWR for its convenient cache management which so
+far has obviated the need for any central store or context providers.
+
+Components that need to know whether the user is logged in can use the hook
+`useSession` to see if the session is present and the basic details of
+the logged in user.
 
 For pages requiring authentication, there is a single component
 `<LoginChallenge>` which checks the `/logged_in` API and either presents the
@@ -45,7 +53,7 @@ about conditions, as long as you instantiate useState hooks for `user` and
 `errors`, the components will figure out whether they're needed.
 
 For the sake of easy navigation, Component and Lib files are allowed to contain
-several functions or components, so e.g. we have `lib/login.js` with all the
+several functions or components, so e.g. we have `lib/auth.js` with all the
 functions related to user authentication, rather than something like
 `lib/login/checkLogin.js` and so on for individual functions. Still, the
 longest file is ~100 lines, and should probably stay that way.
@@ -53,13 +61,7 @@ longest file is ~100 lines, and should probably stay that way.
 There is currently no global management of variables and metadata like the
 site's title and description or other metadata. Nor is there any global state
 or context management. Metadata stays DRY because its defaults are managed in
-the `<Layout>` component. User authentication happens on every page where it's
-needed and useSWR seems to handle this nicely without much duplicating requests.
-
-(That said, I may prefer to switch to global user management as I add more
-components that may care about logged-in state, and/or as I try to optimize
-requests and re-renders. There is an elegance to avoiding global state, but
-it may not be leading to the simplest, most maintainable code base.)
+the `<Layout>` component.
 
 ## Details to cover
 
@@ -68,12 +70,8 @@ it may not be leading to the simplest, most maintainable code base.)
   etc. – and may be clunky and overly redundant.
 - The modal needs to be cleaned up with arias, click-away and escape-key
   bindings, etc.
-- As mentioned above, it may be beneficial to switch to global user state.
 - ESLint and Prettier are both in use; should add husky to automate.
-- Posts are identified by a numeric ID like `21` and should switch to a slug.
-- There are not buttons/links/navigation for things like login/logout,
-  view drafts, draft a new post.
-- The Rails API server does not currently accept file/image uploads, so the
+- The app currently does not accept file/image uploads, so the
   client app is also not handling these. Post images are just a text url.
 - On mobiles, the post page's "About the author" section just shows up at the
   top of the page, large, centered, feeling kind of out of place and inconsistent

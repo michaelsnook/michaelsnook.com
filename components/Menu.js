@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import { useState } from 'react'
-import { useUser } from './LoginForm'
+import { useSession } from '../lib/auth'
 import { Overlay } from './Modal'
 
 export default function Menu() {
   const [isOpen, setIsOpen] = useState()
-  const { user, isLoggedIn } = useUser()
-  const loggedInLinks = isLoggedIn
+  const { session, nickname } = useSession()
+  const loggedInLinks = session
     ? [
         ['Drafts', '/posts/drafts'],
         ['Compose', '/posts/new'],
@@ -14,7 +14,7 @@ export default function Menu() {
     : []
   const menuItems = [
     ['Home', '/'],
-    isLoggedIn ? ['Logout', '/logout'] : ['Login', '/login'],
+    session ? ['Logout', '/logout'] : ['Login', '/login'],
     ...loggedInLinks,
   ]
 
@@ -58,7 +58,7 @@ export default function Menu() {
           <nav className="bg-white rounded fixed right-3 bottom-16 z-30 border">
             <ul role="menu" id="main-menu">
               <li className="py-3 px-10" role="none">
-                {user?.username ? `Hi, ${user.username}` : 'Hello 👋🏼'}
+                {session ? `Hi, ${nickname}` : 'Hello 👋🏼'}
               </li>
               {menuItems.map(([label, path]) => (
                 <li key={path} className="border-t py-1" role="menuitem">

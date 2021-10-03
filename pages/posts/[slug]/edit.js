@@ -3,9 +3,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import useSWR from 'swr'
-import { fetchPost, postAPI } from '../../../lib/api'
+import { fetchOnePost, updateOnePost } from '../../../lib/api'
 import Layout from '../../../components/Layout'
-import { LoginChallenge, useUser } from '../../../components/LoginForm'
+import { LoginChallenge } from '../../../components/LoginForm'
+import { useSession } from '../../../lib/auth'
 import ErrorList from '../../../components/ErrorList'
 import {
   InputTitle,
@@ -16,7 +17,7 @@ import { PostArticle } from './index'
 
 export default function EditPost() {
   const [formErrors, setFormErrors] = useState([])
-  const { isLoggedIn } = useUser()
+  const { session } = useSession()
   const {
     register,
     watch,
@@ -34,10 +35,10 @@ export default function EditPost() {
     setFormErrors([])
     reset(data) // reset isDirty immediately, before fetch
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    postAPI(`posts/update/${data.id}`, data).catch(setFormErrors)
+    updateOnePost(data.slug, data).catch(setFormErrors)
   }
 
-  const { data: post, error: loadError } = useSWR(slug ?? null, fetchPost, {
+  const { data: post, error: loadError } = useSWR(slug ?? null, fetchOnePost, {
     onSuccess: post => reset(post),
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
@@ -58,7 +59,7 @@ export default function EditPost() {
             onSubmit={handleSubmit(onSubmit)}
           >
             <input type="hidden" {...register('id')} />
-            <fieldset disabled={!isLoggedIn || isSubmitting || isLoading}>
+            <fieldset disabled={!session || isSubmitting || isLoading}>
               <InputTitle register={register} error={errors.title} />
               <InputContent register={register} />
               <InputImage register={register} error={errors.image} />
@@ -68,8 +69,8 @@ export default function EditPost() {
                   <button
                     type="submit"
                     className="button solid"
-                    disabled={!isDirty || isSubmitting || !isLoggedIn}
-                    aria-disabled={!isDirty || isSubmitting || !isLoggedIn}
+                    disabled={!isDirty || isSubmitting || !session}
+                    aria-disabled={!isDirty || isSubmitting || !session}
                   >
                     {isSubmitting ? 'Saving...' : 'Save edits'}
                   </button>

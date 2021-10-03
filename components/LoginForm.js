@@ -1,32 +1,21 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import useSWR from 'swr'
 import { useForm } from 'react-hook-form'
-import { postLogin, checkLogin } from '../lib/login'
+import { useSession, postLogin } from '../lib/auth'
 import ErrorList from './ErrorList'
 import Modal from './Modal'
 
-export function useUser() {
-  const { data, error } = useSWR(`logged_in`, checkLogin)
-  return {
-    user: data?.user,
-    isLoggedIn: data?.logged_in,
-    isLoading: !error && !data,
-    isError: error,
-  }
-}
-
 export function LoginChallenge() {
-  const { isLoggedIn, isLoading } = useUser()
-  return !isLoggedIn && !isLoading ? (
+  const { session, isLoading } = useSession()
+  return !session && !isLoading ? (
     <Modal showing>
       <Login asModal />
     </Modal>
   ) : null
 }
 
-const ConfirmationMessage = ({ user, asModal }) => {
+const ConfirmationMessage = ({ nickname, asModal }) => {
   const router = useRouter()
   return (
     <div className="bg-green-200 border rounded border-green-600 text-green-800 p-10">
@@ -34,7 +23,7 @@ const ConfirmationMessage = ({ user, asModal }) => {
       <p className="my-4">
         You&apos;re logged in as user{' '}
         <em>
-          <strong>{user?.username}</strong>
+          <strong>{nickname}</strong>
         </em>
         .
       </p>
@@ -59,7 +48,7 @@ const ConfirmationMessage = ({ user, asModal }) => {
 }
 
 export default function Login({ asModal }) {
-  const { user } = useUser()
+  const { session, nickname } = useSession()
   const [loginErrors, setLoginErrors] = useState()
   const {
     register,
@@ -74,23 +63,23 @@ export default function Login({ asModal }) {
 
   return (
     <div className="mx-auto max-w-lg my-6">
-      {user ? (
-        <ConfirmationMessage user={user} asModal={asModal} />
+      {session ? (
+        <ConfirmationMessage nickname={nickname} asModal={asModal} />
       ) : (
         <>
           <h1 className="h3 text-gray-700">Please log in</h1>
           <form role="form" onSubmit={handleSubmit(onSubmit)} className="form">
             <fieldset className="flex flex-col gap-y-4" disabled={isSubmitting}>
               <div>
-                <label htmlFor="username">Username</label>
+                <label htmlFor="email">Email</label>
                 <input
-                  id="username"
-                  {...register('username', { required: 'required' })}
-                  aria-invalid={errors.username ? 'true' : 'false'}
-                  className={errors.username ? 'border-red-600' : ''}
+                  id="email"
+                  {...register('email', { required: 'required' })}
+                  aria-invalid={errors.email ? 'true' : 'false'}
+                  className={errors.email ? 'border-red-600' : ''}
                   tabIndex="1"
                   type="slug"
-                  placeholder="username"
+                  placeholder="email"
                 />
               </div>
               <div>
