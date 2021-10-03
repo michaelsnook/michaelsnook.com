@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Layout from '../components/Layout'
-import { postLogout } from '../lib/login'
+import { postLogout } from '../lib/auth'
 
 export default function Logout() {
   const [isFinished, setIsFinished] = useState()

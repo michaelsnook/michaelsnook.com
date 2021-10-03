@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import Layout from '../../components/Layout'
-import { LoginChallenge, useUser } from '../../components/LoginForm'
+import { LoginChallenge } from '../../components/LoginForm'
 import ErrorList from '../../components/ErrorList'
 import {
   InputTitle,
@@ -11,7 +11,7 @@ import {
   InputSlug,
   InputImage,
 } from '../../components/FormInputs'
-import { postAPI } from '../../lib/api'
+import { createOnePost } from '../../lib/api'
 
 export default function New() {
   const {
@@ -26,7 +26,7 @@ export default function New() {
   const onSubmit = data => {
     setErrors([])
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    postAPI('posts/create', data)
+    createOnePost(data)
       .then(post => {
         router.push(`/posts/${post.slug}/edit`)
       })
