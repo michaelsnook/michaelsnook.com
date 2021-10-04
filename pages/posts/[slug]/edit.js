@@ -16,7 +16,7 @@ import {
 import { PostArticle } from './index'
 
 export default function EditPost() {
-  const [formErrors, setFormErrors] = useState([])
+  const [formError, setFormError] = useState()
   const { session } = useSession()
   const {
     register,
@@ -32,10 +32,10 @@ export default function EditPost() {
   } = useRouter()
 
   const onSubmit = data => {
-    setFormErrors([])
+    setFormError()
     reset(data) // reset isDirty immediately, before fetch
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    updateOnePost(data.slug, data).catch(setFormErrors)
+    updateOnePost(data.slug, data).catch(setFormError)
   }
 
   const { data: post, error: loadError } = useSWR(slug ?? null, fetchOnePost, {
@@ -96,7 +96,7 @@ export default function EditPost() {
                 </Link>
               </div>
             </fieldset>
-            <ErrorList summary="Error saving post" errors={formErrors} />
+            <ErrorList summary="Error saving post" error={formError} />
           </form>
         </div>
         <div className="col-span-2 lg:col-span-3 flex flex-col">
