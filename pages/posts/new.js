@@ -20,17 +20,17 @@ export default function New() {
     isSubmitting,
     formState: { errors },
   } = useForm()
-  const [formErrors, setErrors] = useState([])
+  const [formError, setFormError] = useState()
   const router = useRouter()
 
   const onSubmit = data => {
-    setErrors([])
+    setFormError()
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
     createOnePost(data)
       .then(post => {
         router.push(`/posts/${post.slug}/edit`)
       })
-      .catch(setErrors)
+      .catch(setFormError)
   }
 
   return (
@@ -62,7 +62,7 @@ export default function New() {
               </Link>
             </div>
           </fieldset>
-          <ErrorList summary="Error creating post" errors={formErrors} />
+          <ErrorList summary="Error creating post" error={formError} />
         </form>
       </section>
     </Layout>
