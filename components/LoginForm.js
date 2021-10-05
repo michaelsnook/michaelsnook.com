@@ -7,8 +7,9 @@ import ErrorList from './ErrorList'
 import Modal from './Modal'
 
 export function LoginChallenge() {
-  const { session, isLoading } = useSession()
-  return !session && !isLoading ? (
+  const { session } = useSession()
+  console.log(session)
+  return !session ? (
     <Modal showing>
       <Login asModal />
     </Modal>
