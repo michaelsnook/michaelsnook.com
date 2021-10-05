@@ -68,11 +68,14 @@ the `<Layout>` component.
 - There are no tests.
 - Some of the error handling isn't quite right – 500s being treated as 401s,
   etc. – and may be clunky and overly redundant.
-- The modal needs to be cleaned up with arias, click-away and escape-key
-  bindings, etc.
+- Supabase's RLS means that unauthenticated/invalid requests often return []
+  instead of a 401 error, so I need to do some work to handle this better. Right
+  now it can result in loss of data if you log out in one tab and try to save
+  a post in another. There's no pre-flight check and the JS errors in a way that
+  will lose your progress.
 - ESLint and Prettier are both in use; should add husky to automate.
-- The app currently does not accept file/image uploads, so the
-  client app is also not handling these. Post images are just a text url.
+- The app currently does not accept file/image uploads, but this should be easy
+  now with Supabase!
 - On mobiles, the post page's "About the author" section just shows up at the
   top of the page, large, centered, feeling kind of out of place and inconsistent
   with the rest of the layout of the site.
