@@ -34,8 +34,9 @@ export default function EditPost() {
   const onSubmit = data => {
     setFormError()
     reset(data) // reset isDirty immediately, before fetch
+
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    updateOnePost(data.slug, data).catch(setFormError)
+    updateOnePost(data).catch(setFormError)
   }
 
   const { data: post, error: loadError } = useSWR(slug ?? null, fetchOnePost, {
