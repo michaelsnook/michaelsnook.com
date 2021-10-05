@@ -27,8 +27,8 @@ export default function New() {
     setFormError()
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
     createOnePost(data)
-      .then(post => {
-        router.push(`/posts/${post.slug}/edit`)
+      .then(() => {
+        router.push(`/posts/${data.slug}/edit`)
       })
       .catch(setFormError)
   }
