@@ -29,7 +29,7 @@
   }
   button.button,
   a.button {
-    @apply inline-block py-3 px-6 border rounded-md;
+    @apply inline-block py-3 px-6 border rounded-md cursor-pointer;
   }
   button.button.outline,
   a.button.outline {

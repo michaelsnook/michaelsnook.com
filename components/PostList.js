@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const PostCard = ({ slug, image, title, excerpt }) => (
-  <Link href={`/posts/${slug}`}>
+const PostCard = ({ slug, image, title, excerpt, published }) => (
+  <Link href={`/posts/${slug}${published ? '' : '/edit'}`}>
     <a role="listitem" className="border rounded">
       {image && (
         <div className="relative min-h-64 sm:min-h-40">

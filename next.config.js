@@ -4,6 +4,11 @@ module.exports = {
     defaultLocale: 'en',
   },
   images: {
-    domains: ['michaelsnook.com', 'snook.pub', 'i.imgur.com'],
+    domains: [
+      'michaelsnook.com',
+      'snook.pub',
+      'i.imgur.com',
+      'i.picsum.photos',
+    ],
   },
 }

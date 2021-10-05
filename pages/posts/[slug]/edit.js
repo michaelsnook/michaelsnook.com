@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import useSWR from 'swr'
@@ -28,13 +27,13 @@ export default function EditPost() {
 
   const thePost = watch()
   const {
+    back,
     query: { slug },
   } = useRouter()
 
   const onSubmit = data => {
     setFormError()
     reset(data) // reset isDirty immediately, before fetch
-
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
     updateOnePost(data).catch(setFormError)
   }
@@ -90,11 +89,9 @@ export default function EditPost() {
                     </svg>
                   )}
                 </span>
-                <Link href={`/posts/${slug}`}>
-                  <a className="button outline">
-                    {isDirty ? 'Cancel' : 'Go back'}
-                  </a>
-                </Link>
+                <a className="button outline" onClick={() => back()}>
+                  {isDirty ? 'Cancel' : 'Go back'}
+                </a>
               </div>
             </fieldset>
             <ErrorList summary="Error saving post" error={formError} />
