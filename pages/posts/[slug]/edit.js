@@ -11,6 +11,7 @@ import {
   InputTitle,
   InputContent,
   InputImage,
+  InputPublish,
 } from '../../../components/FormInputs'
 import { PostArticle } from './index'
 
@@ -63,6 +64,7 @@ export default function EditPost() {
               <InputTitle register={register} error={errors.title} />
               <InputContent register={register} />
               <InputImage register={register} error={errors.image} />
+              <InputPublish register={register} />
 
               <div className="flex justify-between">
                 <span className="flex">

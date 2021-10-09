@@ -76,3 +76,12 @@ export function InputImage({ register, error }) {
     </div>
   )
 }
+
+export function InputPublish({ register }) {
+  return (
+    <div className="flex items-baseline gap-2 mb-4">
+      <input id="postPublish" type="checkbox" {...register('published')} />
+      <label htmlFor="postPublish">Publish post</label>
+    </div>
+  )
+}

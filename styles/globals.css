@@ -19,7 +19,7 @@
   form.form label {
     @apply block text-gray-700 text-sm my-1;
   }
-  form.form input,
+  form.form input:not([type='checkbox']),
   form.form textarea {
     @apply appearance-none border rounded w-full py-2 px-3 text-gray-700
       leading-tight focus:outline-none;
