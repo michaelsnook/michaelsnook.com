@@ -12,6 +12,7 @@ import {
   InputContent,
   InputImage,
   InputPublish,
+  InputDatestamp,
 } from '../../../components/FormInputs'
 import { PostArticle } from './index'
 
@@ -65,8 +66,11 @@ export default function EditPost() {
               <InputContent register={register} />
               <InputImage register={register} error={errors.image} />
               <InputPublish register={register} />
+              {thePost.published || thePost.published_at ? (
+                <InputDatestamp register={register} />
+              ) : null}
 
-              <div className="flex justify-between">
+              <div className="flex justify-between my-4">
                 <span className="flex">
                   <button
                     type="submit"

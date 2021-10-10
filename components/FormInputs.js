@@ -18,6 +18,15 @@ export function InputTitle({ register, error }) {
   )
 }
 
+export function InputDatestamp({ register }) {
+  return (
+    <div>
+      <label htmlFor="postDatestamp">Post datestamp</label>
+      <input id="postDatestamp" type="date" {...register('published_at')} />
+    </div>
+  )
+}
+
 export function InputExcerpt({ register }) {
   return (
     <div>
