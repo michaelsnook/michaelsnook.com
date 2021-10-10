@@ -8,10 +8,10 @@ export function InputTitle({ register, error }) {
         id="postTitle"
         type="text"
         {...register('title', { required: true, maxLength: 120 })}
-        aria-invalid={error ? 'true' : 'false'}
+        aria-invalid={!!error}
         className={error ? 'border-red-600' : ''}
       />
-      <span className={!error ? 'invisible' : ''} role="alert">
+      <span className={error ? '' : 'invisible'} role="alert">
         Your post needs a title, silly
       </span>
     </div>
@@ -39,10 +39,10 @@ export function InputSlug({ register, error }) {
           pattern: /^[a-z0-9][a-z0-9-_]+[a-z0-9]$/,
           required: 'required',
         })}
-        aria-invalid={error ? 'true' : 'false'}
+        aria-invalid={!!error}
         className={error ? 'border-red-600' : ''}
       />
-      <span className={!error ? 'invisible' : ''} role="alert">
+      <span className={error ? '' : 'invisible'} role="alert">
         You need a valid URL slug
       </span>
     </div>
@@ -67,10 +67,10 @@ export function InputImage({ register, error }) {
         id="postImage"
         type="text"
         {...register('image', { pattern: urlRegex })}
-        aria-invalid={error ? 'true' : 'false'}
+        aria-invalid={!!error}
         className={error ? 'border-red-600' : ''}
       />
-      <span className={!error ? 'invisible' : ''} role="alert">
+      <span className={error ? '' : 'invisible'} role="alert">
         If you can&apos;t enter a valid image URL, just don&apos;t even bother
       </span>
     </div>
