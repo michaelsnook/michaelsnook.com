@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { format } from 'timeago.js'
 
-const PostCard = ({ slug, image, title, excerpt, published, created_at }) => (
+const PostCard = ({ slug, image, title, excerpt, published, published_at }) => (
   <Link href={`/posts/${slug}${published ? '' : '/edit'}`}>
     <a role="listitem" className="border rounded flex flex-col items-stretch ">
       {image ? (
@@ -23,7 +23,7 @@ const PostCard = ({ slug, image, title, excerpt, published, created_at }) => (
           {title}
         </p>
         {!image && excerpt ? <p className="p-4">{excerpt}</p> : null}
-        <p className="px-4 py-2 text-gray-600">{format(created_at)}</p>
+        <p className="px-4 py-2 text-gray-600">{format(published_at)}</p>
       </div>
     </a>
   </Link>

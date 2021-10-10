@@ -7,7 +7,7 @@ import { useSession } from '../../../lib/auth'
 import { fetchPostList, fetchOnePost } from '../../../lib/api'
 import authorPhoto from '../../../public/images/my-photo.jpg'
 
-const PostSidebar = ({ slug, created_at }) => {
+const PostSidebar = ({ slug, published_at }) => {
   const { session } = useSession()
   return (
     <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
@@ -26,7 +26,7 @@ const PostSidebar = ({ slug, created_at }) => {
 
       <p className="mx-auto">By Michael Snook</p>
       <p className="mx-auto">
-        Published <DateSpan dateText={created_at} />
+        Published <DateSpan dateText={published_at} />
       </p>
       {session ? (
         <Link href={`/posts/${slug}/edit`}>
