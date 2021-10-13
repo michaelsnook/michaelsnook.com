@@ -8,7 +8,6 @@ import Modal from './Modal'
 
 export function LoginChallenge() {
   const { session } = useSession()
-  console.log(session)
   return !session ? (
     <Modal showing>
       <Login asModal />
@@ -50,7 +49,7 @@ const ConfirmationMessage = ({ nickname, asModal }) => {
 
 export default function Login({ asModal }) {
   const { session, nickname } = useSession()
-  const [loginErrors, setLoginErrors] = useState()
+  const [loginError, setLoginError] = useState()
   const {
     register,
     handleSubmit,
@@ -58,8 +57,8 @@ export default function Login({ asModal }) {
   } = useForm()
 
   const onSubmit = data => {
-    setLoginErrors([])
-    postLogin(data).catch(setLoginErrors)
+    setLoginError()
+    postLogin(data).catch((err) => setLoginError(err.message))
   }
 
   return (
@@ -107,7 +106,7 @@ export default function Login({ asModal }) {
                 </button>
               </div>
             </fieldset>
-            <ErrorList summary="Failed to log in" errors={loginErrors} />
+            <ErrorList summary="Failed to log in" error={loginError} />
           </form>
         </>
       )}
