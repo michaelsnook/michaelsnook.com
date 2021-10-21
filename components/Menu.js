@@ -20,7 +20,7 @@ export default function Menu() {
 
   return (
     <>
-      <a
+      <button
         className={`shadow-lg fixed bottom-4 right-3 border rounded-full inline-block ${
           isOpen
             ? 'bg-cyan-600 hover:border-white border-gray-400 text-white'
@@ -48,7 +48,7 @@ export default function Menu() {
             d="M4 8h16M4 16h16"
           />
         </svg>
-      </a>
+      </button>
       {isOpen ? (
         <Overlay
           close={event => {
