@@ -58,7 +58,7 @@ export default function Login({ asModal }) {
 
   const onSubmit = data => {
     setLoginError()
-    postLogin(data).catch((err) => setLoginError(err.message))
+    postLogin(data).catch(err => setLoginError(err.message))
   }
 
   return (
