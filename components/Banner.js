@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import faceImage from '../public/images/my-face-circle.png'
 import bannerImage from '../public/images/como.jpg'
 
