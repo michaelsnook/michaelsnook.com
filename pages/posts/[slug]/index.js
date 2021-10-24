@@ -60,7 +60,11 @@ export const PostArticle = ({ title, image, content, isLoading }) => (
     ) : (
       <>
         <h1 className="h1">{title}</h1>
-        {image && <Image src={image} alt="" layout="fill" />}
+        {image && (
+          <div className="h-64 w-full relative">
+            <Image src={image} alt="" layout="fill" objectFit="cover" />
+          </div>
+        )}
         <div className="prose lg:prose-lg prose-cyan">
           <PrintMarkdown markdown={content} />
         </div>
