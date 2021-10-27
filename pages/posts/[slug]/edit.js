@@ -14,7 +14,7 @@ import {
   InputPublish,
   InputDatestamp,
 } from '../../../components/FormInputs'
-import { PostArticle } from './index'
+import { PostArticle } from '../../../components/Post'
 
 export default function EditPost() {
   const [formError, setFormError] = useState()
