@@ -11,7 +11,7 @@ import {
   InputSlug,
   InputImage,
 } from '../../components/FormInputs'
-import { createOnePost } from '../../lib/api'
+import { createOnePost } from '../../lib/posts'
 
 export default function New() {
   const {

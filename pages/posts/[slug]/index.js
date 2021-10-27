@@ -4,7 +4,7 @@ import Layout from '../../../components/Layout'
 import DateSpan from '../../../components/DateSpan'
 import { PostArticle } from '../../../components/Post'
 import { useSession } from '../../../lib/auth'
-import { fetchPostList, fetchOnePost } from '../../../lib/api'
+import { fetchPostList, fetchOnePost } from '../../../lib/posts'
 import authorPhoto from '../../../public/images/my-photo.jpg'
 
 const PostSidebar = ({ slug, published_at }) => {

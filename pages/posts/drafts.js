@@ -5,7 +5,7 @@ import Layout from '../../components/Layout'
 import { LoginChallenge } from '../../components/LoginForm'
 import ErrorList from '../../components/ErrorList'
 import { useSession } from '../../lib/auth'
-import { fetchDraftPosts } from '../../lib/api'
+import { fetchDraftPosts } from '../../lib/posts'
 
 export default function Drafts() {
   const { session } = useSession()

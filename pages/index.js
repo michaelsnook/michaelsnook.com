@@ -2,7 +2,7 @@ import Link from 'next/link'
 import PostList from '../components/PostList'
 import Layout from '../components/Layout'
 import { useSession } from '../lib/auth'
-import { fetchPostList } from '../lib/api'
+import { fetchPostList } from '../lib/posts'
 
 export default function Home({ data }) {
   const { session } = useSession()
