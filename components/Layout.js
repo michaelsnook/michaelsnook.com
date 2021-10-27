@@ -9,6 +9,7 @@ export default function Layout({
   title = `Michael Snook's site`,
   banner = false,
   noFooter = false,
+  singleCol = false,
   children,
 }) {
   const siteTitle = `Michael Snook dot com${title && ` | ${title}`}`
@@ -29,13 +30,15 @@ export default function Layout({
       {banner && <Banner title={title} description={description} />}
       <div
         className={`${
-          banner ? '' : 'min-h-80vh flex flex-col place-content-center'
-        }`}
+          !banner ? 'min-h-80vh flex flex-col place-content-center' : ''
+        } ${singleCol ? 'max-w-prose mx-auto px-2' : ''}`}
       >
         {children}
       </div>
 
-      {noFooter ? null : (
+      {noFooter ? (
+        <br />
+      ) : (
         <footer className="border-t w-full py-10 mt-10">
           <nav className="space-x-4 space-y-10 py-4 mx-auto text-center">
             <Link href="/">

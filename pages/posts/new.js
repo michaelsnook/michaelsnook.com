@@ -34,9 +34,9 @@ export default function New() {
   }
 
   return (
-    <Layout noFooter>
+    <Layout noFooter singleCol>
       <LoginChallenge />
-      <section className="max-w-prose mx-auto px-2">
+      <main>
         <h1 className="h1">Draft a new post</h1>
         <form
           className="form flex flex-col gap-4"
@@ -64,7 +64,7 @@ export default function New() {
           </fieldset>
           <ErrorList summary="Error creating post" error={formError} />
         </form>
-      </section>
+      </main>
     </Layout>
   )
 }
