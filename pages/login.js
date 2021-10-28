@@ -3,8 +3,8 @@ import LoginForm from '../components/LoginForm'
 
 export default function Login() {
   return (
-    <Layout>
-      <main className="container">
+    <Layout singleCol>
+      <main>
         <LoginForm />
       </main>
     </Layout>

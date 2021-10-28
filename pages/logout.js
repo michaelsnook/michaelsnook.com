@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Layout from '../components/Layout'
+import { AlertBox } from '../components/Modal'
 import { postLogout } from '../lib/auth'
 
 export default function Logout() {
@@ -10,12 +11,12 @@ export default function Logout() {
   }, [])
 
   return (
-    <Layout>
-      <main className="container">
+    <Layout singleCol>
+      <main className="mx-auto max-w-lg my-6">
         {!isFinished ? (
           <h1 className="h5">Logging out...</h1>
         ) : (
-          <>
+          <AlertBox>
             <h1 className="h3">Logged out</h1>
             <p className="my-4">
               Congratulations, you may now{' '}
@@ -28,7 +29,7 @@ export default function Logout() {
               </Link>
               .
             </p>
-          </>
+          </AlertBox>
         )}
       </main>
     </Layout>

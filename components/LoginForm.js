@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { useSession, postLogin } from '../lib/auth'
 import ErrorList from './ErrorList'
-import Modal from './Modal'
+import Modal, { AlertBox } from './Modal'
 
 export function LoginChallenge() {
   const { session } = useSession()
@@ -18,7 +18,7 @@ export function LoginChallenge() {
 const ConfirmationMessage = ({ nickname, asModal }) => {
   const router = useRouter()
   return (
-    <div className="bg-green-200 border rounded border-green-600 text-green-800 p-10">
+    <AlertBox type="success">
       <h1 className="mb-4 h3">Success</h1>
       <p className="my-4">
         You&apos;re logged in as user{' '}
@@ -43,7 +43,7 @@ const ConfirmationMessage = ({ nickname, asModal }) => {
         </Link>
         .
       </p>
-    </div>
+    </AlertBox>
   )
 }
 
