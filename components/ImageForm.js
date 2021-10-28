@@ -2,58 +2,89 @@ import { uploadImage } from '../lib/media'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-const Buttons = ({ localURL, isSubmitting, hasChanged }) => (
+export const CopyInput = ({ val }) => (
+  <input className="truncate copy-input" disabled value={val} />
+)
+
+const Buttons = ({
+  isThereAFile,
+  previewURL,
+  clearPreview,
+  confirmImageInput,
+  // isSubmitting,
+  // isDirty,
+}) => (
   <nav>
-    {!localURL ? null : (
-      <div className="flex flex-row">
+    {isThereAFile || previewURL ? (
+      <div className="flex flex-row gap-4">
+        <button className="button solid">Upload</button>
+        <button
+          className="button outline"
+          type="reset"
+          onClick={clearPreview}
+          disabled={!previewURL}
+        >
+          Clear
+        </button>
         <button
           className="button solid"
-          //disabled={isSubmitting || !hasChanged}
-          //aria-disabled={isSubmitting || !hasChanged}
+          type="button"
+          onClick={() => confirmImageInput(previewURL)}
+          disabled={!previewURL}
         >
-          Upload
+          Confirm
         </button>
       </div>
-    )}
+    ) : null}
   </nav>
 )
 
-export default function ImageForm({ publicURL, onUpload }) {
-  const [serverURL, setServerURL] = useState(publicURL)
-  const [localURL, setLocalURL] = useState(serverURL)
-  const [hasChanged, setHasChanged] = useState(false)
+export default function ImageForm({ onConfirm }) {
+  const defaultValues = { image_upload: '' }
   const {
     register,
     handleSubmit,
+    // reset,
+    watch,
+    setValue,
+    // control,
     formState: {
       errors,
       // isDirty,
       // isSubmitting,
       // isSubmitSuccessful,
     },
-  } = useForm()
+  } = useForm({ defaultValues })
+
+  const watchImageList = watch('image_upload') // will be null at the start
+  const [previewURL, setPreviewURL] = useState()
+  // const [storageURL, setStorageURL] = useState()
+  // const [previewObject, setPreviewObject] = useState()
+  // const [storageObject, setStorageObject] = useState()
 
   const onSubmit = data =>
-    uploadImage(data).then(data => {
-      onUpload(data)
-      setServerURL(data)
+    uploadImage(data.image_upload[0]).then(url => {
+      console.log(data.image_upload[0])
+      // just change the preview URL, later the user will "confirm" it
+      setPreviewURL(url)
+      console.log('uploaded the image and set a new preview URL: ', url)
     })
 
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-4">
-        {serverURL ? <input disabled value={serverURL} /> : null}
+        {previewURL ? <CopyInput val={previewURL} /> : null}
         <label
           className={`relative flex flex-col w-full fit-content ${
-            localURL
+            previewURL
               ? 'shadow-lg hover:opacity-80'
               : 'border border-dashed rounded'
           } ${
             errors.image_upload ? 'border-red-600' : 'border-gray-300'
           } hover:bg-gray-100`}
         >
-          {localURL ? (
-            <img src={localURL} alt="" />
+          {previewURL ? (
+            <img src={previewURL} alt="" />
           ) : (
             <div className="flex flex-col items-center justify-center py-7">
               <svg
@@ -81,18 +112,27 @@ export default function ImageForm({ publicURL, onUpload }) {
             aria-invalid={!!errors?.image_upload}
             {...register('image_upload', {
               required: true,
+              defaultValue: '',
             })}
             onChange={e => {
-              setHasChanged(true)
+              // setHasChanged(true)
               const [file] = e.target.files
-              if (file) setLocalURL(() => URL.createObjectURL(file))
-              setHasChanged(localURL === serverURL)
-              console.log(file)
+              if (file) setPreviewURL(() => URL.createObjectURL(file))
+              console.log('logging onChange with file: ', file)
             }}
           />
         </label>
       </div>
-      <Buttons localURL isSubmitting hasChanged />
+      <Buttons
+        previewURL={previewURL}
+        clearPreview={() => {
+          setValue('image_upload', '')
+          setPreviewURL()
+        }}
+        isThereAFile={!!watchImageList}
+        // isSubmitting
+        confirmImageInput={d => onConfirm(d)}
+      />
       {errors?.length && (
         <div className="py-12 my-6">
           <span role="alert">{JSON.stringify(errors)}</span>
