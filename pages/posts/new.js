@@ -17,12 +17,12 @@ export default function New() {
   const {
     register,
     handleSubmit,
+    setValue,
     isSubmitting,
     formState: { errors },
   } = useForm()
   const [formError, setFormError] = useState()
   const router = useRouter()
-
   const onSubmit = data => {
     setFormError()
     data.content = data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -45,8 +45,12 @@ export default function New() {
           <fieldset disabled={isSubmitting}>
             <InputTitle register={register} error={errors.title} />
             <InputSlug register={register} error={errors.slug} />
+            <InputImage
+              register={register}
+              error={errors.image}
+              setValue={setValue}
+            />
             <InputContent register={register} />
-            <InputImage register={register} error={errors.image} />
 
             <div className="flex justify-between">
               <button

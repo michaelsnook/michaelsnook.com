@@ -32,6 +32,10 @@
   a.button {
     @apply inline-block py-3 px-6 border rounded-md cursor-pointer;
   }
+  button.button.small,
+  a.button.small {
+    @apply py-2 text-sm rounded-sm;
+  }
   button.button.outline,
   a.button.outline {
     @apply text-cyan-700 hover:border-cyan-700 hover:underline;
