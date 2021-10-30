@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import ImageForm from './ImageForm'
 
 export function InputTitle({ register, error }) {
@@ -68,14 +69,19 @@ export function InputContent({ register }) {
   )
 }
 
-export function InputImage({ register, error, setValue }) {
+export function InputImage({ register, error, starting = '', setValue }) {
+  const reg = register('image', { pattern: /(?<!\bblob\:)/i })
+  const [val, setVal] = useState(starting)
   return (
     <div>
-      <input
-        type="hidden"
-        {...register('image', { pattern: /(?<!\bblob\:)/i })}
+      <input type="hidden" {...reg} />
+      <ImageForm
+        onConfirm={url => {
+          setValue('image', url)
+          setVal(url)
+        }}
+        startingImageURL={val}
       />
-      <ImageForm onConfirm={url => setValue('image', url)} />
       <span className={error ? '' : 'invisible'} role="alert">
         This image URL isn&rsquo;t working
       </span>

@@ -53,6 +53,9 @@ export default function New() {
             <InputContent register={register} />
 
             <div className="flex justify-between">
+              <Link href="/">
+                <a className="button outline">Back to Home</a>
+              </Link>
               <button
                 type="submit"
                 className="button solid"
@@ -61,9 +64,6 @@ export default function New() {
               >
                 Create Post
               </button>
-              <Link href="/">
-                <a className="button outline">Back to Home</a>
-              </Link>
             </div>
           </fieldset>
           <ErrorList summary="Error creating post" error={formError} />

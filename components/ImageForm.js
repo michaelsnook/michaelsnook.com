@@ -2,17 +2,24 @@ import { uploadImage } from '../lib/media'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+/*/
+
+*/
 const imageRootURL =
   'https://hmpueymmlhhphzvebjku.supabase.co/storage/v1/object/public/images/public/'
 
 const imageURL = filename => `${imageRootURL}${filename}`
 
 export const CopyInput = ({ val }) => (
-  <input
-    className="truncate copy-input"
-    disabled
-    value={(`` + val).slice(-80)}
-  />
+  <div className="flex flex-row w-full gap-2">
+    <input
+      className="truncate copy-input text-left float-left"
+      disabled
+      dir="rtl"
+      value={val}
+    />
+    <a className="float-right button small outline">copy</a>
+  </div>
 )
 
 const UploadSVG = () => (
@@ -33,49 +40,46 @@ const UploadSVG = () => (
 )
 
 const Buttons = ({
-  isThereAFile,
   previewURL,
   publicURL,
-  clearPreview,
+  clearForm,
   submitUpload,
   confirmImageInput,
 }) => (
   <nav className="">
-    {isThereAFile || previewURL ? (
+    {previewURL ? (
       <div className="flex flex-row gap-4">
-        <button
-          className="button solid small"
-          type="button"
-          onClick={submitUpload}
-          disabled={previewURL === publicURL}
-        >
-          Upload
-        </button>
-
         <button
           className="button outline small"
           type="reset"
-          onClick={clearPreview}
-          disabled={!previewURL}
+          onClick={clearForm}
         >
-          Clear
+          clear
         </button>
-
-        <button
-          className="button solid small"
-          type="button"
-          onClick={confirmImageInput}
-          disabled={!publicURL}
-        >
-          Confirm
-        </button>
+        {publicURL && publicURL === previewURL ? (
+          <button
+            className="button solid small"
+            type="button"
+            onClick={confirmImageInput}
+          >
+            confirm
+          </button>
+        ) : (
+          <button
+            className="button solid small"
+            type="button"
+            onClick={submitUpload}
+          >
+            upload
+          </button>
+        )}
       </div>
     ) : null}
   </nav>
 )
 
-export default function ImageForm({ onConfirm }) {
-  const defaultValues = { image_upload: '' }
+export default function ImageForm({ onConfirm, startingImageURL = '' }) {
+  const defaultValues = { image_upload: startingImageURL }
   const {
     register,
     handleSubmit,
@@ -92,8 +96,9 @@ export default function ImageForm({ onConfirm }) {
     uploadImage(data.image_upload[0]).then(filename => {
       console.log(filename)
       // just change the preview URL, later the user will "confirm" it
-      setPreviewURL(imageURL(filename))
-      setPublicURL(imageURL(filename))
+      const url = imageURL(filename)
+      setPreviewURL(url)
+      setPublicURL(url)
       console.log(
         'uploaded the image and set a new preview URL for image: ',
         imageURL(filename)
@@ -149,11 +154,10 @@ export default function ImageForm({ onConfirm }) {
           <Buttons
             previewURL={previewURL}
             publicURL={publicURL}
-            clearPreview={() => {
+            clearForm={() => {
               setValue('image_upload', '')
               setPreviewURL()
             }}
-            isThereAFile={!!watchImageList}
             confirmImageInput={() => {
               onConfirm(publicURL)
               setIsOpen(false)

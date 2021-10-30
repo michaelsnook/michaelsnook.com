@@ -34,7 +34,7 @@
   }
   button.button.small,
   a.button.small {
-    @apply py-2 text-sm rounded-sm;
+    @apply py-2 text-sm;
   }
   button.button.outline,
   a.button.outline {
