@@ -26,7 +26,13 @@ export const PostArticle = ({ title, image, content, isLoading }) => (
         <h1 className="h1">{title}</h1>
         {image && (
           <div className="h-64 w-full relative">
-            <Image src={image} alt="" layout="fill" objectFit="cover" />
+            <Image
+              src={image}
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              priority
+            />
           </div>
         )}
         <div className="prose lg:prose-lg prose-cyan">

@@ -16,6 +16,7 @@ export default function Banner({ title, description }) {
         layout="fill"
         objectFit="cover"
         objectPosition="center"
+        priority
       />
       <div
         className="z-10 container p-10 align-middle place-self-center text-white
