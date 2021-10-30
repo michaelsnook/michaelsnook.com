@@ -1,14 +1,6 @@
-import { uploadImage } from '../lib/media'
+import { uploadImage, publicImageURL } from '../lib/media'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-
-/*/
-
-*/
-const imageRootURL =
-  'https://hmpueymmlhhphzvebjku.supabase.co/storage/v1/object/public/images/public/'
-
-const imageURL = filename => `${imageRootURL}${filename}`
 
 export const CopyInput = ({ val }) => (
   <div className="flex flex-row w-full gap-2">
@@ -96,12 +88,12 @@ export default function ImageForm({ onConfirm, startingImageURL = '' }) {
     uploadImage(data.image_upload[0]).then(filename => {
       console.log(filename)
       // just change the preview URL, later the user will "confirm" it
-      const url = imageURL(filename)
+      const url = publicImageURL(filename)
       setPreviewURL(url)
       setPublicURL(url)
       console.log(
         'uploaded the image and set a new preview URL for image: ',
-        imageURL(filename)
+        url
       )
     })
 
