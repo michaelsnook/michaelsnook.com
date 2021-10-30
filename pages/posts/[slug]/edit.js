@@ -71,6 +71,9 @@ export default function EditPost() {
               ) : null}
 
               <div className="flex justify-between my-4">
+                <a className="button outline" onClick={() => back()}>
+                  {isDirty ? 'Cancel' : 'Go back'}
+                </a>
                 <span className="flex">
                   <button
                     type="submit"
@@ -95,9 +98,6 @@ export default function EditPost() {
                     </svg>
                   )}
                 </span>
-                <a className="button outline" onClick={() => back()}>
-                  {isDirty ? 'Cancel' : 'Go back'}
-                </a>
               </div>
             </fieldset>
             <ErrorList summary="Error saving post" error={formError} />
