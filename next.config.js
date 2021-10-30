@@ -9,6 +9,7 @@ module.exports = {
       'snook.pub',
       'i.imgur.com',
       'i.picsum.photos',
+      'hmpueymmlhhphzvebjku.supabase.co',
     ],
   },
 }
