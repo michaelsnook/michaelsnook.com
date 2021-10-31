@@ -17,6 +17,7 @@ export default function New() {
   const {
     register,
     handleSubmit,
+    setValue,
     isSubmitting,
     formState: { errors },
   } = useForm()
@@ -45,8 +46,12 @@ export default function New() {
           <fieldset disabled={isSubmitting}>
             <InputTitle register={register} error={errors.title} />
             <InputSlug register={register} error={errors.slug} />
+            <InputImage
+              register={register}
+              error={errors.image}
+              setImageValue={v => setValue('image', v)}
+            />
             <InputContent register={register} />
-            <InputImage register={register} error={errors.image} />
 
             <div className="flex justify-between">
               <Link href="/">

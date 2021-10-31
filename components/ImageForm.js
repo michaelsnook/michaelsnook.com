@@ -1,5 +1,5 @@
 import { uploadImage, publicImageURL } from '../lib/media'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 export const CopyInput = ({ val }) => (
@@ -34,53 +34,49 @@ const UploadSVG = () => (
 const Buttons = ({
   previewURL,
   publicURL,
+  confirmedURL,
   clearForm,
   submitUpload,
   confirmImageInput,
 }) => (
-  <nav className="">
-    {previewURL ? (
-      <div className="flex flex-row gap-4">
-        <button
-          className="button outline small"
-          type="reset"
-          onClick={clearForm}
-        >
-          clear
-        </button>
-        {publicURL && publicURL === previewURL ? (
-          <button
-            className="button solid small"
-            type="button"
-            onClick={confirmImageInput}
-          >
-            confirm
-          </button>
-        ) : (
-          <button
-            className="button solid small"
-            type="button"
-            onClick={submitUpload}
-          >
-            upload
-          </button>
-        )}
-      </div>
-    ) : null}
+  <nav className="flex flex-row gap-4">
+    <button className="button outline small" type="reset" onClick={clearForm}>
+      clear
+    </button>
+    {confirmedURL !== previewURL && previewURL === publicURL ? (
+      <button
+        className="button solid small"
+        type="button"
+        onClick={confirmImageInput}
+      >
+        confirm
+      </button>
+    ) : (
+      <button
+        className="button solid small"
+        type="button"
+        onClick={submitUpload}
+      >
+        upload
+      </button>
+    )}
   </nav>
 )
 
-export default function ImageForm({ onConfirm, startingImageURL = '' }) {
-  const defaultValues = { image_upload: startingImageURL }
+export default function ImageForm({ onConfirm, confirmedURL }) {
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm({ defaultValues })
-  const [isOpen, setIsOpen] = useState(true)
+  } = useForm()
   const [previewURL, setPreviewURL] = useState()
   const [publicURL, setPublicURL] = useState()
+
+  useEffect(() => {
+    setPreviewURL(confirmedURL)
+    setPublicURL(confirmedURL)
+  }, [confirmedURL])
 
   const onSubmit = data =>
     uploadImage(data.image_upload[0]).then(filename => {
@@ -95,6 +91,8 @@ export default function ImageForm({ onConfirm, startingImageURL = '' }) {
       )
     })
 
+  console.log('starting image url', confirmedURL)
+
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-1 items-center">
@@ -105,7 +103,7 @@ export default function ImageForm({ onConfirm, startingImageURL = '' }) {
           } ${errors.image_upload ? 'border-red-600' : 'border-gray-300'}`}
         >
           {previewURL ? (
-            <img className="w-full" src={previewURL || publicURL} alt="" />
+            <img className="w-full" src={previewURL} alt="" />
           ) : null}
 
           <div
@@ -133,30 +131,30 @@ export default function ImageForm({ onConfirm, startingImageURL = '' }) {
               const [file] = e.target.files
               if (file) {
                 setPreviewURL(() => URL.createObjectURL(file))
-                setIsOpen(true)
               }
               console.log('logging onChange with file: ', file)
             }}
           />
         </label>
 
-        {isOpen ? (
+        {confirmedURL !== previewURL ? (
           <Buttons
             previewURL={previewURL}
             publicURL={publicURL}
+            confirmedURL={confirmedURL}
             clearForm={() => {
               setValue('image_upload', '')
               setPreviewURL()
+              setPublicURL()
             }}
             confirmImageInput={() => {
               onConfirm(publicURL)
-              setIsOpen(false)
             }}
             submitUpload={handleSubmit(onSubmit)}
           />
         ) : null}
 
-        {isOpen && errors?.length && (
+        {errors?.length && (
           <div className="py-12 my-6">
             <span role="alert">{JSON.stringify(errors)}</span>
           </div>
