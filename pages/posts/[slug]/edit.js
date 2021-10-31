@@ -23,6 +23,7 @@ export default function EditPost() {
     register,
     watch,
     handleSubmit,
+    setValue,
     reset,
     formState: { errors, isDirty, isSubmitting, isSubmitSuccessful },
   } = useForm()
@@ -64,7 +65,12 @@ export default function EditPost() {
             <fieldset disabled={!session || isSubmitting || isLoading}>
               <InputTitle register={register} error={errors.title} />
               <InputContent register={register} />
-              <InputImage register={register} error={errors.image} />
+              <InputImage
+                register={register}
+                error={errors.image}
+                setImageValue={v => setValue('image', v, { shouldDirty: true })}
+                startingValue={thePost.image}
+              />
               <InputPublish register={register} />
               {thePost.published || thePost.published_at ? (
                 <InputDatestamp register={register} />

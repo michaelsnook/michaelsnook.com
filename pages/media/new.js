@@ -12,7 +12,7 @@ export default function New() {
         <h1 className="h1">Upload something</h1>
         <div className="border rounded p-4 my-6">
           <ImageForm
-            startingImageURL={imageURL}
+            confirmedURL={imageURL}
             onConfirm={d => {
               setImageURL(d)
               console.log(d)

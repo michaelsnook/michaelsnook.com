@@ -1,4 +1,4 @@
-const urlRegex = /^\S+\.(?:jpg|jpeg|gif|png|webp)$/i
+import ImageForm from './ImageForm'
 
 export function InputTitle({ register, error }) {
   return (
@@ -68,19 +68,14 @@ export function InputContent({ register }) {
   )
 }
 
-export function InputImage({ register, error }) {
+export function InputImage({ register, error, startingValue, setImageValue }) {
+  const reg = register('image', { pattern: /(?<!\bblob\:)/i })
   return (
     <div>
-      <label htmlFor="postImage">Post image</label>
-      <input
-        id="postImage"
-        type="text"
-        {...register('image', { pattern: urlRegex })}
-        aria-invalid={!!error}
-        className={error ? 'border-red-600' : ''}
-      />
+      <input type="hidden" {...reg} />
+      <ImageForm onConfirm={setImageValue} confirmedURL={startingValue} />
       <span className={error ? '' : 'invisible'} role="alert">
-        If you can&apos;t enter a valid image URL, just don&apos;t even bother
+        This image URL isn&rsquo;t working
       </span>
     </div>
   )
