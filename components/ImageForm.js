@@ -139,7 +139,7 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
 
           <input
             type="file"
-            className="absolute opacity-0 top-0 left-0 right-0"
+            className="absolute opacity-0 top-0 left-0 right-0 bottom-0"
             aria-invalid={!!errors?.image_upload}
             {...register('image_upload', {
               required: true,
