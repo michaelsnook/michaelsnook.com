@@ -9,9 +9,12 @@ export const Overlay = ({ close, children }) => (
   </div>
 )
 
-const CloseButton = ({ close }) => (
+export const CloseButton = ({ close }) => (
   <button
-    onClick={close}
+    onClick={e => {
+      e.preventDefault()
+      close(e)
+    }}
     className="py-1 px-2 absolute top-2 right-3 text-xs text-gray-500 flex place-items-center"
   >
     close&nbsp;

@@ -1,5 +1,6 @@
 import { uploadImage, publicImageURL } from '../lib/media'
 import { useState, useEffect } from 'react'
+import { CloseButton } from './Modal'
 import { useForm } from 'react-hook-form'
 
 export const CopyInput = ({ val }) => (
@@ -78,9 +79,14 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
     setPublicURL(confirmedURL)
   }, [confirmedURL])
 
+  const clearForm = () => {
+    setValue('image_upload', '')
+    setPreviewURL()
+    setPublicURL()
+  }
+
   const onSubmit = data =>
     uploadImage(data.image_upload[0]).then(filename => {
-      console.log(filename)
       // just change the preview URL, later the user will "confirm" it
       const url = publicImageURL(filename)
       setPreviewURL(url)
@@ -91,7 +97,9 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
       )
     })
 
-  console.log('starting image url', confirmedURL)
+  // console.log('Confirmed image url', confirmedURL)
+  // console.log('Preview image url', previewURL)
+  // console.log('Public image url', publicURL)
 
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -135,6 +143,14 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
               console.log('logging onChange with file: ', file)
             }}
           />
+          {previewURL ? (
+            <CloseButton
+              close={() => {
+                clearForm()
+                onConfirm('')
+              }}
+            />
+          ) : null}
         </label>
 
         {confirmedURL !== previewURL ? (
