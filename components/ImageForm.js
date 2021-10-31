@@ -47,11 +47,10 @@ const UploadSVG = () => (
 
 const Buttons = ({
   previewURL,
-  publicURL,
   confirmedURL,
   clearForm,
   submitUpload,
-  confirmImageInput,
+  confirmClear,
 }) => (
   <nav className="flex flex-row gap-4">
     {previewURL ? (
@@ -59,15 +58,7 @@ const Buttons = ({
         clear
       </button>
     ) : null}
-    {confirmedURL !== previewURL && previewURL === publicURL ? (
-      <button
-        className="button solid small"
-        type="button"
-        onClick={confirmImageInput}
-      >
-        confirm
-      </button>
-    ) : (
+    {previewURL && previewURL !== confirmedURL ? (
       <button
         className="button solid small"
         type="button"
@@ -75,7 +66,16 @@ const Buttons = ({
       >
         upload
       </button>
-    )}
+    ) : null}
+    {!previewURL && confirmedURL ? (
+      <button
+        className="button solid small"
+        type="button"
+        onClick={confirmClear}
+      >
+        confirm clear
+      </button>
+    ) : null}
   </nav>
 )
 
@@ -87,17 +87,14 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
     formState: { errors },
   } = useForm()
   const [previewURL, setPreviewURL] = useState()
-  const [publicURL, setPublicURL] = useState()
 
   useEffect(() => {
     setPreviewURL(confirmedURL)
-    setPublicURL(confirmedURL)
   }, [confirmedURL])
 
   const clearForm = () => {
     setValue('image_upload', '')
     setPreviewURL()
-    setPublicURL()
   }
 
   const onSubmit = data =>
@@ -113,7 +110,6 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
 
   // console.log('Confirmed image url', confirmedURL)
   // console.log('Preview image url', previewURL)
-  // console.log('Public image url', publicURL)
 
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -157,30 +153,22 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
               console.log('logging onChange with file: ', file)
             }}
           />
-          {previewURL ? (
-            <CloseButton
-              close={() => {
-                clearForm()
-                onConfirm('')
-              }}
-            />
-          ) : null}
+          {previewURL ? <CloseButton close={clearForm} /> : null}
         </label>
 
         {confirmedURL !== previewURL ? (
           <Buttons
             previewURL={previewURL}
-            publicURL={publicURL}
             confirmedURL={confirmedURL}
             clearForm={() => {
-              setValue('image_upload', '')
-              setPreviewURL()
-              setPublicURL()
-            }}
-            confirmImageInput={() => {
-              onConfirm(publicURL)
+              clearForm()
+              onConfirm('')
             }}
             submitUpload={handleSubmit(onSubmit)}
+            confirmClear={() => {
+              clearForm()
+              onConfirm('')
+            }}
           />
         ) : null}
 
