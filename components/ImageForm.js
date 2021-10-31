@@ -104,8 +104,7 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
     uploadImage(data.image_upload[0]).then(filename => {
       // just change the preview URL, later the user will "confirm" it
       const url = publicImageURL(filename)
-      setPreviewURL(url)
-      setPublicURL(url)
+      onConfirm(url)
       console.log(
         'uploaded the image and set a new preview URL for image: ',
         url
