@@ -50,6 +50,7 @@ const Buttons = ({
   confirmedURL,
   clearForm,
   submitUpload,
+  isUploading,
   confirmClear,
 }) => (
   <nav className="flex flex-row gap-4">
@@ -63,8 +64,9 @@ const Buttons = ({
         className="button solid small"
         type="button"
         onClick={submitUpload}
+        disabled={isUploading}
       >
-        upload
+        {isUploading ? 'uploading...' : 'upload'}
       </button>
     ) : null}
     {!previewURL && confirmedURL ? (
@@ -87,9 +89,11 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
     formState: { errors },
   } = useForm()
   const [previewURL, setPreviewURL] = useState()
+  const [isUploading, setIsUploading] = useState()
 
   useEffect(() => {
     setPreviewURL(confirmedURL)
+    setIsUploading()
   }, [confirmedURL])
 
   const clearForm = () => {
@@ -97,7 +101,8 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
     setPreviewURL()
   }
 
-  const onSubmit = data =>
+  const onSubmit = data => {
+    setIsUploading(true)
     uploadImage(data.image_upload[0]).then(filename => {
       // just change the preview URL, later the user will "confirm" it
       const url = publicImageURL(filename)
@@ -107,6 +112,7 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
         url
       )
     })
+  }
 
   // console.log('Confirmed image url', confirmedURL)
   // console.log('Preview image url', previewURL)
@@ -165,6 +171,7 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
               onConfirm('')
             }}
             submitUpload={handleSubmit(onSubmit)}
+            isUploading={isUploading}
             confirmClear={() => {
               clearForm()
               onConfirm('')
