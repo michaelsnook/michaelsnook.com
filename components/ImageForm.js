@@ -3,17 +3,30 @@ import { useState, useEffect } from 'react'
 import { CloseButton } from './Modal'
 import { useForm } from 'react-hook-form'
 
-export const CopyInput = ({ val }) => (
-  <div className="flex flex-row w-full gap-2">
-    <input
-      className="truncate copy-input text-left float-left"
-      disabled
-      dir="rtl"
-      value={val}
-    />
-    <a className="float-right button small outline">copy</a>
-  </div>
-)
+export const CopyInput = ({ val }) => {
+  const [status, setStatus] = useState('default')
+  const copyVal = val => {
+    navigator.clipboard.writeText(val)
+    setStatus('confirming')
+    setTimeout(() => setStatus('default'), 3000)
+  }
+  return (
+    <div className="flex flex-row w-full gap-2">
+      <input
+        className="truncate copy-input text-left float-left"
+        disabled
+        dir="rtl"
+        value={val}
+      />
+      <a
+        onClick={() => copyVal(val)}
+        className="float-right button small outline"
+      >
+        {status === 'default' ? 'copy' : 'done!'}
+      </a>
+    </div>
+  )
+}
 
 const UploadSVG = () => (
   <svg
