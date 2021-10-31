@@ -73,6 +73,7 @@ export function InputImage({ register, error, startingValue, setImageValue }) {
   return (
     <div>
       <input type="hidden" {...reg} />
+      <label>Upload image</label>
       <ImageForm onConfirm={setImageValue} confirmedURL={startingValue} />
       <span className={error ? '' : 'invisible'} role="alert">
         This image URL isn&rsquo;t working
