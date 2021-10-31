@@ -54,9 +54,11 @@ const Buttons = ({
   confirmImageInput,
 }) => (
   <nav className="flex flex-row gap-4">
-    <button className="button outline small" type="reset" onClick={clearForm}>
-      clear
-    </button>
+    {previewURL ? (
+      <button className="button outline small" type="reset" onClick={clearForm}>
+        clear
+      </button>
+    ) : null}
     {confirmedURL !== previewURL && previewURL === publicURL ? (
       <button
         className="button solid small"
