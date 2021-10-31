@@ -116,10 +116,10 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
 
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col gap-1 items-center">
+      <div className="flex flex-col gap-1 items-center border rounded p-4">
         {previewURL ? <CopyInput val={previewURL} /> : null}
         <label
-          className={`relative flex flex-col w-full fit-content ${
+          className={`relative flex flex-col w-full fit-content hover:bg-gray-100 ${
             previewURL ? 'shadow-lg' : 'border border-dashed rounded'
           } ${errors.image_upload ? 'border-red-600' : 'border-gray-300'}`}
         >
