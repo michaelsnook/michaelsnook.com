@@ -86,6 +86,7 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
     register,
     handleSubmit,
     setValue,
+    setError,
     formState: { errors },
   } = useForm()
   const [previewURL, setPreviewURL] = useState()
@@ -102,16 +103,22 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
   }
 
   const onSubmit = data => {
+    setError('image_upload', '')
     setIsUploading(true)
-    uploadImage(data.image_upload[0]).then(filename => {
-      // just change the preview URL, later the user will "confirm" it
-      const url = publicImageURL(filename)
-      onConfirm(url)
-      console.log(
-        'uploaded the image and set a new preview URL for image: ',
-        url
-      )
-    })
+    uploadImage(data.image_upload[0])
+      .then(filename => {
+        const url = publicImageURL(filename)
+        console.log(
+          'uploaded the image and set a new preview URL for image: ',
+          url
+        )
+        // confirming triggers a re-render
+        onConfirm(url)
+      })
+      .catch(error => {
+        setIsUploading()
+        setError('image_upload', error)
+      })
   }
 
   // console.log('Confirmed image url', confirmedURL)
