@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import Layout from '../../components/Layout'
 import { LoginChallenge } from '../../components/LoginForm'
-import ErrorList from '../../components/ErrorList'
+import { ErrorList } from '../../components/lib'
 import {
   InputTitle,
   InputContent,

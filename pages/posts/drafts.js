@@ -3,7 +3,7 @@ import useSWR from 'swr'
 import PostList from '../../components/PostList'
 import Layout from '../../components/Layout'
 import { LoginChallenge } from '../../components/LoginForm'
-import ErrorList from '../../components/ErrorList'
+import { ErrorList } from '../../components/lib'
 import { useSession } from '../../lib/auth'
 import { fetchDraftPosts } from '../../lib/posts'
 

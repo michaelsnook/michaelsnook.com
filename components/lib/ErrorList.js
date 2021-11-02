@@ -1,5 +1,5 @@
-export default function ErrorList({ summary, error, errors }) {
-  return !error && !errors?.length ? null : (
+const ErrorList = ({ summary, error, errors }) =>
+  !error && !errors?.length ? null : (
     <div>
       {summary ? <p className="font-bold text-red-600">{summary}</p> : null}
       <ul className="pl-5 text-red-600 list-disc">
@@ -8,4 +8,5 @@ export default function ErrorList({ summary, error, errors }) {
       </ul>
     </div>
   )
-}
+
+export default ErrorList

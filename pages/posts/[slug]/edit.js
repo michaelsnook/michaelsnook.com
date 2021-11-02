@@ -6,7 +6,7 @@ import { fetchOnePost, updateOnePost } from '../../../lib/posts'
 import Layout from '../../../components/Layout'
 import { LoginChallenge } from '../../../components/LoginForm'
 import { useSession } from '../../../lib/auth'
-import ErrorList from '../../../components/ErrorList'
+import { ErrorList } from '../../../components/lib'
 import {
   InputTitle,
   InputContent,

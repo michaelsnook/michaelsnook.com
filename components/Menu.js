@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { useSession } from '../lib/auth'
-import { Overlay } from './Modal'
+import { Overlay } from './lib'
 
 export default function Menu() {
   const [isOpen, setIsOpen] = useState()

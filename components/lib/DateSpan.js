@@ -1,4 +1,4 @@
-export default function DateSpan({ dateText }) {
+const DateSpan = ({ dateText }) => {
   const date = new Date(dateText)
   const output = date.toLocaleString('en-IN', {
     weekday: 'long',
@@ -9,3 +9,5 @@ export default function DateSpan({ dateText }) {
 
   return <time dateTime={dateText}>{output}</time>
 }
+
+export default DateSpan
