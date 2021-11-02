@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import PrintMarkdown from './PrintMarkdown'
+import { PrintMarkdown } from './lib'
 
 const PostLoading = () => (
   <>

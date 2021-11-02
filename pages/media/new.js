@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import Layout from '../../components/Layout'
 import { LoginChallenge } from '../../components/LoginForm'
-import ImageForm, { CopyInput } from '../../components/ImageForm'
+import ImageForm from '../../components/ImageForm'
+import { CopyInput } from '../../components/lib'
 
 export default function New() {
   const [imageURL, setImageURL] = useState()

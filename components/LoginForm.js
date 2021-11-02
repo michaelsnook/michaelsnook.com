@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { useSession, postLogin } from '../lib/auth'
-import ErrorList from './ErrorList'
-import Modal, { AlertBox } from './Modal'
+import Modal from './Modal'
+import { AlertBox, ErrorList } from './lib'
 
 export function LoginChallenge() {
   const { session } = useSession()

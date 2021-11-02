@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Layout from '../components/Layout'
-import { AlertBox } from '../components/Modal'
+import { AlertBox } from '../components/lib'
 import { postLogout } from '../lib/auth'
 
 export default function Logout() {
