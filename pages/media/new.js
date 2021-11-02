@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Layout from '../../components/Layout'
 import { LoginChallenge } from '../../components/LoginForm'
 import ImageForm from '../../components/ImageForm'
-import { CopyInput } from '../../components/lib'
+import MediaArticle from '../../components/Media'
 
 export default function New() {
   const [imageURL, setImageURL] = useState()
@@ -19,8 +19,7 @@ export default function New() {
           }}
         />
         <h2 className="h4">Confirmed image (if any)</h2>
-        {imageURL ? <CopyInput val={imageURL} /> : null}
-        <img src={imageURL} className="w-full mt-2" alt="" />
+        <MediaArticle url={imageURL} />
       </main>
     </Layout>
   )
