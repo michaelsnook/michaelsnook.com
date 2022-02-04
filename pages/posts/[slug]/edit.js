@@ -9,6 +9,7 @@ import { useSession } from '../../../lib/auth'
 import { ErrorList } from '../../../components/lib'
 import {
   InputTitle,
+  InputExcerpt,
   InputContent,
   InputImage,
   InputPublish,
@@ -64,6 +65,7 @@ export default function EditPost() {
             <input type="hidden" {...register('id')} />
             <fieldset disabled={!session || isSubmitting || isLoading}>
               <InputTitle register={register} error={errors.title} />
+              <InputExcerpt register={register} />
               <InputContent register={register} />
               <InputImage
                 register={register}
