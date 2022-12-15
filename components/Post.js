@@ -29,9 +29,10 @@ export const PostArticle = ({ title, image, content, isLoading }) => (
             <Image
               src={image}
               alt=""
-              layout="fill"
-              objectFit="cover"
               priority
+              fill
+              sizes="400px, (min-width: 440px) 600px"
+              style={{ objectFit: 'cover' }}
             />
           </div>
         )}

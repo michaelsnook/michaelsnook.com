@@ -14,8 +14,9 @@ const PostCard = ({ slug, image, title, excerpt, published, published_at }) => (
           className="rounded-t"
           src={image}
           alt=""
-          layout="fill"
-          objectFit="cover"
+          fill
+          sizes="582px, (min-width: 640px) 290px, (min-width: 768px) 316px"
+          style={{ objectFit: 'cover' }}
         />
       </div>
     ) : (
