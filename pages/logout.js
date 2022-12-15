@@ -20,12 +20,12 @@ export default function Logout() {
             <h1 className="h3">Logged out</h1>
             <p className="my-4">
               Congratulations, you may now{' '}
-              <Link href="/">
-                <a className="link">return to the home page</a>
+              <Link href="/" className="link">
+                return to the home page
               </Link>{' '}
               or{' '}
-              <Link href="/login">
-                <a className="link">log in again</a>
+              <Link href="/login" className="link">
+                log in again
               </Link>
               .
             </p>

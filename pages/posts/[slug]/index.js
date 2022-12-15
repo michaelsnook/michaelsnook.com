@@ -11,8 +11,8 @@ const PostSidebar = ({ slug, published_at }) => {
   const { session } = useSession()
   return (
     <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
-      <Link href="/">
-        <a className="text-cyan-700 hover:underline">« Back to home</a>
+      <Link href="/" className="text-cyan-700 hover:underline">
+        « Back to home
       </Link>
       <div className="mx-auto">
         <Image
@@ -29,8 +29,8 @@ const PostSidebar = ({ slug, published_at }) => {
         Published <DateSpan dateText={published_at} />
       </p>
       {session ? (
-        <Link href={`/posts/${slug}/edit`}>
-          <a className="button outline mx-auto">edit post</a>
+        <Link href={`/posts/${slug}/edit`} className="button outline mx-auto">
+          edit post
         </Link>
       ) : null}
     </aside>

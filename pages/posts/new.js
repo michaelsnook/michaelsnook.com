@@ -54,8 +54,8 @@ export default function New() {
             <InputContent register={register} />
 
             <div className="flex justify-between">
-              <Link href="/">
-                <a className="button outline">Back to Home</a>
+              <Link href="/" className="button outline">
+                Back to Home
               </Link>
               <button
                 type="submit"

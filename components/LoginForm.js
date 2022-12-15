@@ -38,8 +38,8 @@ const ConfirmationMessage = ({ nickname, asModal }) => {
       )}
       <p className="my-4">
         Or click here to{' '}
-        <Link href="/logout">
-          <a className="link">logout</a>
+        <Link href="/logout" className="link">
+          logout
         </Link>
         .
       </p>
