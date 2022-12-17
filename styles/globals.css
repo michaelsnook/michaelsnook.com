@@ -36,8 +36,8 @@
   a.button.small {
     @apply py-2 text-sm;
   }
-  button.button.outline,
-  a.button.outline {
+  button.button.outlines,
+  a.button.outlines {
     @apply text-cyan-700 hover:border-cyan-700 hover:underline;
   }
   button.button.solid,

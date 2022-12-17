@@ -22,7 +22,7 @@ export default function Drafts() {
           <h2 className="h2">Draft posts</h2>
           {session ? (
             <Link href="/posts/new">
-              <a className="button outline">New post</a>
+              <a className="button outlines">New post</a>
             </Link>
           ) : null}
         </div>

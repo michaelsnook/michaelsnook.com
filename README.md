@@ -9,7 +9,7 @@ is Supabase so the client uses their supabase-js client library.
 
 The visual design of the site is meant to be very simple, not loud,
 and without too many options. For instance, there are not 4 different
-types of buttons, there are 2 (`.button.outline` and `.button.solid`).
+types of buttons, there are 2 (`.button.outlines` and `.button.solid`).
 
 The only theme colors so far are Tailwind's cyan, red, and coolGray. The
 entire theme operates on these; red is used only for error text and

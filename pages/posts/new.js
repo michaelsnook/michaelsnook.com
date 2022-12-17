@@ -55,7 +55,7 @@ export default function New() {
 
             <div className="flex justify-between">
               <Link href="/">
-                <a className="button outline">Back to Home</a>
+                <a className="button outlines">Back to Home</a>
               </Link>
               <button
                 type="submit"

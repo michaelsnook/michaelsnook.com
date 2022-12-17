@@ -30,7 +30,7 @@ const PostSidebar = ({ slug, published_at }) => {
       </p>
       {session ? (
         <Link href={`/posts/${slug}/edit`}>
-          <a className="button outline mx-auto">edit post</a>
+          <a className="button outlines mx-auto">edit post</a>
         </Link>
       ) : null}
     </aside>
