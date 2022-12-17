@@ -12,7 +12,7 @@ export default function Home({ data }) {
         <div className="flex flex-row justify-between items-center">
           <h2 className="h2">All Posts</h2>
           {session ? (
-            <Link href="/posts/drafts" className="button outline">
+            <Link href="/posts/drafts" className="button outlines">
               See drafts
             </Link>
           ) : null}

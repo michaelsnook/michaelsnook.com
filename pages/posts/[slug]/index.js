@@ -29,7 +29,7 @@ const PostSidebar = ({ slug, published_at }) => {
         Published <DateSpan dateText={published_at} />
       </p>
       {session ? (
-        <Link href={`/posts/${slug}/edit`} className="button outline mx-auto">
+        <Link href={`/posts/${slug}/edit`} className="button outlines mx-auto">
           edit post
         </Link>
       ) : null}
