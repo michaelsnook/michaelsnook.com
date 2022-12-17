@@ -115,7 +115,7 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
           <div
             className={`${
               previewURL ? 'opacity-0 hover:opacity-100 absolute' : ''
-            } bg-white bg-opacity-50 h-full top-0 left-0 right-0 py-8`}
+            } bg-white/50 h-full top-0 left-0 right-0 py-8`}
           >
             <div className="flex flex-col items-center justify-center py-7 h-full">
               <UploadSVG />
