@@ -6,11 +6,7 @@ module.exports = {
     purgeLayersByDefault: true,
     removeDeprecatedGapUtilities: true,
   },
-  purge: {
-    content: ['./pages/**/*.js', './components/**/*.js'],
-    enabled: production, // disable purge in dev
-  },
-  darkMode: false, // or 'media' or 'class'
+  content: ['./pages/**/*.js', './components/**/*.js'],
   theme: {
     screens: {
       sm: '640px',
@@ -37,7 +33,6 @@ module.exports = {
     },
     extend: {
       colors: {
-        gray: colors.coolGray,
         cyan: colors.cyan,
       },
       maxHeight: {},
@@ -48,9 +43,6 @@ module.exports = {
         '80vh': '80vh',
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [require('@tailwindcss/typography')],
 }

@@ -24,7 +24,7 @@ export default function Menu() {
         className={`shadow-lg fixed bottom-4 right-3 border rounded-full inline-block ${
           isOpen
             ? 'bg-cyan-600 hover:border-white border-gray-400 text-white'
-            : 'text-cyan-700 hover:border-cyan-700 backdrop-filter backdrop-blur'
+            : 'text-cyan-700 hover:border-cyan-700 backdrop-blur'
         } p-2 z-50`}
         role="button"
         aria-haspopup="true"
