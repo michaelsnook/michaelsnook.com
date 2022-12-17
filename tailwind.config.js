@@ -6,7 +6,7 @@ module.exports = {
     purgeLayersByDefault: true,
     removeDeprecatedGapUtilities: true,
   },
-  content: ['./pages/**/*.js', './components/**/*.js'],
+  content: ['./pages/**/*.js', './components/**/*.js', './styles/globals.css'],
   theme: {
     screens: {
       sm: '640px',

@@ -30,7 +30,11 @@ const Buttons = ({
 }) => (
   <nav className="flex flex-row gap-4">
     {previewURL ? (
-      <button className="button outline small" type="reset" onClick={clearForm}>
+      <button
+        className="button outlines small"
+        type="reset"
+        onClick={clearForm}
+      >
         clear
       </button>
     ) : null}

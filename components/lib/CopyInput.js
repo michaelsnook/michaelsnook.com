@@ -18,7 +18,7 @@ const CopyInput = ({ val }) => {
       />
       <a
         onClick={() => copyVal(val)}
-        className="float-right button small outline"
+        className="float-right button small outlines"
       >
         {status === 'default' ? 'copy' : 'done!'}
       </a>

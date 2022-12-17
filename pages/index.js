@@ -13,7 +13,7 @@ export default function Home({ data }) {
           <h2 className="h2">All Posts</h2>
           {session ? (
             <Link href="/posts/drafts">
-              <a className="button outline">See drafts</a>
+              <a className="button outlines">See drafts</a>
             </Link>
           ) : null}
         </div>

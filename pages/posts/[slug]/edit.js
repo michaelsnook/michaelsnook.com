@@ -79,7 +79,7 @@ export default function EditPost() {
               ) : null}
 
               <div className="flex justify-between my-4">
-                <a className="button outline" onClick={() => back()}>
+                <a className="button outlines" onClick={() => back()}>
                   {isDirty ? 'Cancel' : 'Go back'}
                 </a>
                 <span className="flex">
