@@ -13,9 +13,9 @@ export default function Banner({ title, description }) {
         alt="A background image for the top section, a photo of mountains next
           to a lake, with clouds overhead"
         className="z-0"
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center"
+        fill
+        style={{ objectFit: 'cover', objectPosition: 'center' }}
+        sizes="100vw"
         priority
       />
       <div

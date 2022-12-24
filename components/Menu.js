@@ -62,10 +62,11 @@ export default function Menu() {
               </li>
               {menuItems.map(([label, path]) => (
                 <li key={path} className="border-t py-1" role="menuitem">
-                  <Link href={path}>
-                    <a className="list-item py-2 text-cyan-700 hover:underline px-10">
-                      {label}
-                    </a>
+                  <Link
+                    href={path}
+                    className="list-item py-2 text-cyan-700 hover:underline px-10"
+                  >
+                    {label}
                   </Link>
                 </li>
               ))}

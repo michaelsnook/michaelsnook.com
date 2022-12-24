@@ -21,8 +21,8 @@ export default function Drafts() {
         <div className="flex flex-row justify-between items-center">
           <h2 className="h2">Draft posts</h2>
           {session ? (
-            <Link href="/posts/new">
-              <a className="button outlines">New post</a>
+            <Link href="/posts/new" className="button outlines">
+              New post
             </Link>
           ) : null}
         </div>
