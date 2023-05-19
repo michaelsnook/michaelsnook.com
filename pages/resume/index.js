@@ -65,7 +65,7 @@ function Page() {
             </p>
           </div>
         </section>
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <section className="grid grid-cols-2 md:grid-cols-3 gap-12">
           <div className="col-span-2">
             <H2>Experience</H2>
             <JobHeader
@@ -158,15 +158,15 @@ function Page() {
             </p>
           </div>
 
-          <div className="col-span-1">
+          <div className="col-span-2 md:col-span-1">
             <H2>Tools</H2>
             <p role="list" className="badges">
               <Badge>ActionKit</Badge>
               <Badge>WordPress</Badge>
               <Badge>ActionNetwork</Badge>
               <Badge>Civis</Badge>
-              <Badge>NextJS</Badge>
               <Badge>ControlShift</Badge>
+              <Badge>SQL</Badge>
               <Badge>Trello, ProductBoard, etc.</Badge>
             </p>
 
@@ -175,9 +175,9 @@ function Page() {
               <Badge>Product&nbsp;Planning</Badge>
               <Badge>Problem&nbsp;Solving</Badge>
               <Badge>Team&nbsp;Systems</Badge>
-              <Badge>Budgeting&nbsp;+&nbsp;Roadmaps</Badge>
-              <Badge>Communication</Badge>
               <Badge>Prototyping,&nbsp;R+D</Badge>
+              <Badge>Roadmaps, Budgets</Badge>
+              <Badge>Communication</Badge>
               <Badge>Architecture&nbsp;+&nbsp;Migrations</Badge>
             </p>
 
