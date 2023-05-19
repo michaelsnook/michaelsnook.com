@@ -5,7 +5,7 @@ import {
   Calendar,
   IconGithub,
   IconTwitter,
-} from './icons'
+} from '../../components/icons'
 
 function Page() {
   return (
