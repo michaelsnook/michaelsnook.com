@@ -65,7 +65,7 @@ function Page() {
             </p>
           </div>
         </section>
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <section className="grid grid-cols-2 md:grid-cols-3 gap-12">
           <div className="col-span-2">
             <H2>Experience</H2>
             <JobHeader
@@ -158,7 +158,7 @@ function Page() {
             </p>
           </div>
 
-          <div className="col-span-1">
+          <div className="col-span-2 md:col-span-1">
             <H2>Tools</H2>
             <p role="list" className="badges">
               <Badge>ActionKit</Badge>
