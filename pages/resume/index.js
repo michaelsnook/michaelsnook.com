@@ -165,8 +165,8 @@ function Page() {
               <Badge>WordPress</Badge>
               <Badge>ActionNetwork</Badge>
               <Badge>Civis</Badge>
-              <Badge>NextJS</Badge>
               <Badge>ControlShift</Badge>
+              <Badge>SQL</Badge>
               <Badge>Trello, ProductBoard, etc.</Badge>
             </p>
 
@@ -175,9 +175,9 @@ function Page() {
               <Badge>Product&nbsp;Planning</Badge>
               <Badge>Problem&nbsp;Solving</Badge>
               <Badge>Team&nbsp;Systems</Badge>
-              <Badge>Budgeting&nbsp;+&nbsp;Roadmaps</Badge>
-              <Badge>Communication</Badge>
               <Badge>Prototyping,&nbsp;R+D</Badge>
+              <Badge>Roadmaps, Budgets</Badge>
+              <Badge>Communication</Badge>
               <Badge>Architecture&nbsp;+&nbsp;Migrations</Badge>
             </p>
 
