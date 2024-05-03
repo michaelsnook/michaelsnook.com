@@ -4,12 +4,32 @@ module.exports = {
     defaultLocale: 'en',
   },
   images: {
-    domains: [
-      'michaelsnook.com',
-      'snook.pub',
-      'i.imgur.com',
-      'i.picsum.photos',
-      'hmpueymmlhhphzvebjku.supabase.co',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'michaelsnook.com',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'snook.pub',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.picsum.photos',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.imgur.com',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'hmpueymmlhhphzvebjku.supabase.co',
+        port: '',
+      },
     ],
   },
 }
