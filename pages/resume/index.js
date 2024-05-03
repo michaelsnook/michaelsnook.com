@@ -7,6 +7,25 @@ import {
   IconTwitter,
 } from '../../components/icons'
 
+const skills = [
+  'Product Planning',
+  'Problem Solving',
+  'Team Systems',
+  'Budgeting + Roadmaps',
+  'Communication',
+  'Prototyping, R+D',
+  'Architecture + Migrations',
+]
+
+const technical_skills = [
+  'React / NextJS',
+  'Node / Express',
+  'TailwindCSS',
+  'PostGRES / MySQL',
+  'Cloud / Serverless',
+  'Git',
+]
+
 function Page() {
   return (
     <div className="bg-gray-300 md:p-10 font-display">
@@ -31,7 +50,7 @@ function Page() {
               </PWithIcon>
               <PWithIcon>
                 <Phone />
-                <span>434.882.4164</span>
+                <span>+1 434.882.4164</span>
               </PWithIcon>
             </div>
           </div>
@@ -71,10 +90,10 @@ function Page() {
             <JobHeader
               title="Director of Technology"
               subtitle="The Online Progressive Engagement Network"
-              timeframe="Sep 2014 – Present"
+              timeframe="Sep 2014 – Jun 2020"
             />
             <p>
-              At OPEN I facilitate the network&rsquo;s tech teams to learn,
+              At OPEN I facilitated the network&rsquo;s tech teams to learn,
               share and collaborate across 19 countries, languages and political
               contexts, hosting events and facilitating community development of
               their core organizing tech to supercharge innovation and
@@ -82,28 +101,29 @@ function Page() {
             </p>
             <ul role="list" className="list-disc pl-6 my-4">
               <li role="listitem" className="text-sm">
-                Community management: I make sure every one of the
-                network&rsquo;s 60 tech staff knows who everyone else is, what
-                resources are available to them, who to go to for advice on
-                whatever topic comes to mind, and often facilitate those
+                Community management: I made sure every one of the
+                network&rsquo;s 60 tech staff knew who everyone else was, what
+                resources were available to them, who to go to for advice on
+                whatever topic comes to mind, and often facilitated those
                 conversations.
               </li>
               <li role="listitem" className="text-sm">
-                Tech director coach and support: I work with tech leaders across
-                the network to help them set good middle- and long-term goals,
-                roadmap, budget, and plan for the features, tools and capacities
-                they need to provide the best capabilities to their campaigners.
+                Tech director coach and support: I worked with tech leaders
+                across the network to help them set good middle- and long-term
+                goals, roadmap, budget, and plan for the features, tools and
+                capacities they needed to provide the best capabilities to their
+                campaigners.
               </li>
               <li role="listitem" className="text-sm">
                 Software collaborations and stakeholder management: Our tech
-                collaborations are only partly staffed by the OPEN team. The
-                rest of the capacity comes from a delicate balance of getting
-                all the partners to agree to capacity-adjusted commitments of
-                staff time and money, and making sure they&rsquo;re happy with
-                the product we&rsquo;ll build together.
+                collaborations were only partly staffed by the OPEN team. The
+                rest of the capacity came from a delicate balance of getting all
+                the partners to agree to capacity-adjusted commitments of staff
+                time and money, and making sure they were happy with the product
+                we&apos;d set out to build together.
               </li>
               <li role="listitem" className="text-sm">
-                Organisational responsibilities: These include fundraising,
+                Organisational responsibilities: These included fundraising,
                 strategic planning, reporting to the board, hiring, event
                 management and facilitation, development of organizational
                 policies and practices.
@@ -172,23 +192,16 @@ function Page() {
 
             <H2>Skills</H2>
             <p role="list" className="badges">
-              <Badge>Product&nbsp;Planning</Badge>
-              <Badge>Problem&nbsp;Solving</Badge>
-              <Badge>Team&nbsp;Systems</Badge>
-              <Badge>Budgeting&nbsp;+&nbsp;Roadmaps</Badge>
-              <Badge>Communication</Badge>
-              <Badge>Prototyping,&nbsp;R+D</Badge>
-              <Badge>Architecture&nbsp;+&nbsp;Migrations</Badge>
+              {skills.map(s => (
+                <Badge key={s}>{s}</Badge>
+              ))}
             </p>
 
             <H2>Technical (Intermediate)</H2>
             <p role="list" className="badges">
-              <Badge>React&nbsp;/&nbsp;NextJS</Badge>
-              <Badge>Node&nbsp;/&nbsp;Express</Badge>
-              <Badge>TailwindCSS</Badge>
-              <Badge>PostGRES&nbsp;/&nbsp;MySQL</Badge>
-              <Badge>Cloud&nbsp;/&nbsp;Serverless</Badge>
-              <Badge>Git</Badge>
+              {technical_skills.map(s => (
+                <Badge key={s}>{s}</Badge>
+              ))}
             </p>
 
             <H2>&nbsp;</H2>
