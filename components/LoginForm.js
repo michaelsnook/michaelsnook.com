@@ -7,7 +7,7 @@ import Modal from './Modal'
 import { AlertBox, ErrorList } from './lib'
 
 export function LoginChallenge() {
-  const { session } = useSession()
+  const session = useSession()
   return !session ? (
     <Modal showing>
       <Login asModal />
@@ -48,8 +48,11 @@ const ConfirmationMessage = ({ nickname, asModal }) => {
 }
 
 export default function Login({ asModal }) {
-  const { session, nickname } = useSession()
+  const session = useSession()
   const [loginError, setLoginError] = useState()
+
+  const nickname = session?.user?.email?.split(/[\b\@\.]/)[0] || 'editor'
+
   const {
     register,
     handleSubmit,

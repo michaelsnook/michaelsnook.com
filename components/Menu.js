@@ -5,7 +5,8 @@ import { Overlay } from './lib'
 
 export default function Menu() {
   const [isOpen, setIsOpen] = useState()
-  const { session, nickname } = useSession()
+  const session = useSession()
+  const nickname = session?.user?.email?.split(/[\b\@\.]/)[0] || 'editor'
   const loggedInLinks = session
     ? [
         ['Drafts', '/posts/drafts'],
