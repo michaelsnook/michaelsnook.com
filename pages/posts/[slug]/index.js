@@ -8,7 +8,7 @@ import { fetchPostList, fetchOnePost } from '../../../lib/posts'
 import authorPhoto from '../../../public/images/my-photo.jpg'
 
 const PostSidebar = ({ slug, published_at }) => {
-  const { session } = useSession()
+  const session = useSession()
   return (
     <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
       <Link href="/" className="text-cyan-700 hover:underline">

@@ -8,7 +8,8 @@ import { useSession } from '../../lib/auth'
 import { fetchDraftPosts } from '../../lib/posts'
 
 export default function Drafts() {
-  const { session } = useSession()
+  const session = useSession()
+
   const { data, error } = useSWR(
     session ? `posts/drafts` : null,
     fetchDraftPosts

@@ -19,7 +19,7 @@ import { PostArticle } from '../../../components/Post'
 
 export default function EditPost() {
   const [formError, setFormError] = useState()
-  const { session } = useSession()
+  const session = useSession()
   const {
     register,
     watch,

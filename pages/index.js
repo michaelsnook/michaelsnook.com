@@ -5,7 +5,8 @@ import { useSession } from '../lib/auth'
 import { fetchPostList } from '../lib/posts'
 
 export default function Home({ data }) {
-  const { session } = useSession()
+  const session = useSession()
+
   return (
     <Layout banner>
       <main className="container py-5">
