@@ -30,7 +30,7 @@ export default function Layout({
       {banner && <Banner title={title} description={description} />}
       <div
         className={`${
-          !banner ? 'min-h-80vh flex flex-col place-content-center' : ''
+          !banner ? 'min-h-[80vh] flex flex-col place-content-center' : ''
         } ${singleCol ? 'max-w-prose mx-auto px-2' : ''}`}
       >
         {children}
