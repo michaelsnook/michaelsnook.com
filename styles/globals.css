@@ -51,6 +51,9 @@
   a.link {
     @apply font-bold hover:underline text-cyan-700 cursor-pointer;
   }
+  main.single-col {
+    @apply max-w-prose mx-auto px-2;
+  }
 }
 
 @layer utilities {
