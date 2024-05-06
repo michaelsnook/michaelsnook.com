@@ -82,7 +82,7 @@ export default function Login({ asModal }) {
                   className={errors.email ? 'border-red-600' : ''}
                   tabIndex="1"
                   type="slug"
-                  placeholder="email"
+                  placeholder="email@domain"
                 />
               </div>
               <div>
@@ -94,7 +94,7 @@ export default function Login({ asModal }) {
                   className={errors.password ? 'border-red-600' : ''}
                   tabIndex="2"
                   type="password"
-                  placeholder="****"
+                  placeholder="𐦖𐦊𐦉𐦚𐦂𐦖𐦓𐦐"
                 />
               </div>
               <div>
