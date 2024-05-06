@@ -1,6 +1,6 @@
 const DateSpan = ({ dateText }) => {
   const date = new Date(dateText)
-  const output = date.toLocaleString('en-IN', {
+  const output = date.toLocaleString('en', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
