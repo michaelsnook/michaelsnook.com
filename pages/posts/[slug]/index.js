@@ -3,12 +3,11 @@ import Image from 'next/image'
 import Layout from '../../../components/Layout'
 import { DateSpan } from '../../../components/lib'
 import { PostArticle } from '../../../components/Post'
-import { useSession } from '../../../lib/auth'
+import IffLoggedIn from '../../../app/iff-logged-in'
 import { fetchPostList, fetchOnePost } from '../../../lib/posts'
 import authorPhoto from '../../../public/images/my-photo.jpg'
 
 const PostSidebar = ({ slug, published_at }) => {
-  const session = useSession()
   return (
     <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
       <Link href="/" className="text-cyan-700 hover:underline">
@@ -28,11 +27,11 @@ const PostSidebar = ({ slug, published_at }) => {
       <p className="mx-auto">
         Published <DateSpan dateText={published_at} />
       </p>
-      {session ? (
+      <IffLoggedIn>
         <Link href={`/posts/${slug}/edit`} className="button outlines mx-auto">
           edit post
         </Link>
-      ) : null}
+      </IffLoggedIn>
     </aside>
   )
 }
