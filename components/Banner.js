@@ -2,10 +2,12 @@ import Image from 'next/image'
 import faceImage from '../public/images/my-face-circle.png'
 import bannerImage from '../public/images/como.jpg'
 
-export default function Banner({ title, description }) {
+export default function Banner({ title, description, small = false }) {
   return (
     <header
-      className="bg-gray-500 w-full h-[75vh] grid relative"
+      className={`bg-gray-500 w-full ${
+        small ? 'min-h-[30vh]' : 'h-[75vh]'
+      } grid relative`}
       style={{ textShadow: '2px 2px 6px black' }}
     >
       <Image
