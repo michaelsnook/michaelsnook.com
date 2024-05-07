@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { LoginChallenge } from '../../../../components/LoginForm'
 import ImageForm from '../../../../components/ImageForm'
 import MediaArticle from '../../../../components/Media'
 
@@ -9,7 +8,6 @@ export default function New() {
   const [imageURL, setImageURL] = useState()
   return (
     <main className="single-col">
-      <LoginChallenge />
       <h1 className="h1">Upload something</h1>
       <ImageForm
         confirmedURL={imageURL}

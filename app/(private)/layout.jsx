@@ -1,9 +1,10 @@
-const singleCol = false
+import { LoginChallenge } from '../../components/LoginForm'
 
 export default function Layout({ children }) {
   return (
-    <div className="min-h-[80vh] flex flex-col place-content-center">
+    <>
+      <LoginChallenge />
       {children}
-    </div>
+    </>
   )
 }
