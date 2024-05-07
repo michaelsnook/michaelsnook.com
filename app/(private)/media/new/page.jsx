@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import ImageForm from '../../../../components/ImageForm'
-import MediaArticle from '../../../../components/Media'
+import ImageForm from '@/components/ImageForm'
+import MediaArticle from '@/components/Media'
 
-export default function New() {
+export default function Page() {
   const [imageURL, setImageURL] = useState()
   return (
     <main className="single-col">

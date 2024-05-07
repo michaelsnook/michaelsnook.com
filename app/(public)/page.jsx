@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import Banner from '../../components/Banner'
-import PostList from '../../components/PostList'
+import Banner from '@/components/Banner'
+import PostList from '@/components/PostList'
 import IffLoggedIn from '../iff-logged-in'
-import { fetchPostList } from '../../lib/posts'
+import { fetchPostList } from '@/lib/posts'
 
 export const metadata = {
   title: 'Michael Snook web site',

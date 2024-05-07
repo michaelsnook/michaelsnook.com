@@ -1,4 +1,4 @@
-import { LoginChallenge } from '../../components/LoginForm'
+import { LoginChallenge } from '@/components/LoginForm'
 
 export default function Layout({ children }) {
   return (

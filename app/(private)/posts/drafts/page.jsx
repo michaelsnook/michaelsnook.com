@@ -2,12 +2,12 @@
 
 import Link from 'next/link'
 import useSWR from 'swr'
-import PostList from '../../../../components/PostList'
-import Banner from '../../../../components/Banner'
-import { ErrorList } from '../../../../components/lib'
-import { fetchDraftPosts } from '../../../../lib/posts'
+import PostList from '@/components/PostList'
+import Banner from '@/components/Banner'
+import { ErrorList } from '@/components/lib'
+import { fetchDraftPosts } from '@/lib/posts'
 
-export default function Drafts() {
+export default function Page() {
   const { data, error } = useSWR(`posts/drafts`, fetchDraftPosts)
 
   return (

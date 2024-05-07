@@ -4,14 +4,14 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
-import { ErrorList } from '../../../../components/lib'
+import { ErrorList } from '@/components/lib'
 import {
   InputTitle,
   InputContent,
   InputSlug,
   InputImage,
-} from '../../../../components/FormInputs'
-import { createOnePost } from '../../../../lib/posts'
+} from '@/components/FormInputs'
+import { createOnePost } from '@/lib/posts'
 
 export default function Page() {
   const {
