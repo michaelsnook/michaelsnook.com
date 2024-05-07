@@ -5,7 +5,7 @@ import {
   Calendar,
   IconGithub,
   IconTwitter,
-} from '../../../components/icons'
+} from '@/components/icons'
 
 const skills = [
   'Product Planning',

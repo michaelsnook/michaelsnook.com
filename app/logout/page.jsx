@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { AlertBox } from '../../../components/lib'
-import { postLogout } from '../../../lib/auth'
+import { AlertBox } from '@/components/lib'
+import { postLogout } from '@/lib/auth'
 
-export default function Logout() {
+export default function Page() {
   const [isFinished, setIsFinished] = useState()
   useEffect(() => {
     postLogout().then(() => setIsFinished(true))
