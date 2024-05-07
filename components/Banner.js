@@ -28,15 +28,17 @@ export default function Banner({ title, description, small = false }) {
           <h1 className="h1">{title}</h1>
           <p className="h1-sub">{description}</p>
         </div>
-        <div className="relative">
-          <Image
-            src={faceImage}
-            alt="A cartoon face of the author, Michael"
-            className="w-36"
-            width="144"
-            height="144"
-          />
-        </div>
+        {small ? null : (
+          <div className="relative">
+            <Image
+              src={faceImage}
+              alt="A cartoon face of the author, Michael"
+              className="w-36"
+              width="144"
+              height="144"
+            />
+          </div>
+        )}
       </div>
     </header>
   )
