@@ -68,6 +68,7 @@ export default function Menu() {
                   <Link
                     href={path}
                     className="list-item py-2 text-cyan-700 hover:underline px-10"
+                    onClick={() => setIsOpen(false)}
                   >
                     {label}
                   </Link>
