@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { useSession } from '@/app/Providers'
+import { useSession } from '@/app/SessionProvider'
 import { Overlay } from './lib'
 
 export default function Menu() {

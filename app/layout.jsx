@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import Providers from './Providers'
+import SessionProvider from './SessionProvider'
 import Menu from '../components/Menu'
 
 export const metadata = {
@@ -17,10 +17,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Providers>
+        <SessionProvider>
           <Menu />
           {children}
-        </Providers>
+        </SessionProvider>
       </body>
     </html>
   )
