@@ -1,6 +1,6 @@
 'use client'
 
-import { useSession } from './Providers'
+import { useSession } from './SessionProvider'
 
 const IffLoggedIn = ({ children }) => {
   const session = useSession()

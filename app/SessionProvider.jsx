@@ -5,7 +5,7 @@ import supabase from '@/app/supabase-client'
 
 const SessionContext = createContext(null)
 
-export default function Providers({ children }) {
+export default function SessionProvider({ children }) {
   const [session, setSession] = useState(null)
 
   useEffect(() => {
