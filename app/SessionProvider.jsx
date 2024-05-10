@@ -3,7 +3,7 @@
 import { createContext, useState, useEffect, useContext } from 'react'
 import supabase from '@/app/supabase-client'
 
-const SessionContext = createContext(null)
+const SessionContext = createContext()
 
 export default function SessionProvider({ children }) {
   const [session, setSession] = useState(null)
