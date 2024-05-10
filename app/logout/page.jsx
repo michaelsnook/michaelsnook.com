@@ -2,13 +2,19 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import supabase from '@/lib/supabase-client'
 import { AlertBox } from '@/components/lib'
-import { postLogout } from '@/lib/auth'
 
 export default function Page() {
   const [isFinished, setIsFinished] = useState()
   useEffect(() => {
-    postLogout().then(() => setIsFinished(true))
+    supabase.auth
+      .signOut()
+      .catch(({ error }) => {
+        console.log(error)
+        throw error
+      })
+      .then(() => setIsFinished(true))
   }, [])
 
   return (
