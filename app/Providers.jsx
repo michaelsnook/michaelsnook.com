@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useState, useLayoutEffect, useContext } from 'react'
+import { createContext, useState, useEffect, useContext } from 'react'
 import supabase from '@/app/supabase-client'
 
 const SessionContext = createContext(null)
@@ -8,7 +8,7 @@ const SessionContext = createContext(null)
 export default function Providers({ children }) {
   const [session, setSession] = useState(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_OUT') {
         console.log(`Auth state changed: signed out`, session)
