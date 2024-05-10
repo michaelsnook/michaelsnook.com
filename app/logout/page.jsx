@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import supabase from '@/lib/supabase-client'
+import supabase from '@/app/supabase-client'
 import { AlertBox } from '@/components/lib'
 
 export default function Page() {
