@@ -4,17 +4,18 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
-import { useSession, postLogin } from '../lib/auth'
+import { useSession } from '@/app/Providers'
 import Modal from './Modal'
 import { AlertBox, ErrorList } from './lib'
+import supabase from '@/app/supabase-client'
 
 export function LoginChallenge() {
   const session = useSession()
-  return !session ? (
+  return session?.user?.role === 'authenticated' ? null : (
     <Modal showing>
       <Login asModal />
     </Modal>
-  ) : null
+  )
 }
 
 const ConfirmationMessage = ({ nickname, asModal }) => {
@@ -61,9 +62,17 @@ export default function Login({ asModal }) {
     formState: { errors, isSubmitting },
   } = useForm()
 
-  const onSubmit = data => {
+  const onSubmit = ({ email, password }) => {
     setLoginError()
-    postLogin(data).catch(err => setLoginError(err.message))
+    supabase.auth
+      .signInWithPassword({
+        email,
+        password,
+      })
+      .catch(err => {
+        console.log(err)
+        setLoginError(err.message)
+      })
   }
 
   return (

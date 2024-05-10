@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import usePost from '../use-post'
 import { updateOnePost } from '@/lib/posts'
-import { useSession } from '@/lib/auth'
+import { useSession } from '@/app/Providers'
 import { ErrorList } from '@/components/lib'
 import {
   InputTitle,

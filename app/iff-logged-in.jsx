@@ -1,10 +1,10 @@
 'use client'
 
-import { useSession } from '../lib/auth'
+import { useSession } from './Providers'
 
 const IffLoggedIn = ({ children }) => {
   const session = useSession()
-  return session ? children : null
+  return session?.user?.role === 'authenticated' ? children : null
 }
 
 export default IffLoggedIn
