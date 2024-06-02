@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import faceImage from '../public/images/my-face-circle.png'
+import faceImage from '../public/images/my-face-288.png'
 import bannerImage from '../public/images/como.jpg'
 
 export default function Banner({ title, description, small = false }) {
@@ -33,7 +33,7 @@ export default function Banner({ title, description, small = false }) {
             <Image
               src={faceImage}
               alt="A cartoon face of the author, Michael"
-              className="w-36"
+              className="w-36 rounded-full"
               width="144"
               height="144"
             />
