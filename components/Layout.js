@@ -4,7 +4,7 @@ import Banner from './Banner'
 import Menu from './Menu'
 
 export default function Layout({
-  image = `/images/my-face-circle.png`,
+  image = `/images/my-face-288.png`,
   description = `A personal weblog and project pad`,
   title = `Michael Snook's site`,
   banner = false,

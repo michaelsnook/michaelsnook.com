@@ -5,7 +5,7 @@ import Menu from '../components/Menu'
 export const metadata = {
   title: 'Michael Snook web site',
   description: 'My personal space to jot things down',
-  image: '/images/my-face-circle.png',
+  image: '/images/my-face-288.png',
   author: 'Michael Snook',
 }
 

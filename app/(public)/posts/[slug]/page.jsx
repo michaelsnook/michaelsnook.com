@@ -4,7 +4,7 @@ import { DateSpan } from '@/components/lib'
 import { PostArticle } from '@/components/Post'
 import IffLoggedIn from '@/app/iff-logged-in'
 import { fetchPostList, fetchOnePost } from '@/lib/posts'
-import faceImage from '@/public/images/my-face-circle.png'
+import faceImage from '@/public/images/my-face-288.png'
 import Banner from '@/components/Banner'
 
 const PostSidebar = ({ slug, published_at }) => {
@@ -17,7 +17,7 @@ const PostSidebar = ({ slug, published_at }) => {
         <Image
           src={faceImage}
           alt="A cartoon face of the author, Michael"
-          className="w-36"
+          className="w-36 rounded-full"
           width="144"
           height="144"
         />

@@ -60,10 +60,11 @@ function Page() {
             className="hidden md:block md:flex-none lg:px-24 md:px-12 pt-8"
           >
             <img
-              src="/images/my-face-circle.png"
-              width="135px"
+              src="/images/my-face-288.png"
+              width="144"
+              height="144"
               align="right"
-              className="mx-auto flex-none"
+              className="mx-auto flex-none rounded-full"
               alt="A comic sketch of Michael Snook"
             />
           </div>
