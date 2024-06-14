@@ -77,6 +77,3 @@ the `<Layout>` component.
   now it can result in loss of data if you log out in one tab and try to save
   a post in another. There's no pre-flight check and the JS errors in a way that
   will lose your progress.
-- On mobiles, the post page's "About the author" section just shows up at the
-  top of the page, large, centered, feeling kind of out of place and inconsistent
-  with the rest of the layout of the site.

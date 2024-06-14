@@ -9,26 +9,30 @@ import Banner from '@/components/Banner'
 
 const PostSidebar = ({ slug, published_at }) => {
   return (
-    <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 text-center">
+    <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 md:text-center">
       <Link href="/" className="text-cyan-700 hover:underline">
         « Back to home
       </Link>
-      <div className="mx-auto">
+      <div className="max-md:flex gap-2 items-center">
         <Image
           src={faceImage}
           alt="A cartoon face of the author, Michael"
-          className="w-36 rounded-full"
+          className="w-36 rounded-full md:mx-auto max-md:w-20"
           width="144"
           height="144"
         />
+        <div className="space-y-2">
+          <p>By Em Snook</p>
+          <p>
+            Published <DateSpan dateText={published_at} />
+          </p>
+        </div>
       </div>
-
-      <p className="mx-auto">By Em Snook</p>
-      <p className="mx-auto">
-        Published <DateSpan dateText={published_at} />
-      </p>
       <IffLoggedIn>
-        <Link href={`/posts/${slug}/edit`} className="button outlines mx-auto">
+        <Link
+          href={`/posts/${slug}/edit`}
+          className="button outlines mr-auto md:mx-auto"
+        >
           edit post
         </Link>
       </IffLoggedIn>
