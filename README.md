@@ -5,6 +5,10 @@ It's built with NextJS and hosted on Vercel so the "client" actually does
 have some server-side action like pre-rendering most pages. The back end
 is Supabase so the client uses their supabase-js client library.
 
+I you have access to the project on vercel you should `vercel link` and
+`vercel env pull`. Then you can `pnpm install` and `pnpm dev`. (NPM will
+also work but this repo uses the pnpm lock file so YMMV.)
+
 ## Design patterns
 
 The visual design of the site is meant to be very simple, not loud,
