@@ -5,7 +5,7 @@ import faceImage from '@/public/images/my-face-288.png'
 export default function PictureSection() {
   return (
     <div className="text-center flex flex-col gap-1">
-      <h1 className="text-2xl font-bold">Em Snook</h1>
+      <h1 className="text-2xl font-bold text-lilac-content">Em Snook</h1>
       <p className="text-base/5 mb-4">Bangalore, KA</p>
       <Image
         src={faceImage}

@@ -23,7 +23,7 @@ const PostCard = ({ slug, image, title, excerpt, published, published_at }) => (
       <p className="py-2" />
     )}
     <div className="flex flex-col justify-between h-full">
-      <p className="text-2xl font-display p-4 text-cyan-700 hover:underline">
+      <p className="text-2xl font-display p-4 text-cyan-content hover:underline">
         {title}
       </p>
       {!image && excerpt ? <p className="p-4">{excerpt}</p> : null}

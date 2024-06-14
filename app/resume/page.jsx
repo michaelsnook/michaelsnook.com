@@ -32,7 +32,7 @@ function Page() {
       <div className="md:shadow-[rgba(0,_0,_0,_0.3)_0px_0px_15px_5px] md:rounded bg-white p-2 py-6 md:p-12 mx-auto max-w-[1100px]">
         <header className="flex mb-4">
           <div id="header-left" className="flex-grow">
-            <h1 className="text-cyan-600 text-4xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-cyan-content text-4xl lg:text-6xl font-bold mb-6">
               Michael Snook
             </h1>
 
@@ -227,7 +227,7 @@ const Badge = ({ children }) => {
   return (
     <span
       role="listitem"
-      className="inline-flex gap-4  border-cyan-600 border-2 rounded py-1 px-3 text-cyan-600 text-sm m-1"
+      className="inline-flex gap-4  border-cyan-bright border-2 rounded py-1 px-3 text-cyan-bright font-bold text-sm m-1"
     >
       {children}
     </span>
@@ -250,11 +250,11 @@ const PWithIcon = ({ children }) => {
   )
 }
 
-const JobHeader = ({ title, subtitle, timeframe }) => {
+export const JobHeader = ({ title, subtitle, timeframe }) => {
   return (
     <div className="my-4">
       <h3 className="text-2xl font-bold mt-4">{title}</h3>
-      <h3 className="text-lg font-bold text-cyan-600">{subtitle}</h3>
+      <h3 className="text-lg font-bold text-cyan-content">{subtitle}</h3>
       <PWithIcon>
         <Calendar />
         <span>{timeframe}</span>

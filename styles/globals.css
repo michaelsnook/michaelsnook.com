@@ -38,18 +38,18 @@
   }
   button.button.outlines,
   a.button.outlines {
-    @apply text-cyan-700 hover:border-cyan-700 hover:underline;
+    @apply text-cyan-bright hover:border-cyan-bright hover:underline;
   }
   button.button.solid,
   a.button.solid {
-    @apply text-white border-white bg-cyan-700
-      hover:border-cyan-900 hover:bg-cyan-600;
+    @apply text-white border-white bg-cyan-bright
+      hover:border-cyan hover:bg-cyan;
   }
   .button.solid[disabled] {
     @apply opacity-50 cursor-not-allowed;
   }
   a.link {
-    @apply font-bold hover:underline text-cyan-700 cursor-pointer;
+    @apply font-bold hover:underline text-cyan-bright cursor-pointer;
   }
   main.single-col {
     @apply max-w-prose mx-auto px-2 my-6;

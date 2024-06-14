@@ -20,7 +20,7 @@ export default function Page() {
       </LeftContainer>
 
       <RightContainer>
-        <h2 className="text-2xl font-bold">
+        <h2 className="text-2xl font-bold text-cyan-content">
           Seeking full time employment or partnership
         </h2>
         <h2 className="text-lg font-bold text-gray-600">

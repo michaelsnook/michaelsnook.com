@@ -10,7 +10,7 @@ import Banner from '@/components/Banner'
 const PostSidebar = ({ slug, published_at }) => {
   return (
     <aside className="col-span-1 flex flex-col gap-4 md:pt-10 lg:pt-14 md:text-center">
-      <Link href="/" className="text-cyan-700 hover:underline">
+      <Link href="/" className="text-cyan-content hover:underline">
         « Back to home
       </Link>
       <div className="max-md:flex gap-2 items-center">
