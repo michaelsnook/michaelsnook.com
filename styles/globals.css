@@ -76,3 +76,13 @@
     @apply text-lg my-2 font-bold;
   }
 }
+
+.sq {
+  @apply min-h-28 w-full px-[4cqw] pb-4 pt-6 text-center;
+  & code {
+    @apply text-sm opacity-70;
+  }
+}
+p.sub {
+  @apply text-sm mt-4;
+}
