@@ -5,6 +5,7 @@ import {
   Calendar,
   IconGithub,
   IconTwitter,
+  IconBluesky,
 } from '@/components/icons'
 
 const skills = [
@@ -206,12 +207,18 @@ function Page() {
             </p>
 
             <H2>&nbsp;</H2>
-            <div className="flex flex-row gap-4 mt-4">
-              <a href="https://github.com/michaelsnook">
+            <div className="flex flex-row gap-6 mt-4 h-20 justify-center text-cyan-bright">
+              <a className="h-12 w-12" href="https://github.com/michaelsnook">
                 <IconGithub />
               </a>
-              <a href="https://twitter.com/michaelsnook">
+              <a className="h-12 w-12" href="https://twitter.com/michaelsnook">
                 <IconTwitter />
+              </a>
+              <a
+                className="h-12 w-12"
+                href="https://bsky.app/profile/michaelsnook.com"
+              >
+                <IconBluesky />
               </a>
             </div>
           </div>

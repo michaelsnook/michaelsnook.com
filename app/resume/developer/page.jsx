@@ -5,6 +5,7 @@ import {
   Calendar,
   IconGithub,
   IconTwitter,
+  IconBluesky,
 } from '@/components/icons'
 import PictureSection from './picture-section'
 import { Wrapper, LeftContainer, RightContainer } from './containers'
