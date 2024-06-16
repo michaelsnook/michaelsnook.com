@@ -10,7 +10,6 @@ module.exports = {
     './app/**/*.{js,jsx,ts,tsx}',
     './pages/**/*.js',
     './components/**/*.js',
-    './styles/globals.css',
   ],
   theme: {
     screens: {
