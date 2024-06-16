@@ -59,9 +59,24 @@ export default function Page() {
             infrastructure. Read on below for some quick examples.
           </p>
           <h2 className="text-xl font-bold font-display">Projects</h2>
-          <p>Sunlo.app</p>
-          <p>Mapplication Rebuild</p>
-          <p>VoteAmerica Data Pipeline</p>
+          <p>
+            These are all projects from the last 4 years where I&apos;ve been
+            the sole developer.
+          </p>
+          <div className="grid md:grid-cols-2 gap-4">
+            <Project>
+              <p>Sunlo.app (2015-2024)</p>
+            </Project>
+            <Project>
+              <p>Mapplication Rebuild (2023)</p>
+            </Project>
+            <Project>
+              <p>MutualAidIndia.com (2021)</p>
+            </Project>
+            <Project>
+              <p>VoteAmerica Data Pipeline (2020)</p>
+            </Project>
+          </div>
         </RightContainer>
       </Wrapper>
       <Wrapper>
@@ -203,3 +218,7 @@ const Alert = ({ children }) => {
     </div>
   )
 }
+
+const Project = ({ children }) => (
+  <div className="h-80 outline outline-lilac rounded p-4">{children}</div>
+)
