@@ -1,16 +1,9 @@
-const colors = require('tailwindcss/colors')
-const production = process.env.NODE_ENV === 'production'
-
 module.exports = {
   future: {
     purgeLayersByDefault: true,
     removeDeprecatedGapUtilities: true,
   },
-  content: [
-    './app/**/*.{js,jsx,ts,tsx}',
-    './pages/**/*.js',
-    './components/**/*.js',
-  ],
+  content: ['./app/**/*.{js,jsx,ts,tsx}', './components/**/*.js'],
   theme: {
     screens: {
       sm: '640px',
