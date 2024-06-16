@@ -234,7 +234,7 @@ const Badge = ({ children }) => {
   return (
     <span
       role="listitem"
-      className="inline-flex gap-4  border-cyan-bright border-2 rounded py-1 px-3 text-cyan-bright font-bold text-sm m-1"
+      className="inline-flex gap-4 border-cyan border-2 rounded py-1 px-3 text-cyan font-bold text-sm m-1"
     >
       {children}
     </span>
@@ -251,13 +251,13 @@ const H2 = ({ children }) => {
 
 const PWithIcon = ({ children }) => {
   return (
-    <p className="max-sm:text-sm flex flex-row place-items-center gap-2">
+    <p className="max-sm:text-sm flex flex-row place-items-center gap-2 text-cyan-content">
       {children}
     </p>
   )
 }
 
-export const JobHeader = ({ title, subtitle, timeframe }) => {
+const JobHeader = ({ title, subtitle, timeframe }) => {
   return (
     <div className="my-4">
       <h3 className="text-2xl font-bold mt-4">{title}</h3>
