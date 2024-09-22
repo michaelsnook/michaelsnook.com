@@ -6,31 +6,31 @@ import supabase from '@/app/supabase-client'
 const SessionContext = createContext()
 
 export default function SessionProvider({ children }) {
-  const [session, setSession] = useState(null)
+	const [session, setSession] = useState(null)
 
-  useEffect(() => {
-    const { data } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === 'SIGNED_OUT') {
-        console.log(`Auth state changed: signed out`, session)
-        setSession(null)
-      } else if (session) {
-        console.log(`Auth state changed: ${event}`, session)
-        setSession(session)
-      }
-    })
+	useEffect(() => {
+		const { data } = supabase.auth.onAuthStateChange((event, session) => {
+			if (event === 'SIGNED_OUT') {
+				console.log(`Auth state changed: signed out`, session)
+				setSession(null)
+			} else if (session) {
+				console.log(`Auth state changed: ${event}`, session)
+				setSession(session)
+			}
+		})
 
-    return () => {
-      data.subscription.unsubscribe()
-    }
-  }, [])
+		return () => {
+			data.subscription.unsubscribe()
+		}
+	}, [])
 
-  return (
-    <SessionContext.Provider value={session}>
-      {children}
-    </SessionContext.Provider>
-  )
+	return (
+		<SessionContext.Provider value={session}>
+			{children}
+		</SessionContext.Provider>
+	)
 }
 
 export const useSession = () => {
-  return useContext(SessionContext)
+	return useContext(SessionContext)
 }

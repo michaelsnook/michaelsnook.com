@@ -7,72 +7,72 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply font-sans text-gray-800 font-light;
-  }
-  .prose img {
-    @apply shadow-lg;
-  }
+	body {
+		@apply font-sans text-gray-800 font-light;
+	}
+	.prose img {
+		@apply shadow-lg;
+	}
 }
 
 @layer components {
-  form.form label {
-    @apply block text-gray-700 text-sm my-1;
-  }
-  input.copy-input,
-  form.form input:not([type='checkbox']),
-  form.form textarea {
-    @apply appearance-none border rounded w-full py-2 px-3 text-gray-700
+	form.form label {
+		@apply block text-gray-700 text-sm my-1;
+	}
+	input.copy-input,
+	form.form input:not([type='checkbox']),
+	form.form textarea {
+		@apply appearance-none border rounded w-full py-2 px-3 text-gray-700
       leading-tight focus:outline-none;
-  }
-  fieldset[disabled] {
-    @apply opacity-50;
-  }
-  button.button,
-  a.button {
-    @apply inline-block py-3 px-6 border rounded-md cursor-pointer;
-  }
-  button.button.small,
-  a.button.small {
-    @apply py-2 text-sm;
-  }
-  button.button.outlines,
-  a.button.outlines {
-    @apply text-cyan-700 hover:border-cyan-700 hover:underline;
-  }
-  button.button.solid,
-  a.button.solid {
-    @apply text-white border-white bg-cyan-700
+	}
+	fieldset[disabled] {
+		@apply opacity-50;
+	}
+	button.button,
+	a.button {
+		@apply inline-block py-3 px-6 border rounded-md cursor-pointer;
+	}
+	button.button.small,
+	a.button.small {
+		@apply py-2 text-sm;
+	}
+	button.button.outlines,
+	a.button.outlines {
+		@apply text-cyan-700 hover:border-cyan-700 hover:underline;
+	}
+	button.button.solid,
+	a.button.solid {
+		@apply text-white border-white bg-cyan-700
       hover:border-cyan-900 hover:bg-cyan-600;
-  }
-  .button.solid[disabled] {
-    @apply opacity-50 cursor-not-allowed;
-  }
-  a.link {
-    @apply font-bold hover:underline text-cyan-700 cursor-pointer;
-  }
-  main.single-col {
-    @apply max-w-prose mx-auto px-2 my-6;
-  }
+	}
+	.button.solid[disabled] {
+		@apply opacity-50 cursor-not-allowed;
+	}
+	a.link {
+		@apply font-bold hover:underline text-cyan-700 cursor-pointer;
+	}
+	main.single-col {
+		@apply max-w-prose mx-auto px-2 my-6;
+	}
 }
 
 @layer utilities {
-  .h1 {
-    @apply lg:text-6xl md:text-5xl sm:text-4xl text-3xl my-4 font-display;
-  }
-  .h1-sub {
-    @apply md:text-2xl sm:text-xl text-lg;
-  }
-  .h2 {
-    @apply lg:text-4xl md:text-3xl text-2xl my-4 font-display font-bold;
-  }
-  .h3 {
-    @apply md:text-2xl text-xl my-3 font-display font-bold;
-  }
-  .h4 {
-    @apply md:text-xl text-lg my-2 font-display font-bold;
-  }
-  .h5 {
-    @apply text-lg my-2 font-bold;
-  }
+	.h1 {
+		@apply lg:text-6xl md:text-5xl sm:text-4xl text-3xl my-4 font-display;
+	}
+	.h1-sub {
+		@apply md:text-2xl sm:text-xl text-lg;
+	}
+	.h2 {
+		@apply lg:text-4xl md:text-3xl text-2xl my-4 font-display font-bold;
+	}
+	.h3 {
+		@apply md:text-2xl text-xl my-3 font-display font-bold;
+	}
+	.h4 {
+		@apply md:text-xl text-lg my-2 font-display font-bold;
+	}
+	.h5 {
+		@apply text-lg my-2 font-bold;
+	}
 }
