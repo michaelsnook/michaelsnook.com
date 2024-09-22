@@ -1,5 +1,5 @@
 {
-	"name": "learn-starter",
+	"name": "msnook-website",
 	"version": "0.1.0",
 	"private": true,
 	"engines": {
@@ -10,8 +10,8 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"format": "pnpx prettier --write .",
-		"format-staged": "pretty-quick --staged",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
 		"prepare": "husky install"
 	},
 	"dependencies": {
@@ -30,13 +30,13 @@
 		"@tailwindcss/typography": "^0.5.8",
 		"@types/react": "18.3.8",
 		"autoprefixer": "^10.4.13",
-		"eslint-config-next": "^14.2.3",
-		"eslint-config-prettier": "^8.3.0",
-		"eslint-plugin-prettier": "^3.4.0",
+		"eslint-config-next": "^14.2.13",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-prettier": "^5.2.1",
 		"husky": "^7.0.0",
 		"postcss": "^8.4.23",
-		"prettier": "^2.3.2",
-		"pretty-quick": "^3.1.1",
+		"prettier": "^3.3.3",
+		"pretty-quick": "^4.0.0",
 		"tailwindcss": "^3.3.2"
 	},
 	"packageManager": "pnpm@9.3.0+sha512.ee7b93e0c2bd11409c6424f92b866f31d3ea1bef5fbe47d3c7500cdc3c9668833d2e55681ad66df5b640c61fa9dc25d546efa54d76d7f8bf54b13614ac293631"
