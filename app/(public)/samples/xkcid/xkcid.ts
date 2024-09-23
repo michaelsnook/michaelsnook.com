@@ -37,20 +37,16 @@ const settings: Record<XkcidVariantOptions, XkcidSettings> = {
 	},
 }
 
-function numberToBaseX(
-	variant: XkcidVariantOptions,
-	remaining: number,
-	result = ''
-): string {
-	// pluck from our selected item
+function numberToBaseX(variant: XkcidVariantOptions, num: number): string {
 	const { alphabet } = settings[variant]
 	const base = alphabet.length
-
-	const newResult = `${alphabet[remaining % base]}${result}`
-	const newRemaining = Math.round(remaining / base)
-	return newRemaining === 0 ? newResult : (
-			numberToBaseX(variant, newRemaining, newResult)
-		)
+	if (num === 0) return alphabet[0]
+	let result = ''
+	while (num > 0) {
+		result = alphabet[num % base] + result
+		num = Math.floor(num / base)
+	}
+	return result
 }
 
 function parseNumberFromBaseX(
@@ -80,7 +76,7 @@ function generateRandomBaseX(variant: XkcidVariantOptions): string {
 	).join('')
 }
 
-function padOrTrimString(
+function padAndOrTrimString(
 	variant: XkcidVariantOptions,
 	inputString: string
 ): string {
@@ -97,8 +93,7 @@ function padOrTrimString(
 }
 
 function xkcid(variant: XkcidVariantOptions = 'lowercase') {
-	const { alphabet, timeLength, randomnessLength, timeDropPrecision } =
-		settings[variant]
+	const { alphabet, randomnessLength, timeDropPrecision } = settings[variant]
 	const base = alphabet.length
 
 	return {
@@ -110,7 +105,8 @@ function xkcid(variant: XkcidVariantOptions = 'lowercase') {
 		make: (timeInMilliseconds?: number): XkcidRecord => {
 			timeInMilliseconds ??= new Date().getTime()
 			const timeStringMs = numberToBaseX(variant, timeInMilliseconds)
-			const timeString = padOrTrimString(variant, timeStringMs)
+			// lower the precision and then perhaps pad by 1
+			const timeString = padAndOrTrimString(variant, timeStringMs)
 			const randomnessString = generateRandomBaseX(variant)
 
 			return {
