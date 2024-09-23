@@ -2,7 +2,7 @@ import Banner from '@/components/Banner'
 import xkcid from './xkcid'
 
 export const metadata = {
-	title: 'Xkcid: A Friendly K-sortable Compact Identifier | michaelsnook.com',
+	title: 'xkcID: A Friendly, K-sortable Compact Identifier | michaelsnook.com',
 	description:
 		'An experiment in making a new kind of compact global identifier for more human-friendly identifiers to paste into groupchats and stash in databases',
 	image: '/images/my-face-circle.png',
@@ -26,7 +26,7 @@ export default async function Page() {
 					const id = cid.make()
 					return (
 						<section key={cid.variant} className="">
-							<h3 className="h3">Xkcid &ldquo;{cid.variant}&rdquo; variant</h3>
+							<h3 className="h3">xkcID &ldquo;{cid.variant}&rdquo; variant</h3>
 							<table>
 								<tr>
 									<td className={classes.heading} colSpan={2}>

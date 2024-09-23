@@ -19,12 +19,12 @@ interface XkcidSettings {
 	timeDropPrecision: number
 }
 
-// These are the different types of XKCID, using different alphabets/bases,
+// These are the different types of xkcID, using different alphabets/bases,
 // and different time-precision. These don't get set in user-land so the values
 // must be double checked by humans / debated / PR'd etc.
 const settings: Record<XkcidVariantOptions, XkcidSettings> = {
 	lowercase: {
-		timeLength: 10,
+		timeLength: 8,
 		randomnessLength: 6,
 		alphabet: '123456789abcdefghijkmnopqrstuvwxyz',
 		timeDropPrecision: 1, // 34ms ticks
@@ -71,14 +71,11 @@ function parseNumberFromBaseX(
 	return result
 }
 
-function generateRandomBaseX(
-	variant: XkcidVariantOptions,
-	length: number
-): string {
-	const { alphabet } = settings[variant]
+function generateRandomBaseX(variant: XkcidVariantOptions): string {
+	const { alphabet, randomnessLength } = settings[variant]
 	const base = alphabet.length
 	return Array.from(
-		{ length },
+		{ length: randomnessLength },
 		() => alphabet[Math.floor(Math.random() * base)]
 	).join('')
 }
@@ -114,7 +111,7 @@ function xkcid(variant: XkcidVariantOptions = 'lowercase') {
 			timeInMilliseconds ??= new Date().getTime()
 			const timeStringMs = numberToBaseX(variant, timeInMilliseconds)
 			const timeString = padOrTrimString(variant, timeStringMs)
-			const randomnessString = generateRandomBaseX(variant, randomnessLength)
+			const randomnessString = generateRandomBaseX(variant)
 
 			return {
 				variant,
