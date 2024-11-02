@@ -1,9 +1,0 @@
-{
-	"arrowParens": "always",
-	"useTabs": true,
-	"tabWidth": 2,
-	"experimentalTernaries": true,
-	"semi": false,
-	"singleQuote": true,
-	"trailingComma": "es5"
-}
