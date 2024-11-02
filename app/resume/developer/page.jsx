@@ -2,6 +2,86 @@ import { JobHeader } from './job-header'
 import PictureSection from './picture-section'
 import { Wrapper, LeftContainer, RightContainer } from './containers'
 import { SkillsDeveloper, SkillsProductManager } from './content-sections'
+import { PrintMarkdown } from '@/components/lib'
+
+// 1050 by 1485. p1 is currently some 977 words, needs to be ~640
+
+const intro = `Hello, thanks for checking out out my resume 👋 I&rsquo;m Em, a former
+organiser, data manager (2009), tech facilitator (2014), turned product manager (2017) turned data engineer (2020)
+turned full stack developer (2021). 
+
+A few years ago I decided to get out of management roles and focus on my own output
+as an individual contributor. It has been _excellent_ honing my craft at Product Management, Data Engineering, and Software Development.
+But I've been freelancing for a few years now, and working on my own personal app totally alone, and I think what I miss now
+is the experience of being part of a great team, being in flow, learning from and teaching each other, picking up slack &ndash; this
+is the good stuff! So I'm looking for full-time or mostly-full-time employment, membership in a coop, or partnership in an agency to keep learning, keep shipping, keep going.
+
+My biggest technical competencies are databases and React. Naturally I like to keep the back-end slim, so NextJS is a tool I use
+often, or express API routes that deploy easily on Cloudflare or Vercel. But I have dabbled in all kinds of Javascript front ends,
+spending time most recently with SvelteKit, SolidJS, Tanstack Router, using Tanstack Query almost everywhere, and Vite or Vinxi behind just
+about everything but NextJS. And I'm practical about the back-end &ndash; If you've got API routes in Laravel or DRF or something, this won't be a problem.
+
+Mostly I just want to work with good people, on a team that fosters productivity, growth and accountability. I want to learn
+new things all the time, be excellent to my colleagues, ship quality product every cycle &ndash; and then close the computer at the end of the day and enjoy my weekend. If this sounds like
+your kind of workplace, maybe we will work well!
+
+-M`
+
+const projects = [
+  {
+    title: 'Sunlo.app',
+    time: '2020-2024',
+    content: `[Sunlo](https://sunlo.app) is a labour of love, an app I started sketching out back in 2015 when I first came to India and wanted desperately to learn
+  Hindi and Tamil and found myself interested but unable to get the most out of apps like Duolingo. Sunlo is a _social_ language learning app,
+  that constantly reminds the learner that they have friends who speak the language and who are motivated to help them, to check in with them, to
+  answer questions and recommend new phrases to learn.
+    
+  And Sunlo gives these friends and family members tools to help: a "friend mode" to search and recommend phrases, to add new ones to the public resource
+  library, and to help the learner stay motivated along the way. The app is currently un-released, as I've mostly been using it as a playground to learn and 
+  experiment, at least until a few months ago when I decided to really [dive in and rewrite it](https://sunlo-tanstack.vercel.app) using React, Tanstack Router & Query, TailwindCSS,
+  ShadCN UI and Radix primitives. It also uses Tauri to compile to native iOS and Android apps. This fully client-side stack uses Supabase for the database
+  and back-end API server, complete with row level security, RPC, auth, storage and transactional email.`,
+  },
+  {
+    title: 'Mapplication Rebuild',
+    time: '2023',
+    content: `Rebuilt [map.350.org](https://map.350.org/), using React, Mapbox, react-map-gl, NextJS, a Google DataForm pipeline, BigQuery, and TailwindCSS.
+    Each deployed page is its own embeddable mini-app, which 350 campaigners embed on different campaign pages to display different action information, or ways to
+    get involved, sometimes with their own custom branding and layouts.
+
+  The back-end is a few API routes hitting the BigQuery API to query views managed by a data pipeline built with Dataform to collate
+    data from ActionKit, ActionNetwork and Salesforce. This project rebuilt both the back-end and the front-end, but the big win here was that
+    we stopped using our own custom DRF-based ETL system and just used a data pipeline as intended. The resulting app is fast and reliable and takes much less work.`,
+  },
+  ,
+  {
+    title: 'MutualAidIndia.com',
+    time: '2021',
+
+    content: `The project began as a Google Doc with a crowdsourced list of ways that people could contribute to mutual aid funds,
+    often for food aid, or clinics, or for oxygen tanks for community homes, and so on. Before long we had dozens of volunteers and
+    loads of traffic, and we needed a site, and a basic (and non-standard) CMS. I built the MAI site with a Gatsby/Tailwind/Airtable
+    starter kit, and assembled an Airtable vetting/contact system for the volunteers to track hundreds of different funds, and to
+    vet and update listings. The team used it for at least 6 months while we were working.
+    
+  Here's [an article written by Riddhi Dastidar](https://thebaffler.com/latest/how-it-feels-dastidar), who started the whole thing with just a Google Doc and a sense of desperation to help people struggling with the first big wave of the COVID pandemic in India.`,
+  },
+  ,
+  {
+    title: 'VoteAmerica Data Pipeline',
+    time: '2020',
+    content: `I joined VoteAmerica late in the project but with still a few months of building left to go. It was a ~30
+    person team with a well rounded 5-person engineering team, and they needed a dedicated Product Manager to take the
+    load off the Engineering Team lead. By the end of it, we did not revolutionize voting entirely in the USA, but our goal
+    was to create the best Voter Experience (VX) allowed by law in every state in the country, and I think we came darn close.
+    
+  Toward the end of the election cycle we pivoted hard to supporting the outreach programs, which made countless calls and
+    send over 100 million text messages. I just happened to have experience with Redshift from my last job, and with the intricacies
+    of US voter data from several prior experiences, so the task fell to me to build a sophisticated, constantly-updating voter
+    identity-management service to provide millions of accurate, up-to-date phone numbers per day to our texting team, and get them
+    accurate, relevant information for how to cast their vote.`,
+  },
+]
 
 export default function Page() {
   return (
@@ -15,67 +95,29 @@ export default function Page() {
 
         <RightContainer>
           <h2 className="text-2xl mb-0 font-bold text-cyan-content font-display">
-            Product Engineer, Product Manager, Full-stack Developer
+            Full-stack Developer, Product Manager
             <br />
             <span className="text-lg font-bold text-gray-600">
               Seeking full time employment or partnership
             </span>
           </h2>
+          <PrintMarkdown markdown={intro} />
 
-          <p>
-            Hello, thanks for taking a look at my resumeㅤ👋ㅤI&rsquo;m Em, an
-            organiser turned data manager turned facilitator turned product
-            manager turned data engineer and software developer.
-          </p>
-          <p>
-            I&rsquo;m looking for full-time employment or partnership with an
-            agency that shares my values and my general desire to do good work
-            with good people, to build the right things well, to learn a lot and
-            be excellent to the people I work with.
-          </p>
-          <p>
-            I enjoy working with users to figure out what they really need to do
-            the most important parts of their work, and then to work with devs
-            to build a solid foundation we can ship quickly and iterate on from
-            there.
-          </p>
-          <p>
-            In the last few years I am increasingly jumping into the lead dev
-            role and building apps myself. I&apos;ve done a few projects
-            recently with React/NextJS, TailwindCSS, and Supabase (or 2 of these
-            three, with one difference on some projects), which is a stack I
-            like for how it allows us to shrink down the &ldquo;back end&rdquo;
-            and focus on the database and the interface, using serverless API
-            routes or the supabase-js client as a very thin and low-maintenance
-            layer for fetching data.
-          </p>
-          <p>
-            Though most of my experience is with smaller teams, I do have
-            experience with larger-scale custom software and data engineering at
-            scale, like at VoteAmerica where I was the PM and also built their
-            data pipeline, and at OPEN where I managed a software collaboration
-            between a dozen organisations all contributing resources/staff to a
-            team we managed that built and maintained their orgs&rsquo; core
-            infrastructure. Read on below for some quick examples.
-          </p>
-          <h2 className="text-xl font-bold font-display">Projects</h2>
-          <p>
-            These are all projects from the last 4 years where I&apos;ve been
-            the sole developer.
-          </p>
-          <div className="grid md:grid-cols-2 gap-4">
-            <Project>
-              <p>Sunlo.app (2015-2024)</p>
-            </Project>
-            <Project>
-              <p>Mapplication Rebuild (2023)</p>
-            </Project>
-            <Project>
-              <p>MutualAidIndia.com (2021)</p>
-            </Project>
-            <Project>
-              <p>VoteAmerica Data Pipeline (2020)</p>
-            </Project>
+          <h2 className="text-xl font-bold font-display">
+            Recent Projects (Lead Developer)
+          </h2>
+          <div className="space-y-4">
+            {projects.map(project => (
+              <div className="prose w-100">
+                <h3 className="text-lg text-lilac-content flex flex-row justify-between items-center">
+                  <span>{project.title}</span>
+                  <span className="text-sm">{project.time}</span>
+                </h3>
+                <div className="prose-sm prose-lilac">
+                  <PrintMarkdown markdown={project.content} />
+                </div>
+              </div>
+            ))}
           </div>
         </RightContainer>
       </Wrapper>
@@ -218,7 +260,3 @@ const Alert = ({ children }) => {
     </div>
   )
 }
-
-const Project = ({ children }) => (
-  <div className="h-80 outline outline-lilac rounded p-4">{children}</div>
-)
