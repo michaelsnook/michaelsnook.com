@@ -3,7 +3,7 @@ import { Socials } from '../page'
 export function Wrapper({ children }) {
   return (
     <div className="bg-gray-300 md:p-10">
-      <div className="grid grid-cols-1 md:grid-cols-4 md:shadow-[rgba(0,_0,_0,_0.3)_0px_0px_15px_5px] md:rounded bg-white p-2 mx-auto md:max-w-[1050px] max-h-[1485px]">
+      <div className="grid grid-cols-1 md:grid-cols-4 md:shadow-[rgba(0,_0,_0,_0.3)_0px_0px_15px_5px] md:rounded bg-white p-2 mx-auto md:max-w-[1050px] md:h-[1485px]">
         {children}
       </div>
     </div>

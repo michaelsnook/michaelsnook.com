@@ -4,26 +4,25 @@ import { Wrapper, LeftContainer, RightContainer } from './containers'
 import { SkillsDeveloper, SkillsProductManager } from './content-sections'
 import { PrintMarkdown } from '@/components/lib'
 
-// 1050 by 1485. p1 is currently some 977 words, needs to be ~640
+// 1050 by 1485. p1 is currently some 806 words, needs to be ~640
 
 const intro = `Hello, thanks for checking out out my resume 👋 I&rsquo;m Em, a former
 organiser, data manager (2009), tech facilitator (2014), turned product manager (2017) turned data engineer (2020)
 turned full stack developer (2021). 
 
-A few years ago I decided to get out of management roles and focus on my own output
-as an individual contributor. It has been _excellent_ honing my craft at Product Management, Data Engineering, and Software Development.
-But I've been freelancing for a few years now, and working on my own personal app totally alone, and I think what I miss now
-is the experience of being part of a great team, being in flow, learning from and teaching each other, picking up slack &ndash; this
-is the good stuff! So I'm looking for full-time or mostly-full-time employment, membership in a coop, or partnership in an agency to keep learning, keep shipping, keep going.
+A few years ago I decided to get out of management and focus on my own work
+as an individual contributor, honing my craft at Product Management, Data Engineering, and Full-stack Development.
+I've been freelancing for a few years now, and working on my personal app, and I find I miss being part of a team &ndash;
+feeding off each other's energy, lifting each other up, shipping and catching mistakes and learning together. 
+So I'm looking for full-time employment, membership in a coop, or partnership in an agency to keep learning, keep shipping, keep going.
 
-My biggest technical competencies are databases and React. Naturally I like to keep the back-end slim, so NextJS is a tool I use
-often, or express API routes that deploy easily on Cloudflare or Vercel. But I have dabbled in all kinds of Javascript front ends,
-spending time most recently with SvelteKit, SolidJS, Tanstack Router, using Tanstack Query almost everywhere, and Vite or Vinxi behind just
-about everything but NextJS. And I'm practical about the back-end &ndash; If you've got API routes in Laravel or DRF or something, this won't be a problem.
+My favourite way to build is with some modern front-end framework &ndash; I've built with NextJS, Tanstack Router, SvelteKit, SolidJS &ndash;
+a thin API layer, and putting a lot of trust in the database to do data logic like collating metadata with views and exposing them to the API.
 
-Mostly I just want to work with good people, on a team that fosters productivity, growth and accountability. I want to learn
-new things all the time, be excellent to my colleagues, ship quality product every cycle &ndash; and then close the computer at the end of the day and enjoy my weekend. If this sounds like
-your kind of workplace, maybe we will work well!
+But I'm pretty flexible and practical when it comes to this. Mostly I care about working on a team that fosters productivity,
+growth and accountability. I want to learn new things, be excellent to my colleagues, ship quality product every cycle &ndash;
+and then close the computer and enjoy my weekend. If this sounds like
+your kind of workplace, I hope to hear from you!
 
 -M`
 
@@ -31,13 +30,11 @@ const projects = [
   {
     title: 'Sunlo.app',
     time: '2020-2024',
-    content: `[Sunlo](https://sunlo.app) is a labour of love, an app I started sketching out back in 2015 when I first came to India and wanted desperately to learn
-  Hindi and Tamil and found myself interested but unable to get the most out of apps like Duolingo. Sunlo is a _social_ language learning app,
-  that constantly reminds the learner that they have friends who speak the language and who are motivated to help them, to check in with them, to
-  answer questions and recommend new phrases to learn.
+    content: `[Sunlo](https://sunlo.app) is a labour of love, an app I started sketching in 2015 when I first came to India and wanted to learn
+  Hindi and Tamil, but and found myself unable to really get into apps like Duolingo. Sunlo is a _social_ language learning app,
+  that lets you build a deck of flash cards with help from your friends and family who already speak the language and enjoy helping you learn.
     
-  And Sunlo gives these friends and family members tools to help: a "friend mode" to search and recommend phrases, to add new ones to the public resource
-  library, and to help the learner stay motivated along the way. The app is currently un-released, as I've mostly been using it as a playground to learn and 
+  The app is currently un-released, as I've mostly been using it as a playground to learn and 
   experiment, at least until a few months ago when I decided to really [dive in and rewrite it](https://sunlo-tanstack.vercel.app) using React, Tanstack Router & Query, TailwindCSS,
   ShadCN UI and Radix primitives. It also uses Tauri to compile to native iOS and Android apps. This fully client-side stack uses Supabase for the database
   and back-end API server, complete with row level security, RPC, auth, storage and transactional email.`,
@@ -45,41 +42,40 @@ const projects = [
   {
     title: 'Mapplication Rebuild',
     time: '2023',
-    content: `Rebuilt [map.350.org](https://map.350.org/), using React, Mapbox, react-map-gl, NextJS, a Google DataForm pipeline, BigQuery, and TailwindCSS.
-    Each deployed page is its own embeddable mini-app, which 350 campaigners embed on different campaign pages to display different action information, or ways to
-    get involved, sometimes with their own custom branding and layouts.
-
-  The back-end is a few API routes hitting the BigQuery API to query views managed by a data pipeline built with Dataform to collate
-    data from ActionKit, ActionNetwork and Salesforce. This project rebuilt both the back-end and the front-end, but the big win here was that
-    we stopped using our own custom DRF-based ETL system and just used a data pipeline as intended. The resulting app is fast and reliable and takes much less work.`,
+    content: `Rebuilt [map.350.org](https://map.350.org/), using React, Mapbox, react-map-gl, NextJS, a Google DataForm pipeline,
+    BigQuery, and TailwindCSS. The old version was a custom ETL app written in DRF which then fed data to a single React embed
+    with years and years worth of options, most of which were no longer used. The org had recently started using BigQuery for
+    other things, so I used DataForm to rebuild the ETL pipeline, collating data from Salesforce, ActionKit and Action Network, and then the back-end
+    was just a couple of BigQuery views that expose the required data to the public API.
+    
+  The new version is a NextJS app where each "page" is its own embeddable mini-app, so campaigners can pick the one that's best for them, and they can request custom work 
+    with themes or different affordances or data requirements, to suit their needs, without us having to worry about short-term needs leading to long-term tech debt.`,
   },
   ,
   {
     title: 'MutualAidIndia.com',
     time: '2021',
 
-    content: `The project began as a Google Doc with a crowdsourced list of ways that people could contribute to mutual aid funds,
-    often for food aid, or clinics, or for oxygen tanks for community homes, and so on. Before long we had dozens of volunteers and
-    loads of traffic, and we needed a site, and a basic (and non-standard) CMS. I built the MAI site with a Gatsby/Tailwind/Airtable
-    starter kit, and assembled an Airtable vetting/contact system for the volunteers to track hundreds of different funds, and to
-    vet and update listings. The team used it for at least 6 months while we were working.
+    content: `This volunteer project began as a Google Doc with a crowdsourced list of ways that people could contribute to mutual aid funds,
+    during the first devastating wave of the COVID-19 pandemic in India. 
+    Before long we had dozens of volunteers and
+    loads of traffic, and we needed a site, a database, a CMS, and a vetting workflow for volunteers to vet and update listings, goals, etc.
+    I built the MAI site with a Gatsby/Tailwind/Airtable starter kit, and built the contact- and content-management in Airtable.
     
-  Here's [an article written by Riddhi Dastidar](https://thebaffler.com/latest/how-it-feels-dastidar), who started the whole thing with just a Google Doc and a sense of desperation to help people struggling with the first big wave of the COVID pandemic in India.`,
+    
+  Here's [an article by Riddhi Dastidar](https://thebaffler.com/latest/how-it-feels-dastidar), who started the whole thing with just a Google Doc and a sense of desperation to help people struggling with the first big wave of the COVID pandemic in India.`,
   },
   ,
   {
     title: 'VoteAmerica Data Pipeline',
     time: '2020',
-    content: `I joined VoteAmerica late in the project but with still a few months of building left to go. It was a ~30
-    person team with a well rounded 5-person engineering team, and they needed a dedicated Product Manager to take the
-    load off the Engineering Team lead. By the end of it, we did not revolutionize voting entirely in the USA, but our goal
-    was to create the best Voter Experience (VX) allowed by law in every state in the country, and I think we came darn close.
+    content: `VoteAmerica was a ~30 person org with a well rounded 5-strong engineering team, and my first gig as a full-time, dedicated product manager.
+    My unofficial motto for the product was to create the best Voter Experience (VX) allowed by law in every state in the country, and I think we came close.
     
-  Toward the end of the election cycle we pivoted hard to supporting the outreach programs, which made countless calls and
-    send over 100 million text messages. I just happened to have experience with Redshift from my last job, and with the intricacies
-    of US voter data from several prior experiences, so the task fell to me to build a sophisticated, constantly-updating voter
-    identity-management service to provide millions of accurate, up-to-date phone numbers per day to our texting team, and get them
-    accurate, relevant information for how to cast their vote.`,
+  Toward the end of the election cycle we pivoted hard to supporting the outreach programs. So I took off my product hat
+  and took on the challenge of integrating mutliple
+    sources of contact and identity data into a constantly-updating pipeline that provided millions of leads every day to our texting team, which sent over
+    100 Million text messages to help Americans register, and vote.`,
   },
 ]
 
@@ -101,8 +97,9 @@ export default function Page() {
               Seeking full time employment or partnership
             </span>
           </h2>
-          <PrintMarkdown markdown={intro} />
-
+          <div className="prose-sm">
+            <PrintMarkdown markdown={intro} />
+          </div>
           <h2 className="text-xl font-bold font-display">
             Recent Projects (Lead Developer)
           </h2>
