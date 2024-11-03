@@ -89,7 +89,7 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
         const url = publicImageURL(filename)
         console.log(
           'uploaded the image and set a new preview URL for image: ',
-          url
+          url,
         )
         // confirming triggers a re-render
         onConfirm(url)

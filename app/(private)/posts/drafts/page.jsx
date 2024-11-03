@@ -12,7 +12,7 @@ export default function Page() {
   const session = useSession()
   const { data, error } = useSWR(
     session?.user?.role === 'authenticated' ? `posts/drafts` : null,
-    fetchDraftPosts
+    fetchDraftPosts,
   )
 
   return (

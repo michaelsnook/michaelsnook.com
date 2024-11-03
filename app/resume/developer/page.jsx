@@ -107,8 +107,8 @@ export default function Page() {
             Recent Projects (Lead Developer)
           </h2>
           <div className="space-y-4">
-            {projects.map(project => (
-              <div className="prose w-100">
+            {projects.map((project, i) => (
+              <div key={i} className="prose w-100">
                 <h3 className="text-lg text-lilac-content flex flex-row justify-between items-center">
                   <span>{project.title}</span>
                   <span className="text-sm">{project.time}</span>
