@@ -59,9 +59,9 @@ export default function Client({ slug, initialData }) {
 							startingValue={thePost.image}
 						/>
 						<InputPublish register={register} />
-						{thePost.published || thePost.published_at ?
+						{thePost.published || thePost.published_at ? (
 							<InputDatestamp register={register} />
-						:	null}
+						) : null}
 
 						<div className="flex justify-between my-4">
 							<a className="button outlines" onClick={() => back()}>

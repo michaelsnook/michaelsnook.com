@@ -20,9 +20,10 @@ export default function Page() {
 	return (
 		<main className="single-col">
 			<AlertBox type={isFinished ? 'neato' : 'info'}>
-				{!isFinished ?
+				{!isFinished ? (
 					<h1 className="h5">Logging out...</h1>
-				:	<>
+				) : (
+					<>
 						<h1 className="h3">Logged out</h1>
 						<p className="my-4">
 							Congratulations, you may now{' '}
@@ -36,7 +37,7 @@ export default function Page() {
 							.
 						</p>
 					</>
-				}
+				)}
 			</AlertBox>
 		</main>
 	)

@@ -11,11 +11,11 @@ import supabase from '@/app/supabase-client'
 
 export function LoginChallenge() {
 	const session = useSession()
-	return session?.user?.role === 'authenticated' ?
-			null
-		:	<Modal showing>
-				<Login asModal />
-			</Modal>
+	return session?.user?.role === 'authenticated' ? null : (
+		<Modal showing>
+			<Login asModal />
+		</Modal>
+	)
 }
 
 const ConfirmationMessage = ({ nickname, asModal }) => {
@@ -30,14 +30,15 @@ const ConfirmationMessage = ({ nickname, asModal }) => {
 				</em>
 				.
 			</p>
-			{asModal ?
+			{asModal ? (
 				<p className="my-4">You may need to refresh the page.</p>
-			:	<p className="my-4">
+			) : (
+				<p className="my-4">
 					<a className="link" onClick={() => router.back()}>
 						Return to previous screen.
 					</a>
 				</p>
-			}
+			)}
 			<p className="my-4">
 				Or click here to{' '}
 				<Link href="/logout" className="link">
@@ -76,9 +77,10 @@ export default function Login({ asModal }) {
 
 	return (
 		<div className="mx-auto max-w-lg my-6">
-			{session ?
+			{session ? (
 				<ConfirmationMessage nickname={nickname} asModal={asModal} />
-			:	<>
+			) : (
+				<>
 					<h1 className="h3 text-gray-700">Please log in</h1>
 					<form role="form" onSubmit={handleSubmit(onSubmit)} className="form">
 						<fieldset className="flex flex-col gap-y-4" disabled={isSubmitting}>
@@ -121,7 +123,7 @@ export default function Login({ asModal }) {
 						<ErrorList summary="Failed to log in" error={loginError} />
 					</form>
 				</>
-			}
+			)}
 		</div>
 	)
 }

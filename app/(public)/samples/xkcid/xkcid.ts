@@ -58,7 +58,7 @@ function numberToBaseX(variant: XkcidVariantOptions, num: number): BaseXString {
 
 function parseNumberFromBaseX(
 	variant: XkcidVariantOptions,
-	baseXStr: BaseXString
+	baseXStr: BaseXString,
 ): number {
 	const { alphabet } = settings[variant]
 	const base = alphabet.length
@@ -79,30 +79,30 @@ function generateRandomBaseX(variant: XkcidVariantOptions): BaseXString {
 	const base = alphabet.length
 	return Array.from(
 		{ length: randomnessLength },
-		() => alphabet[Math.floor(Math.random() * base)]
+		() => alphabet[Math.floor(Math.random() * base)],
 	).join('')
 }
 
 function padString(
 	variant: XkcidVariantOptions,
-	inputString: BaseXString
+	inputString: BaseXString,
 ): BaseXString {
 	const { alphabet, timeLength } = settings[variant]
 	if (timeLength === inputString.length) return inputString
 	return `${Array.from(
 		{ length: timeLength - inputString.length },
-		() => alphabet[0]
+		() => alphabet[0],
 	).join('')}${inputString}`
 }
 
 function trimString(
 	variant: XkcidVariantOptions,
-	inputString: BaseXString
+	inputString: BaseXString,
 ): BaseXString {
 	const { timeDropPrecision } = settings[variant]
 	const trimmedTimeString = inputString.substring(
 		0,
-		inputString.length - timeDropPrecision
+		inputString.length - timeDropPrecision,
 	)
 	return trimmedTimeString
 }

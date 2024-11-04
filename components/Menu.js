@@ -9,13 +9,12 @@ export default function Menu() {
 	const [isOpen, setIsOpen] = useState()
 	const session = useSession()
 	const nickname = session?.user?.email?.split(/[\b\@\.]/)[0] || 'editor'
-	const loggedInLinks =
-		session ?
-			[
+	const loggedInLinks = session
+		? [
 				['Drafts', '/posts/drafts'],
 				['Compose', '/posts/new'],
 			]
-		:	[]
+		: []
 	const menuItems = [
 		['Home', '/'],
 		session ? ['Logout', '/logout'] : ['Login', '/login'],
@@ -26,9 +25,9 @@ export default function Menu() {
 		<>
 			<button
 				className={`shadow-lg fixed bottom-4 right-3 border rounded-full inline-block ${
-					isOpen ?
-						'bg-cyan-600 hover:border-white border-gray-400 text-white'
-					:	'text-cyan-700 hover:border-cyan-700 backdrop-blur'
+					isOpen
+						? 'bg-cyan-600 hover:border-white border-gray-400 text-white'
+						: 'text-cyan-700 hover:border-cyan-700 backdrop-blur'
 				} p-2 z-50`}
 				role="button"
 				aria-haspopup="true"
@@ -53,7 +52,7 @@ export default function Menu() {
 					/>
 				</svg>
 			</button>
-			{isOpen ?
+			{isOpen ? (
 				<Overlay
 					close={(event) => {
 						if (event.target === event.currentTarget) setIsOpen(false)
@@ -78,7 +77,7 @@ export default function Menu() {
 						</ul>
 					</nav>
 				</Overlay>
-			:	null}
+			) : null}
 		</>
 	)
 }

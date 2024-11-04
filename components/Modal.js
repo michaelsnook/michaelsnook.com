@@ -15,19 +15,19 @@ export default function Modal({ showing, children }) {
 		else document.removeEventListener('keydown', escFunction, false)
 	}, [isShowing, escFunction])
 
-	return isShowing ?
-			<Overlay
-				close={(event) => {
-					if (event.target === event.currentTarget) setIsShowing(false)
-				}}
+	return isShowing ? (
+		<Overlay
+			close={(event) => {
+				if (event.target === event.currentTarget) setIsShowing(false)
+			}}
+		>
+			<div
+				role="dialog"
+				className="bg-white rounded max-w-xl mx-auto px-6 py-4 relative"
 			>
-				<div
-					role="dialog"
-					className="bg-white rounded max-w-xl mx-auto px-6 py-4 relative"
-				>
-					{children}
-					<CloseButton close={() => setIsShowing(false)} />
-				</div>
-			</Overlay>
-		:	null
+				{children}
+				<CloseButton close={() => setIsShowing(false)} />
+			</div>
+		</Overlay>
+	) : null
 }

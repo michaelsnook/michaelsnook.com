@@ -8,7 +8,7 @@ const PostCard = ({ slug, image, title, excerpt, published, published_at }) => (
 		role="listitem"
 		className="border rounded flex flex-col items-stretch"
 	>
-		{image ?
+		{image ? (
 			<div className="relative min-h-64 sm:min-h-40">
 				<Image
 					className="rounded-t"
@@ -19,29 +19,31 @@ const PostCard = ({ slug, image, title, excerpt, published, published_at }) => (
 					style={{ objectFit: 'cover' }}
 				/>
 			</div>
-		:	<p className="py-2" />}
+		) : (
+			<p className="py-2" />
+		)}
 		<div className="flex flex-col justify-between h-full">
 			<p className="text-2xl font-display p-4 text-cyan-700 hover:underline">
 				{title}
 			</p>
-			{!image && excerpt ?
-				<p className="p-4">{excerpt}</p>
-			:	null}
+			{!image && excerpt ? <p className="p-4">{excerpt}</p> : null}
 			<p className="px-4 py-2 text-gray-600">{format(published_at)}</p>
 		</div>
 	</Link>
 )
 
 export default function PostList({ posts }) {
-	return !posts ?
-			<p className="py-6">loading posts...</p>
-		:	<div
-				role="list"
-				className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
+	return !posts ? (
+		<p className="py-6">loading posts...</p>
+	) : (
+		<div
+			role="list"
+			className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
           gap-4 place-content-stretch"
-			>
-				{posts.map((post) => (
-					<PostCard key={`${post.id}-${post.slug}`} {...post} />
-				))}
-			</div>
+		>
+			{posts.map((post) => (
+				<PostCard key={`${post.id}-${post.slug}`} {...post} />
+			))}
+		</div>
+	)
 }

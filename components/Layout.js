@@ -36,9 +36,10 @@ export default function Layout({
 				{children}
 			</div>
 
-			{noFooter ?
+			{noFooter ? (
 				<br />
-			:	<footer className="border-t w-full py-10 mt-10">
+			) : (
+				<footer className="border-t w-full py-10 mt-10">
 					<nav className="space-x-4 space-y-10 py-4 mx-auto text-center">
 						<Link href="/" className="text-cyan-700 underline">
 							home
@@ -59,7 +60,7 @@ export default function Layout({
 						<span>&lt;/&gt; by me</span>
 					</nav>
 				</footer>
-			}
+			)}
 		</>
 	)
 }

@@ -29,7 +29,7 @@ const Buttons = ({
 	confirmClear,
 }) => (
 	<nav className="flex flex-row gap-4">
-		{previewURL ?
+		{previewURL ? (
 			<button
 				className="button outlines small"
 				type="reset"
@@ -37,8 +37,8 @@ const Buttons = ({
 			>
 				clear
 			</button>
-		:	null}
-		{previewURL && previewURL !== confirmedURL ?
+		) : null}
+		{previewURL && previewURL !== confirmedURL ? (
 			<button
 				className="button solid small"
 				type="button"
@@ -47,8 +47,8 @@ const Buttons = ({
 			>
 				{isUploading ? 'uploading...' : 'upload'}
 			</button>
-		:	null}
-		{!previewURL && confirmedURL ?
+		) : null}
+		{!previewURL && confirmedURL ? (
 			<button
 				className="button solid small"
 				type="button"
@@ -56,7 +56,7 @@ const Buttons = ({
 			>
 				confirm clear
 			</button>
-		:	null}
+		) : null}
 	</nav>
 )
 
@@ -89,7 +89,7 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
 				const url = publicImageURL(filename)
 				console.log(
 					'uploaded the image and set a new preview URL for image: ',
-					url
+					url,
 				)
 				// confirming triggers a re-render
 				onConfirm(url)
@@ -106,17 +106,15 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
 	return (
 		<form className="form" onSubmit={handleSubmit(onSubmit)}>
 			<div className="flex flex-col gap-1 items-center border rounded p-4">
-				{previewURL ?
-					<CopyInput val={previewURL} />
-				:	null}
+				{previewURL ? <CopyInput val={previewURL} /> : null}
 				<label
 					className={`relative flex flex-col w-full fit-content hover:bg-gray-100 ${
 						previewURL ? 'shadow-lg' : 'border border-dashed rounded'
 					} ${errors.image_upload ? 'border-red-600' : 'border-gray-300'}`}
 				>
-					{previewURL ?
+					{previewURL ? (
 						<img className="w-full" src={previewURL} alt="" />
-					:	null}
+					) : null}
 
 					<div
 						className={`${
@@ -147,12 +145,10 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
 							console.log('logging onChange with file: ', file)
 						}}
 					/>
-					{previewURL ?
-						<CloseButton close={clearForm} />
-					:	null}
+					{previewURL ? <CloseButton close={clearForm} /> : null}
 				</label>
 
-				{confirmedURL !== previewURL ?
+				{confirmedURL !== previewURL ? (
 					<Buttons
 						previewURL={previewURL}
 						confirmedURL={confirmedURL}
@@ -167,7 +163,7 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
 							onConfirm('')
 						}}
 					/>
-				:	null}
+				) : null}
 
 				{errors?.length && (
 					<div className="py-12 my-6">

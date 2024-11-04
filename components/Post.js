@@ -19,9 +19,10 @@ const PostLoading = () => (
 
 export const PostArticle = ({ title, image, content, isLoading }) => (
 	<article className="md:col-span-3 lg:col-span-4 flex flex-col gap-4 md:max-w-prose md:mx-auto">
-		{isLoading ?
+		{isLoading ? (
 			<PostLoading />
-		:	<>
+		) : (
+			<>
 				<h1 className="h1">{title}</h1>
 				{image && (
 					<div className="h-64 w-full relative">
@@ -39,6 +40,6 @@ export const PostArticle = ({ title, image, content, isLoading }) => (
 					<PrintMarkdown markdown={content} />
 				</div>
 			</>
-		}
+		)}
 	</article>
 )

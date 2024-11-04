@@ -1,5 +1,6 @@
 module.exports = {
-  arrowParens: 'avoid',
-  semi: false,
-  singleQuote: true,
+	arrowParens: 'always',
+	semi: false,
+	singleQuote: true,
+	useTabs: true,
 }
