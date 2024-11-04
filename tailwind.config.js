@@ -1,17 +1,9 @@
-const colors = require('tailwindcss/colors')
-const production = process.env.NODE_ENV === 'production'
-
 module.exports = {
 	future: {
 		purgeLayersByDefault: true,
 		removeDeprecatedGapUtilities: true,
 	},
-	content: [
-		'./app/**/*.{js,jsx,ts,tsx}',
-		'./pages/**/*.js',
-		'./components/**/*.js',
-		'./styles/globals.css',
-	],
+	content: ['./app/**/*.{js,jsx,ts,tsx}', './components/**/*.js'],
 	theme: {
 		screens: {
 			sm: '640px',
@@ -38,7 +30,17 @@ module.exports = {
 		},
 		extend: {
 			colors: {
-				cyan: colors.cyan,
+				// the brights https://play.tailwindcss.com/Kxp4dNNjfA
+				// the subdued https://play.tailwindcss.com/eqbovlyvNA
+				// all colors  https://play.tailwindcss.com/ayCV0YyCG6
+				cyan: '#359fcc', //            dsat 40%, lighten 20%
+				'cyan-bright': '#0087c1', //   start w the image cyan
+				'cyan-content': '#1d5a73', //  dsat then darken 25%
+				'cyan-soft': '#9acfe5', //     dsat then lighten 60%
+				lilac: '#c6a7c7', //           start w the image lilac
+				'lilac-bright': '#d696d8', //  saturated up 30% https://mdigi.tools/saturate-color/#c6a7c7
+				'lilac-content': '#905d91', // sat then 35% darker
+				'lilac-soft': '#e2d3e3', //    sat then 50% lighter
 			},
 			minHeight: {
 				40: '10rem',

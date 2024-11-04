@@ -1,6 +1,10 @@
 const IconTwitter = () => {
 	return (
-		<svg viewBox="0 0 24 24" className="text-cyan-600 w-10 h-10" fill="#0891b2">
+		<svg
+			viewBox="0 0 24 24"
+			className="fill-current w-10 h-10"
+			fill="currentColor"
+		>
 			<g>
 				<path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z"></path>
 			</g>
@@ -10,10 +14,10 @@ const IconTwitter = () => {
 
 const IconGithub = () => {
 	return (
-		<svg className="text-cyan-600 w-10 h-10" viewBox="0 0 16 16" version="1.1">
+		<svg className="fill-current w-10 h-10" viewBox="0 0 16 16">
 			<path
 				fillRule="evenodd"
-				fill="#0891b2"
+				fill="currentColor"
 				clipRule="evenodd"
 				d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"
 			></path>
@@ -21,10 +25,21 @@ const IconGithub = () => {
 	)
 }
 
-const Calendar = () => {
+const IconBluesky = () => {
+	return (
+		<svg fill="none" viewBox="0 0 64 57">
+			<path
+				fill="currentColor"
+				d="M13.873 3.805C21.21 9.332 29.103 20.537 32 26.55v15.882c0-.338-.13.044-.41.867-1.512 4.456-7.418 21.847-20.923 7.944-7.111-7.32-3.819-14.64 9.125-16.85-7.405 1.264-15.73-.825-18.014-9.015C1.12 23.022 0 8.51 0 6.55 0-3.268 8.579-.182 13.873 3.805ZM50.127 3.805C42.79 9.332 34.897 20.537 32 26.55v15.882c0-.338.13.044.41.867 1.512 4.456 7.418 21.847 20.923 7.944 7.111-7.32 3.819-14.64-9.125-16.85 7.405 1.264 15.73-.825 18.014-9.015C62.88 23.022 64 8.51 64 6.55c0-9.818-8.578-6.732-13.873-2.745Z"
+			></path>
+		</svg>
+	)
+}
+
+const Calendar = ({ color = 'text-cyan' }) => {
 	return (
 		<svg
-			className="text-cyan-600"
+			className={color}
 			width="1em"
 			height="1em"
 			viewBox="0 0 16 16"
@@ -46,7 +61,7 @@ const Calendar = () => {
 const Phone = () => {
 	return (
 		<svg
-			className="text-cyan-600"
+			className="text-cyan-bright"
 			width="16px"
 			height="1em"
 			viewBox="0 0 16 16"
@@ -65,7 +80,7 @@ const Phone = () => {
 const LinkIcon = () => {
 	return (
 		<svg
-			className="text-cyan-600"
+			className="text-cyan-bright"
 			width="16px"
 			height="1em"
 			viewBox="0 0 16 16"
@@ -83,7 +98,7 @@ const LinkIcon = () => {
 const Envelope = () => {
 	return (
 		<svg
-			className="text-cyan-600"
+			className="text-cyan-bright"
 			width="16px"
 			height="1em"
 			viewBox="0 0 16 16"
@@ -99,44 +114,12 @@ const Envelope = () => {
 	)
 }
 
-export { Envelope, LinkIcon, Phone, Calendar, IconGithub, IconTwitter }
-
-/* 
-const Compass = () => {
-  return (
-    <svg
-      className="text-cyan-600"
-      width="16px"
-      height="1em"
-      viewBox="0 0 16 16"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fillRule="evenodd"
-        d="M8 15.016a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13zm0 1a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15z"
-      />
-      <path d="M6 1a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2H7a1 1 0 0 1-1-1zm.94 6.44l4.95-2.83-2.83 4.95-4.95 2.83 2.83-4.95z" />
-    </svg>
-  )
+export {
+	Envelope,
+	LinkIcon,
+	Phone,
+	Calendar,
+	IconGithub,
+	IconTwitter,
+	IconBluesky,
 }
-
-const IconFacebook = () => {
-  return (
-    <svg viewBox="0 0 36 36" className="text-cyan-600 w-10 h-10" fill="#0891b2">
-      <defs>
-        <linearGradient x1="50%" x2="50%" y1="97.0782153%" y2="0%" id="jsc_s_2">
-          <stop offset="0%" stopColor="#0062E0"></stop>
-          <stop offset="100%" stopColor="#19AFFF"></stop>
-        </linearGradient>
-      </defs>
-      <path d="M15 35.8C6.5 34.3 0 26.9 0 18 0 8.1 8.1 0 18 0s18 8.1 18 18c0 8.9-6.5 16.3-15 17.8l-1-.8h-4l-1 .8z"></path>
-      <path
-        fill="white"
-        className="p361ku9c"
-        d="M25 23l.8-5H21v-3.5c0-1.4.5-2.5 2.7-2.5H26V7.4c-1.3-.2-2.7-.4-4-.4-4.1 0-7 2.5-7 7v4h-4.5v5H15v12.7c1 .2 2 .3 3 .3s2-.1 3-.3V23h4z"
-      ></path>
-    </svg>
-  )
-}
-*/

@@ -2,11 +2,11 @@ import Image from 'next/image'
 import faceImage from '../public/images/my-face-288.png'
 import bannerImage from '../public/images/como.jpg'
 
-export default function Banner({ title, description, small = false }) {
+export default function Banner({ title, description, small, medium }) {
 	return (
 		<header
 			className={`bg-gray-500 w-full ${
-				small ? 'min-h-[30vh]' : 'h-[75vh]'
+				small ? 'min-h-[30vh]' : medium ? 'min-h-[45vh]' : 'h-[75vh]'
 			} grid relative`}
 			style={{ textShadow: '2px 2px 6px black' }}
 		>
@@ -16,6 +16,12 @@ export default function Banner({ title, description, small = false }) {
           to a lake, with clouds overhead"
 				className="z-0"
 				fill
+				style={{ objectFit: 'cover', objectPosition: 'center' }}
+				sizes="100vw"
+				priority
+			/>
+			<div
+				className="z-0"
 				style={{ objectFit: 'cover', objectPosition: 'center' }}
 				sizes="100vw"
 				priority

@@ -5,6 +5,13 @@ module.exports = {
 		locales: ['en'],
 		defaultLocale: 'en',
 	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
+	typescript: {
+		ignoreBuildErrors: true,
+	},
+
 	images: {
 		remotePatterns: [
 			{

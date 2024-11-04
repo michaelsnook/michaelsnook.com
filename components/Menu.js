@@ -26,8 +26,8 @@ export default function Menu() {
 			<button
 				className={`shadow-lg fixed bottom-4 right-3 border rounded-full inline-block ${
 					isOpen
-						? 'bg-cyan-600 hover:border-white border-gray-400 text-white'
-						: 'text-cyan-700 hover:border-cyan-700 backdrop-blur'
+						? 'bg-cyan-bright hover:border-white border-gray-400 text-white'
+						: 'text-cyan-bright hover:border-cyan-bright backdrop-blur'
 				} p-2 z-50`}
 				role="button"
 				aria-haspopup="true"
@@ -67,7 +67,7 @@ export default function Menu() {
 								<li key={path} className="border-t py-1" role="menuitem">
 									<Link
 										href={path}
-										className="list-item py-2 text-cyan-700 hover:underline px-10"
+										className="list-item py-2 text-cyan-content hover:underline px-10"
 										onClick={() => setIsOpen(false)}
 									>
 										{label}
