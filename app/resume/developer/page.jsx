@@ -104,7 +104,7 @@ export default function Page() {
 		<>
 			<Wrapper>
 				<LeftContainer>
-					<PictureSection />
+					<PictureSection link="https://michaelsnook.com/resume/developer" />
 					<SkillsDeveloper />
 					<SkillsProductManager />
 				</LeftContainer>

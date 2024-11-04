@@ -1,6 +1,6 @@
 export function SkillsDeveloper() {
 	return (
-		<div className="py-1 mb-1">
+		<div className="py-1 mb-1 marker:text-lilac-content">
 			<h2 className="font-bold text-lg">Dev Skills</h2>
 			<ul className="list-disc ml-4">
 				<li>React, NextJS, React Router, React Query</li>
@@ -20,7 +20,7 @@ export function SkillsProductManager() {
 	return (
 		<div className="py-1 mb-1">
 			<h2 className="font-bold text-lg">PM Skills</h2>
-			<ul className="list-disc ml-4">
+			<ul className="list-disc ml-4 marker:text-lilac-content">
 				<li>Defining a Product</li>
 				<li>Roadmapping for a team</li>
 				<li>Planning for MVP and subsequent milestones</li>
