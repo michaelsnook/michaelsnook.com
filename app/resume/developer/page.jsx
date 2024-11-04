@@ -7,40 +7,37 @@ import { PrintMarkdown } from '@/components/lib'
 // 1050 by 1485. p1 is currently some 642 words, needs to be ~640
 
 const intro = `Hello, 👋 I&rsquo;m Em, a former
-organiser, data analyst, tech director, facilitator,
-turned product manager plus data engineer and full stack developer.
+organiser, data analyst, tech director, then facilitator,
+turned product manager, data engineer and full stack developer.
 
 In 2020 I decided to leave management to focus on my own work
 as an individual contributor, honing my craft at Product Management,
 Data Engineering, and Full-stack Web Development.
 I love it, but as a freelancer and solo developer,
-I miss being _part of a team_ &ndash; if you want to get in flow
-and stay there a while, there's nothing like being part of a team.
+I miss being _part of a team_ &ndash; if you want to stay in flow,
+nothing beats good teamwork.
 
-So I'm looking for full-time employment, membership in a coop or partnership in an
-agency to keep learning, keep shipping, keep going.
+So I'm looking for full-time employment, membership in a coop, or partnership in an
+agency &ndash; to keep learning, keep shipping, keep going.
 
-I'm most comfortable with (1) the database layer and
-(2) full-stack JS frameworks like NextJS or
-React Router (with a thin API layer of your choice).
-I consider myself a good team member, flexible, and practical about solutions.
-(I use tabs but I won't fight you over spaces.)
+I'm most comfortable with full-stack JS frameworks like NextJS or
+React Router, and with databases, so naturally I prefer to keep the API layer nice and simple.
+But I consider myself flexible and practical with solutions, no matter what tools we decide to use for the job.
 
 Mostly I care about working on a team that fosters productivity,
 growth and accountability.
-
 I want to learn new things, be excellent to my colleagues,
 ship quality product every cycle &ndash;
 and then close the computer and enjoy my weekend. If this sounds like
-your kind of workplace, I hope to hear from you!
+your workplace, please reach out!
 
--M`
+&nbsp;&nbsp;&ndash;_M_`
 
 const projects = [
 	{
 		title: 'Mapplication Rebuild',
 		time: '2022',
-		content: `Rebuilt [map.350.org](https://map.350.org/groups), using React, react-map-gl, NextJS, BigQuery & DataForm, and TailwindCSS.
+		content: `Rebuilt [map.350.org](https://map.350.org/groups), using react-map-gl, NextJS, BigQuery & DataForm, and TailwindCSS.
   The old version was a custom ETL app built with DRF, and a 2017-era React/Redux app. I was contracted to make recommendations
   for the in-house team, and ended up building it as well.
 
@@ -150,7 +147,7 @@ export default function Page() {
 								timeframe="July 2020 – November 2020"
 							/>
 							<p>
-								At Vote America I was called in to manage Product for the last 4
+								At VoteAmerica I was called in to manage Product for the last 4
 								months of the election cycle. We had a team of about 6 Engineers
 								working on a national system to help voters look up their
 								registration, request an absentee ballot, or get help with their
@@ -158,7 +155,7 @@ export default function Page() {
 							</p>
 							<p>
 								When Election Day got closer and we launched our campaign to
-								send 10 crore text messages to voters across the country, the
+								send 100 Million text messages to voters across the country, the
 								outreach team came to us for help with their data pipeline, and
 								since election day was about 6 weeks away, most of the product
 								was already managed, so I also built the SQL pipeline that
@@ -237,8 +234,8 @@ export default function Page() {
 								data manager and digital production manager, basically building
 								and targeting emails and landing pages. When we decided to build
 								out a web team to make more of our own organizing tools and take
-								control of our most key workflows, I had the job of planning out
-								that team and managing the hiring.
+								control of our most key workflows, I had the job of planning,
+								hiring and managing it.
 							</p>
 							<p>
 								It was a crash course in technical management as well as
@@ -257,7 +254,7 @@ export default function Page() {
 								been built correctly (some things never change).
 							</p>
 							<Alert>
-								We used a SAAS platform called ActionKit with custom Django
+								We used a SAAS platform called ActionKit with our own Django
 								templates, MySQL for targeting and Analytics, Bootstrap for
 								styles, and a handful of Django apps and admins.
 							</Alert>

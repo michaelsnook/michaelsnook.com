@@ -22,7 +22,6 @@ export default function Banner({ title, description, small, medium }) {
 			/>
 			<div
 				className="z-0"
-				fill
 				style={{ objectFit: 'cover', objectPosition: 'center' }}
 				sizes="100vw"
 				priority
