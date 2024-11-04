@@ -135,12 +135,12 @@ export default function Page() {
 				</RightContainer>
 			</Wrapper>
 			<Wrapper>
-				<div className="col-span-4 md:px-10 py-12">
-					<h2 className="text-xl font-bold font-display my-2 mb-4">
+				<div className="col-span-4 md:px-10 py-12 mt-2 text-md">
+					<h2 className="text-2xl font-bold font-display my-2 mb-4">
 						Previous Employment
 					</h2>
 					<div className="md:columns-2 space-y-8 gap-8">
-						<div className="space-y-4">
+						<div className="space-y-6">
 							<JobHeader
 								title="Product Manager & Data Engineer"
 								subtitle="VoteAmerica.com"
@@ -183,7 +183,7 @@ export default function Page() {
 								Platform for data engineering.
 							</Alert>
 						</div>
-						<div className="space-y-4">
+						<div className="space-y-6">
 							<JobHeader
 								title="Director of Technology"
 								subtitle="The Online Progressive Engagement Network"
@@ -223,7 +223,7 @@ export default function Page() {
 								Docker, WordPress – and the unstoppable power of collaboration!
 							</Alert>
 						</div>
-						<div className="space-y-4">
+						<div className="space-y-6">
 							<JobHeader
 								title="Chief Information Officer"
 								subtitle="BoldProgressives.org"
@@ -268,7 +268,7 @@ export default function Page() {
 
 const Alert = ({ children }) => {
 	return (
-		<div className="text-cyan-content rounded outline outline-cyan/70 bg-cyan-soft/40 py-3 px-4 text-sm my-2">
+		<div className="text-cyan-content rounded outline outline-cyan/70 bg-cyan-soft/40 py-3 px-4 text-sm">
 			{children}
 		</div>
 	)
