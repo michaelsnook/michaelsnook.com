@@ -6,6 +6,10 @@ import { PrintMarkdown } from '@/components/lib'
 
 // 1050 by 1485. p1 is currently some 642 words, needs to be ~640
 
+export const metadata = {
+	title: 'Em Snook, Developer Resume 2024',
+}
+
 const intro = `Hello, 👋 I&rsquo;m Em, a former
 organiser, data analyst, tech director, then facilitator,
 turned product manager, data engineer and full stack developer.

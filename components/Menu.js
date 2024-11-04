@@ -24,7 +24,7 @@ export default function Menu() {
 	return (
 		<>
 			<button
-				className={`shadow-lg fixed bottom-4 right-3 border rounded-full inline-block ${
+				className={`print:hidden shadow-lg fixed bottom-4 right-3 border rounded-full inline-block ${
 					isOpen
 						? 'bg-cyan-bright hover:border-white border-gray-400 text-white'
 						: 'text-cyan-bright hover:border-cyan-bright backdrop-blur'
