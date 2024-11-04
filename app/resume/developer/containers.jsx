@@ -12,7 +12,10 @@ export function Wrapper({ children }) {
 
 export function LeftContainer({ children }) {
 	return (
-		<div className="md:col-span-1 md:w-[260px] bg-lilac-soft/50 print:bg-lilac-soft h-full pt-10 md:pt-16 pb-6 md:pb-10 px-6 flex flex-col gap-4 md:gap-10 font-display">
+		<div
+			style={{ '-webkit-print-color-adjust': 'exact' }}
+			className="md:col-span-1 md:w-[260px] bg-lilac-soft/50 print:bg-lilac-soft h-full pt-10 md:pt-16 pb-6 md:pb-10 px-6 flex flex-col gap-4 md:gap-10 font-display"
+		>
 			{children}
 			<div className="flex-end flex flex-row justify-around text-lilac">
 				<Socials />
@@ -23,8 +26,8 @@ export function LeftContainer({ children }) {
 
 export function RightContainer({ children }) {
 	return (
-		<div className="md:col-span-3 space-y-4 pb-4 md:pb-10 pt-10 md:px-16">
-			{children}
+		<div className="md:col-span-3 py-4 md:px-16 flex flex-col justify-center">
+			<div className="space-y-4">{children}</div>
 		</div>
 	)
 }

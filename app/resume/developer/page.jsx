@@ -110,17 +110,13 @@ export default function Page() {
 				</LeftContainer>
 
 				<RightContainer>
-					<h2 className="text-2xl mb-0 font-bold text-cyan-content font-display">
+					<h2 className="text-3xl font-bold text-cyan-content font-display">
 						Full-stack Developer, Product Manager
-						<br />
-						<span className="text-lg font-bold text-gray-600">
-							Seeking full time employment or partnership
-						</span>
 					</h2>
 					<div className="prose-sm md:columns-2">
 						<PrintMarkdown markdown={intro} />
 					</div>
-					<h2 className="text-xl font-bold font-display">
+					<h2 className="text-2xl font-bold font-display">
 						Recent Projects (Lead Developer)
 					</h2>
 					<div className="space-y-4">
@@ -272,7 +268,10 @@ export default function Page() {
 
 const Alert = ({ children }) => {
 	return (
-		<div className="text-cyan-content rounded outline outline-cyan/70 bg-cyan-soft/40 py-3 px-4 text-sm">
+		<div
+			style={{ '-webkit-print-color-adjust': 'exact' }}
+			className="text-cyan-content rounded border-2 border-cyan/70 bg-cyan-soft/40 py-3 px-4 text-sm"
+		>
 			{children}
 		</div>
 	)
