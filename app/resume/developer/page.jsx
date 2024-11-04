@@ -4,23 +4,33 @@ import { Wrapper, LeftContainer, RightContainer } from './containers'
 import { SkillsDeveloper, SkillsProductManager } from './content-sections'
 import { PrintMarkdown } from '@/components/lib'
 
-// 1050 by 1485. p1 is currently some 806 words, needs to be ~640
+// 1050 by 1485. p1 is currently some 642 words, needs to be ~640
 
-const intro = `Hello, thanks for checking out out my resume 👋 I&rsquo;m Em, a former
-organiser, data manager (2009), tech facilitator (2014), turned product manager (2017) turned data engineer (2020)
-turned full stack developer (2021). 
+const intro = `Hello, 👋 I&rsquo;m Em, a former
+organiser, data analyst, tech director, facilitator,
+turned product manager plus data engineer and full stack developer.
 
-A few years ago I decided to get out of management and focus on my own work
-as an individual contributor, honing my craft at Product Management, Data Engineering, and Full-stack Development.
-I've been freelancing for a few years now, and working on my personal app, and I find I miss being part of a team &ndash;
-feeding off each other's energy, lifting each other up, shipping and catching mistakes and learning together. 
-So I'm looking for full-time employment, membership in a coop, or partnership in an agency to keep learning, keep shipping, keep going.
+In 2020 I decided to leave management to focus on my own work
+as an individual contributor, honing my craft at Product Management,
+Data Engineering, and Full-stack Web Development.
+I love it, but as a freelancer and solo developer,
+I miss being _part of a team_ &ndash; if you want to get in flow
+and stay there a while, there's nothing like being part of a team.
 
-My favourite way to build is with some modern front-end framework &ndash; I've built with NextJS, Tanstack Router, SvelteKit, SolidJS &ndash;
-a thin API layer, and putting a lot of trust in the database to do data logic like collating metadata with views and exposing them to the API.
+So I'm looking for full-time employment, membership in a coop or partnership in an
+agency to keep learning, keep shipping, keep going.
 
-But I'm pretty flexible and practical when it comes to this. Mostly I care about working on a team that fosters productivity,
-growth and accountability. I want to learn new things, be excellent to my colleagues, ship quality product every cycle &ndash;
+I'm most comfortable with (1) the database layer and
+(2) full-stack JS frameworks like NextJS or
+React Router (with a thin API layer of your choice).
+I consider myself a good team member, flexible, and practical about solutions.
+(I use tabs but I won't fight you over spaces.)
+
+Mostly I care about working on a team that fosters productivity,
+growth and accountability.
+
+I want to learn new things, be excellent to my colleagues,
+ship quality product every cycle &ndash;
 and then close the computer and enjoy my weekend. If this sounds like
 your kind of workplace, I hope to hear from you!
 
@@ -28,54 +38,63 @@ your kind of workplace, I hope to hear from you!
 
 const projects = [
   {
-    title: 'Sunlo.app',
-    time: '2020-2024',
-    content: `[Sunlo](https://sunlo.app) is a labour of love, an app I started sketching in 2015 when I first came to India and wanted to learn
-  Hindi and Tamil, but and found myself unable to really get into apps like Duolingo. Sunlo is a _social_ language learning app,
-  that lets you build a deck of flash cards with help from your friends and family who already speak the language and enjoy helping you learn.
-    
-  The app is currently un-released, as I've mostly been using it as a playground to learn and 
-  experiment, at least until a few months ago when I decided to really [dive in and rewrite it](https://sunlo-tanstack.vercel.app) using React, Tanstack Router & Query, TailwindCSS,
-  ShadCN UI and Radix primitives. It also uses Tauri to compile to native iOS and Android apps. This fully client-side stack uses Supabase for the database
-  and back-end API server, complete with row level security, RPC, auth, storage and transactional email.`,
+    title: 'Mapplication Rebuild',
+    time: '2022',
+    content: `Rebuilt [map.350.org](https://map.350.org/groups), using React, react-map-gl, NextJS, BigQuery & DataForm, and TailwindCSS.
+  The old version was a custom ETL app built with DRF, and a 2017-era React/Redux app. I was contracted to make recommendations
+  for the in-house team, and ended up building it as well.
+
+  The org was already using BigQuery to warehouse data from each of the 3 required datasources, so I was able to replace the
+  (big) ETL back-end with a (small) DataForm project. Each API endpoint pulled data from one of three Views that
+  handled the data & privacy logic into a system with its own (strict) review and deployment
+  policies, letting me work with more confidence and velocity on the rest of the app.
+
+  I did the rest with NextJS, React Query and TailwindCSS, replacing most of the embed options with a handful
+  of [independent routes/pages](https://map.350.org/).
+  The result is a simple app with a handful of re-useable components, hooks, API routes, 
+  assembled under different pages which we can extend, adjust, and theme as-needed
+  without sacrificing code quality or exploding complexity.`,
   },
   {
-    title: 'Mapplication Rebuild',
-    time: '2023',
-    content: `Rebuilt [map.350.org](https://map.350.org/), using React, Mapbox, react-map-gl, NextJS, a Google DataForm pipeline,
-    BigQuery, and TailwindCSS. The old version was a custom ETL app written in DRF which then fed data to a single React embed
-    with years and years worth of options, most of which were no longer used. The org had recently started using BigQuery for
-    other things, so I used DataForm to rebuild the ETL pipeline, collating data from Salesforce, ActionKit and Action Network, and then the back-end
-    was just a couple of BigQuery views that expose the required data to the public API.
-    
-  The new version is a NextJS app where each "page" is its own embeddable mini-app, so campaigners can pick the one that's best for them, and they can request custom work 
-    with themes or different affordances or data requirements, to suit their needs, without us having to worry about short-term needs leading to long-term tech debt.`,
+    title: 'Sunlo.app',
+    time: '2020-2024',
+    content: `[Sunlo](https://sunlo.app) is a Social Language-Learning app
+  I started sketching in 2015 when I first came to India and wanted to learn
+  Hindi and Tamil. I found myself unable to build momentum
+  on apps like Duolingo, which try to be "social" through gamification but don't
+  do anything to make use of the role that friends and family can play, particularly in learning a language.
+
+  The app is currently unreleased because I mostly use it as a playground to learn.
+  Over the last few months I've used it to do deep-dive experiments with SolidJS, SvelteKit, and [React Router](https://sunlo-tanstack.vercel.app),
+  which has taught me a lot about hoisting data requirements, the non-React ecosystem, Signals, Vite, Vinxi, and more.
+  Sunlo also compiles to native iOS and Android apps with Tauri, allowing for a buttery smooth UX that's the same on device or in the browser.`,
   },
-  ,
+  /*
   {
     title: 'MutualAidIndia.com',
     time: '2021',
 
     content: `This volunteer project began as a Google Doc with a crowdsourced list of ways that people could contribute to mutual aid funds,
-    during the first devastating wave of the COVID-19 pandemic in India. 
-    Before long we had dozens of volunteers and
-    loads of traffic, and we needed a site, a database, a CMS, and a vetting workflow for volunteers to vet and update listings, goals, etc.
-    I built the MAI site with a Gatsby/Tailwind/Airtable starter kit, and built the contact- and content-management in Airtable.
-    
-    
+  during the first devastating wave of the COVID-19 pandemic in India. 
+  Before long we had dozens of volunteers and
+  loads of traffic, and we needed a site, a database, a CMS, and a vetting workflow for volunteers to vet and update listings, goals, etc.
+  I built the MAI site with a Gatsby/Tailwind/Airtable starter kit, and built the contact- and content-management in Airtable.
+
   Here's [an article by Riddhi Dastidar](https://thebaffler.com/latest/how-it-feels-dastidar), who started the whole thing with just a Google Doc and a sense of desperation to help people struggling with the first big wave of the COVID pandemic in India.`,
   },
-  ,
+  */
   {
     title: 'VoteAmerica Data Pipeline',
     time: '2020',
-    content: `VoteAmerica was a ~30 person org with a well rounded 5-strong engineering team, and my first gig as a full-time, dedicated product manager.
-    My unofficial motto for the product was to create the best Voter Experience (VX) allowed by law in every state in the country, and I think we came close.
-    
-  Toward the end of the election cycle we pivoted hard to supporting the outreach programs. So I took off my product hat
-  and took on the challenge of integrating mutliple
-    sources of contact and identity data into a constantly-updating pipeline that provided millions of leads every day to our texting team, which sent over
-    100 Million text messages to help Americans register, and vote.`,
+    content: `VoteAmerica started as a Product Management job, 
+  but we didn't have a dedicated data engineer
+  who also had experience with voter outreach.
+  I had a 10+ years with each, so 6 weeks before election-day we shifted my role to data engineering:
+  creating of a data pipeline that powered our 100-Million count SMS program.
+
+  With the help of another engineer and an analyst, we factored in weekly and nightly data updates from
+  upstream vendors and the state voter data registries, to deliver millions of actionable leads per day
+  in target regions and demographics.`,
   },
 ]
 
@@ -97,7 +116,7 @@ export default function Page() {
               Seeking full time employment or partnership
             </span>
           </h2>
-          <div className="prose-sm">
+          <div className="prose-sm text-xs md:columns-2">
             <PrintMarkdown markdown={intro} />
           </div>
           <h2 className="text-xl font-bold font-display">

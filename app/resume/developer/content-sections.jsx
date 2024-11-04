@@ -3,13 +3,14 @@ export function SkillsDeveloper() {
     <div className="py-1 mb-1">
       <h2 className="font-bold text-lg">Dev Skills</h2>
       <ul className="list-disc ml-4">
-        <li>React, NextJS, react-query</li>
-        <li>Serverless deployments, Supabase, Edge functions</li>
-        <li>Prisma ORM, Django ORM, ActiveRecord</li>
+        <li>React, NextJS, React Router, React Query</li>
+        <li>Postgres, BigQuery, Dataform, SQL</li>
         <li>TailwindCSS, Bulma, Bootstrap</li>
-        <li>BigQuery & Dataform</li>
+        <li>Prisma ORM, Django ORM, ActiveRecord, Supabase</li>
         <li>Writing SQL, thinking in data, joins, windows</li>
-        <li>Some experience with Django/DRF, Rails, WordPress</li>
+        <li>
+          Experience with Svelte, SolidJS, Django/DRF, Rails, and some WordPress
+        </li>
       </ul>
     </div>
   )
