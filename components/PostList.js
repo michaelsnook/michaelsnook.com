@@ -38,8 +38,7 @@ export default function PostList({ posts }) {
 	) : (
 		<div
 			role="list"
-			className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
-          gap-4 place-content-stretch"
+			className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 place-content-stretch"
 		>
 			{posts.map((post) => (
 				<PostCard key={`${post.id}-${post.slug}`} {...post} />

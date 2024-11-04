@@ -21,6 +21,13 @@ export default function Banner({ title, description, small, medium }) {
 				priority
 			/>
 			<div
+				className="z-0"
+				fill
+				style={{ objectFit: 'cover', objectPosition: 'center' }}
+				sizes="100vw"
+				priority
+			/>
+			<div
 				className="z-10 container p-10 align-middle place-self-center text-white
           flex justify-between rounded-md"
 			>
