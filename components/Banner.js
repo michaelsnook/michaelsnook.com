@@ -12,8 +12,7 @@ export default function Banner({ title, description, small, medium }) {
 		>
 			<Image
 				src={bannerImage}
-				alt="A background image for the top section, a photo of mountains next
-          to a lake, with clouds overhead"
+				alt="A background image for the top section, a photo of mountains next to a lake, with clouds overhead"
 				className="z-0"
 				fill
 				style={{ objectFit: 'cover', objectPosition: 'center' }}
@@ -26,10 +25,7 @@ export default function Banner({ title, description, small, medium }) {
 				sizes="100vw"
 				priority
 			/>
-			<div
-				className="z-10 container p-10 align-middle place-self-center text-white
-          flex justify-between rounded-md"
-			>
+			<div className="z-10 container p-10 align-middle place-self-center text-white flex justify-between rounded-md">
 				<div>
 					<h1 className="h1">{title}</h1>
 					<p className="h1-sub">{description}</p>

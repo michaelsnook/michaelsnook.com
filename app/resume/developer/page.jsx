@@ -66,8 +66,8 @@ const projects = [
   do anything to make use of the role that friends and family can play, particularly in learning a language.
 
   The app is currently unreleased because I mostly use it as a playground to learn.
-  Over the last few months I've used it to do deep-dive experiments with SolidJS, SvelteKit, and [React Router](https://sunlo-tanstack.vercel.app),
-  which has taught me a lot about hoisting data requirements, the non-React ecosystem, Signals, Vite, Vinxi, and more.
+  Over the last few months I've used it to experiment in depth with SolidJS, SvelteKit, and [React Router](https://sunlo-tanstack.vercel.app).
+  I've learned so much about TypeScript, hoisting data requirements, the non-React ecosystem (Signals/Runes), Vite, Vinxi, and more.
   Sunlo also compiles to native iOS and Android apps with Tauri, allowing for a buttery smooth UX that's the same on device or in the browser.`,
 	},
 	/*
@@ -147,40 +147,45 @@ export default function Page() {
 								timeframe="July 2020 – November 2020"
 							/>
 							<p>
-								At VoteAmerica I was called in to manage Product for the last 4
-								months of the election cycle. We had a team of about 6 Engineers
-								working on a national system to help voters look up their
-								registration, request an absentee ballot, or get help with their
-								voting journey.
+								At VoteAmerica I was called in to be the Product Manager for the
+								last 4 months of the election cycle. We had a team of about 6
+								Engineers working on a national system of form-helpers and
+								reminders and everything we could think to achieve one clear
+								goal: to help voters look up their registration, request an
+								absentee ballot, or get help with their voting journey. Our
+								product motto was:{' '}
 							</p>
+							<blockquote className="italic border-l-4 px-4 md:pr-8">
+								The best Voter Experience allowed by law in all 50 states and
+								the District of Columbia.
+							</blockquote>
 							<p>
 								When Election Day got closer and we launched our campaign to
 								send 100 Million text messages to voters across the country, the
-								outreach team came to us for help with their data pipeline, and
-								since election day was about 6 weeks away, most of the product
-								was already managed, so I also built the SQL pipeline that
-								updated our national voter file, selected the most likely/most
-								accurate phone number for each household (or in many cases the
-								most likely voter identity for a number) and built the priority
-								lists for each state on a rolling/nightly basis.
+								outreach team came to us for help with their data pipeline.
+								Since election day was about 6 weeks away, most of the product
+								was already managed, so I put on another hat and built the SQL
+								pipeline that selectively merged high-quality updates from
+								upstream data vendors, selected the most likely phone number for
+								each household (or the most likely voter identity for a #) and
+								built the priority lists for each state on a rolling/nightly
+								basis.
 							</p>
 							<p>
 								And I had the pleasure to manage an experiment in a truly new
 								way of doing voter outreach: a system called The Voter Helpline
-								which allows volunteers in a Slack team to claim and respond to
-								incoming text messages from voters asking for help. In all my
-								years doing organising through digital tools like this I&apos;ve
-								never seen such incredible engagement rates as when we
-								structured interactions this way, with volunteers in small
-								&ldquo;pods&ldquo; that look out for each other&apos;s contacts,
-								and a lot of claiming/assigning/notifying features built
-								directly into the Slack workspace so volunteers never had to do
-								data entry in another window.
+								which received the SMS <em>responses</em> from our outreach
+								program and funneled them into different channels in a Slack
+								team, where our legal assistance volunteers would claim the
+								conversation and chat with the voter until their question was
+								answered. The volunteer never had to leave Slack and the voter
+								never had to leave their SMS. It was a dream for engagement and
+								contact completion, and I think it helped a lot of people.
 							</p>
 							<Alert>
-								Our main tool set at VoteAmerica was React, Gatsby, Django Rest
-								Framework, with Bulma for CSS and Redshift and the Civis
-								Platform for data engineering.
+								Our main tools at VoteAmerica were React, Gatsby, Django Rest
+								Framework, with Cloudflare Workers for PDFs and Faxes, Bulma for
+								CSS and Redshift and the Civis Platform for data engineering.
 							</Alert>
 						</div>
 						<div className="space-y-6">
@@ -201,9 +206,8 @@ export default function Page() {
 								and then scale and hire, refactor or pivot, and more. By the end
 								of my time there we were managing multiple shared-source
 								products that were used across the network for our members&apos;
-								most critical business tasks, like managing member
-								communications, donations, activity databases, and online
-								interactions.
+								critical business concerns, like sending mass communications to
+								members and receiving donations.
 							</p>
 							<p>
 								And I got to facilitate some of the most incredible events of my
@@ -219,8 +223,9 @@ export default function Page() {
 								contributor&rdquo; role as a product manager.
 							</p>
 							<Alert>
-								Our main tools at OPEN were Rails, jQuery, Bootstrap, Heroku and
-								Docker, WordPress – and the unstoppable power of collaboration!
+								The tools we maintained at OPEN mostly used Rails, React,
+								Express, Wordpress, jQuery, Bootstrap, Docker, Kubernetes,
+								Postgres – and the unstoppable power of collaboration!
 							</Alert>
 						</div>
 						<div className="space-y-6">
@@ -255,9 +260,10 @@ export default function Page() {
 							</p>
 							<Alert>
 								We used a SAAS platform called ActionKit with our own Django
-								templates, MySQL for targeting and Analytics, Bootstrap for
-								styles, and a handful of Django apps and admins.
+								templates, loads of jQuery, MySQL for targeting and Analytics,
+								Bootstrap for styles, and a handful of Django apps and admins.
 							</Alert>
+							<br />
 						</div>
 					</div>
 				</div>

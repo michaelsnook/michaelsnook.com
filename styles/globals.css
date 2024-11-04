@@ -22,8 +22,7 @@
 	input.copy-input,
 	form.form input:not([type='checkbox']),
 	form.form textarea {
-		@apply appearance-none border rounded w-full py-2 px-3 text-gray-700
-      leading-tight focus:outline-none;
+		@apply appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none;
 	}
 	fieldset[disabled] {
 		@apply opacity-50;
@@ -42,8 +41,7 @@
 	}
 	button.button.solid,
 	a.button.solid {
-		@apply text-white border-white bg-cyan-bright
-      hover:border-cyan hover:bg-cyan;
+		@apply text-white border-white bg-cyan-bright hover:border-cyan hover:bg-cyan;
 	}
 	.button.solid[disabled] {
 		@apply opacity-50 cursor-not-allowed;
