@@ -116,7 +116,7 @@ export default function Page() {
 							Seeking full time employment or partnership
 						</span>
 					</h2>
-					<div className="prose-sm text-xs md:columns-2">
+					<div className="prose-sm md:columns-2">
 						<PrintMarkdown markdown={intro} />
 					</div>
 					<h2 className="text-xl font-bold font-display">
@@ -196,7 +196,7 @@ export default function Page() {
 								The OPEN is a networking body that works with around 20
 								organisations from 20 different countries to help them share
 								knowledge, engage in collaborations, and provide both material
-								and moral support across countries aand borders and cultures.
+								and moral support across countries, borders and cultures.
 							</p>
 							<p>
 								During my 6 years leading the tech team, we helped over a dozen
