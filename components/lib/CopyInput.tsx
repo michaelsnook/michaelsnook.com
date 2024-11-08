@@ -2,10 +2,11 @@
 
 import { useState } from 'react'
 
-const CopyInput = ({ val }) => {
+const CopyInput = ({ val = '' }) => {
 	const [status, setStatus] = useState('default')
-	const copyVal = (val) => {
-		navigator.clipboard.writeText(val)
+
+	const copyVal = (value: string) => {
+		navigator.clipboard.writeText(value)
 		setStatus('confirming')
 		setTimeout(() => setStatus('default'), 3000)
 	}
