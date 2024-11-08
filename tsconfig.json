@@ -5,24 +5,36 @@
 		"paths": {
 			"@/*": ["./*"]
 		},
-		"lib": ["dom", "dom.iterable", "esnext"],
+		"lib": ["ES2020", "DOM", "DOM.Iterable"],
+		"target": "ES2020",
+		"incremental": true,
 		"allowJs": true,
 		"skipLibCheck": true,
 		"strict": false,
 		"noEmit": true,
-		"target": "ES2020",
-		"incremental": true,
-		"module": "esnext",
+		"module": "ESNext",
 		"esModuleInterop": true,
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
+		// "noUnusedLocals": true,
+		// "noUnusedParameters": true,
+		// "noFallthroughCasesInSwitch": true,
+		// "forceConsistentCasingInFileNames": true,
 		"plugins": [
 			{
 				"name": "next"
 			}
 		]
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-	"exclude": ["node_modules"]
+	"include": [
+		"./app",
+		"./components",
+		"./lib",
+		"./dist/types/**/*.ts",
+		"./next-env.d.ts",
+		".next/types/**/*.ts"
+	],
+	"exclude": ["./node_modules"]
 }
