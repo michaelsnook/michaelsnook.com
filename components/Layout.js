@@ -6,17 +6,17 @@ import Menu from './Menu'
 export default function Layout({
 	image = `/images/my-face-288.png`,
 	description = `A personal weblog and project pad`,
-	title = `Michael Snook's site`,
+	title = `em snook's site`,
 	banner = false,
 	noFooter = false,
 	singleCol = false,
 	children,
 }) {
-	const siteTitle = `Michael Snook dot com${title && ` | ${title}`}`
+	const siteTitle = `michael snook dot com${title && ` | ${title}`}`
 	return (
 		<>
 			<Head>
-				<meta name="author" content="Michael Snook" />
+				<meta name="author" content="Em Snook" />
 				<title>{siteTitle}</title>
 				<link rel="icon" href="/favicon.ico" />
 				<meta name="og:title" content={siteTitle} />

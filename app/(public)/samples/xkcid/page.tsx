@@ -6,7 +6,7 @@ export const metadata = {
 	description:
 		'An experiment in making a new kind of compact global identifier for more human-friendly identifiers to paste into groupchats and stash in databases',
 	image: '/images/my-face-circle.png',
-	author: 'Michael Snook',
+	author: 'Em Snook',
 }
 
 const classes = {

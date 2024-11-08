@@ -3,10 +3,10 @@ import SessionProvider from './SessionProvider'
 import Menu from '../components/Menu'
 
 export const metadata = {
-	title: 'Michael Snook web site',
+	title: 'em snook web site',
 	description: 'My personal space to jot things down',
 	image: '/images/my-face-288.png',
-	author: 'Michael Snook',
+	author: 'Em Snook',
 }
 
 export const viewport = {

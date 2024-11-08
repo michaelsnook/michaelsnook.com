@@ -5,10 +5,10 @@ import IffLoggedIn from '../iff-logged-in'
 import { fetchPostList } from '@/lib/posts'
 
 export const metadata = {
-	title: 'Michael Snook web site',
+	title: 'em snook web site',
 	description: 'My personal space to jot things down',
 	image: '/images/my-face-circle.png',
-	author: 'Michael Snook',
+	author: 'Em Snook',
 }
 
 export default async function Page() {
