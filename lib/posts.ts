@@ -24,7 +24,7 @@ export async function fetchDraftPosts() {
 }
 
 export async function fetchOnePost(slug: string) {
-	const { data, error } = await supabase
+	const { data } = await supabase
 		.from('posts')
 		.select('*')
 		.eq('slug', slug)
