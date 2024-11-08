@@ -1,30 +1,24 @@
 import supabase from '@/app/supabase-client'
 
 export async function fetchPostList() {
-	const { data, error } = await supabase
+	const { data } = await supabase
 		.from('posts')
 		.select('*')
 		.eq('published', true)
 		.order('published_at', { ascending: false })
+		.throwOnError()
 
-	if (error) {
-		console.log(error)
-		throw error.message
-	}
 	return data
 }
 
 export async function fetchDraftPosts() {
-	const { data, error } = await supabase
+	const { data } = await supabase
 		.from('posts')
 		.select('*')
 		.neq('published', true)
 		.order('updated_at', { ascending: false, nullsFirst: false })
+		.throwOnError()
 
-	if (error) {
-		console.log(error)
-		throw error.message
-	}
 	return data
 }
 
@@ -34,8 +28,8 @@ export async function fetchOnePost(slug) {
 		.select('*')
 		.eq('slug', slug)
 		.maybeSingle()
+		.throwOnError()
 
-	if (error) throw error
 	return typeof data?.content === 'string'
 		? {
 				...data,
@@ -45,26 +39,21 @@ export async function fetchOnePost(slug) {
 }
 
 export async function createOnePost(postData) {
-	const { data, error } = await supabase
+	const { data } = await supabase
 		.from('posts')
-		.insert([postData], { returning: 'minimal' })
+		.insert([postData])
+		.select()
+		.throwOnError()
 
-	if (error) {
-		console.log(error)
-		throw error.message
-	}
 	return data
 }
 
 export async function updateOnePost(postData) {
 	const { data, error } = await supabase
 		.from('posts')
-		.upsert([postData], { returning: 'minimal' })
-
-	if (error) {
-		console.log(error)
-		throw error.message
-	}
+		.upsert([postData])
+		.select()
+		.throwOnError()
 
 	return data
 }

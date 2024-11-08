@@ -3,9 +3,10 @@ import supabase from '@/app/supabase-client'
 const imageRootURL =
 	'https://hmpueymmlhhphzvebjku.supabase.co/storage/v1/object/public/images/'
 
-export const publicImageURL = (filename) => `${imageRootURL}${filename}`
+export const publicImageURL = (filename: string): string =>
+	`${imageRootURL}${filename}`
 
-const filenameFromFile = (file) => {
+const filenameFromFile = (file: File): string => {
 	// returns a string like pic-of-my-cat-1a4d06.jpg
 
 	// separate the file extension so we can re-append it at the end 'jpg'
@@ -22,7 +23,7 @@ const filenameFromFile = (file) => {
 	return path
 }
 
-export async function uploadImage(file) {
+export async function uploadImage(file: File) {
 	const filename = filenameFromFile(file)
 
 	const { error } = await supabase.storage
@@ -34,7 +35,7 @@ export async function uploadImage(file) {
 
 	if (error) {
 		console.log('errors in upload:', error)
-		throw error.message
+		throw error
 	}
 
 	return filename

@@ -1,0 +1,4 @@
+FORMS
+1. use mutations instead of just async inside the onSubmit
+1. make InputImage a properly controlled component instead of calling setValue
+

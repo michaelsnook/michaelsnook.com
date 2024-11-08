@@ -1,5 +1,11 @@
-const ErrorList = ({ summary, error, errors }) =>
-	!error && !errors?.length ? null : (
+interface ErrorListProps {
+	summary: string
+	error?: string
+	errors?: Array<string>
+}
+
+const ErrorList = ({ summary, error, errors = [] }: ErrorListProps) =>
+	!error && !errors.length ? null : (
 		<div>
 			{summary ? <p className="font-bold text-red-600">{summary}</p> : null}
 			<ul className="pl-5 text-red-600 list-disc">
