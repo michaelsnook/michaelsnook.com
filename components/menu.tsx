@@ -2,13 +2,14 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { useSession } from '@/app/SessionProvider'
+import { useSession } from '@/app/session-provider'
 import { Overlay } from './lib'
 
 export default function Menu() {
-	const [isOpen, setIsOpen] = useState()
+	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const session = useSession()
-	const nickname = session?.user?.email?.split(/[\b\@\.]/)[0] || 'editor'
+	const nickname: string =
+		session?.user?.email?.split(/[\b\@\.]/)[0] || 'editor'
 	const loggedInLinks = session
 		? [
 				['Drafts', '/posts/drafts'],
@@ -35,7 +36,7 @@ export default function Menu() {
 				aria-expanded={isOpen ? 'true' : 'false'}
 				aria-controls="main-menu"
 				onClick={() => setIsOpen(!isOpen)}
-				tabIndex="0"
+				tabIndex={0}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -54,8 +55,8 @@ export default function Menu() {
 			</button>
 			{isOpen ? (
 				<Overlay
-					close={(event) => {
-						if (event.target === event.currentTarget) setIsOpen(false)
+					close={() => {
+						setIsOpen(false)
 					}}
 				>
 					<nav className="bg-white rounded fixed right-3 bottom-16 z-30 border">

@@ -2,13 +2,17 @@ import { CopyInput } from './lib'
 
 const MediaLoading = () => <p>loading...</p>
 
+interface MediaArticleProps {
+	url: string
+	alt_text: string
+	isLoading?: boolean
+}
+
 export const MediaArticle = ({
 	url,
 	alt_text,
-	created_at,
-	updated_at,
 	isLoading,
-}) => (
+}: MediaArticleProps) => (
 	<article className="md:col-span-3 lg:col-span-4 flex flex-col gap-4 md:max-w-prose md:mx-auto">
 		{isLoading ? (
 			<MediaLoading />

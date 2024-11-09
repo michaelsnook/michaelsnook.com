@@ -1,7 +1,11 @@
 import { useState, useEffect, useCallback } from 'react'
 import { CloseButton, Overlay } from '../components/lib'
 
-export default function Modal({ showing, children }) {
+interface ModalProps extends React.ReactPortal {
+	showing?: boolean
+}
+
+export default function Modal({ showing, children }: ModalProps) {
 	const [isShowing, setIsShowing] = useState(showing || false)
 
 	const escFunction = useCallback((event) => {
@@ -13,12 +17,13 @@ export default function Modal({ showing, children }) {
 	useEffect(() => {
 		if (isShowing) document.addEventListener('keydown', escFunction, false)
 		else document.removeEventListener('keydown', escFunction, false)
+		return document.removeEventListener('keydown', escFunction, false)
 	}, [isShowing, escFunction])
 
 	return isShowing ? (
 		<Overlay
-			close={(event) => {
-				if (event.target === event.currentTarget) setIsShowing(false)
+			close={() => {
+				setIsShowing(false)
 			}}
 		>
 			<div
