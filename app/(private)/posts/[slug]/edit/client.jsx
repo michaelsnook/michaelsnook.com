@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import usePost from '../use-post'
 import { updateOnePost } from '@/lib/posts'
-import { useSession } from '@/app/SessionProvider'
+import { useSession } from '@/app/session-provider'
 import { ErrorList } from '@/components/lib'
 import {
 	InputTitle,
@@ -14,8 +14,8 @@ import {
 	InputImage,
 	InputPublish,
 	InputDatestamp,
-} from '@/components/FormInputs'
-import { PostArticle } from '@/components/Post'
+} from '@/components/form-inputs'
+import { PostArticle } from '@/components/post'
 
 export default function Client({ slug, initialData }) {
 	const [formError, setFormError] = useState()

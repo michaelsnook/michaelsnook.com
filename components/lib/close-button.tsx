@@ -1,3 +1,7 @@
+interface CloseButtonProps {
+	close: () => void
+	text?: string
+}
 const CloseButton = ({ close, text = 'close' }) => (
 	<button
 		onClick={(e) => {

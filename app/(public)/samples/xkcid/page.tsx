@@ -1,12 +1,11 @@
-import Banner from '@/components/Banner'
+import Banner from '@/components/banner'
 import xkcid from './xkcid'
+import { Metadata } from 'next'
 
-export const metadata = {
+export const metadata: Metadata = {
 	title: 'xkcID: A Friendly, K-sortable Compact Identifier | michaelsnook.com',
 	description:
 		'An experiment in making a new kind of compact global identifier for more human-friendly identifiers to paste into groupchats and stash in databases',
-	image: '/images/my-face-circle.png',
-	author: 'Em Snook',
 }
 
 const classes = {
@@ -20,7 +19,11 @@ export default async function Page() {
 	const list = [xkcid(), xkcid('shortest')]
 	return (
 		<div>
-			<Banner title={metadata.title} description={metadata.description} small />
+			<Banner
+				title={metadata.title.toString()}
+				description={metadata.description}
+				small
+			/>
 			<main className="container py-5">
 				{list.map((cid) => {
 					const id = cid.make()
