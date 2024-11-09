@@ -1,4 +1,5 @@
 import supabase from '@/app/supabase-client'
+import { TablesInsert, TablesUpdate } from '@/types/supabase'
 
 export async function fetchPostList() {
 	const { data } = await supabase
@@ -22,7 +23,7 @@ export async function fetchDraftPosts() {
 	return data
 }
 
-export async function fetchOnePost(slug) {
+export async function fetchOnePost(slug: string) {
 	const { data, error } = await supabase
 		.from('posts')
 		.select('*')
@@ -38,7 +39,7 @@ export async function fetchOnePost(slug) {
 		: data
 }
 
-export async function createOnePost(postData) {
+export async function createOnePost(postData: TablesInsert<'posts'>) {
 	const { data } = await supabase
 		.from('posts')
 		.insert([postData])
@@ -48,7 +49,7 @@ export async function createOnePost(postData) {
 	return data
 }
 
-export async function updateOnePost(postData) {
+export async function updateOnePost(postData: TablesUpdate<'posts'>) {
 	const { data, error } = await supabase
 		.from('posts')
 		.upsert([postData])
