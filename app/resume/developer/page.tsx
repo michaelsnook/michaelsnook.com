@@ -3,10 +3,11 @@ import PictureSection from './picture-section'
 import { Wrapper, LeftContainer, RightContainer } from './containers'
 import { SkillsDeveloper, SkillsProductManager } from './content-sections'
 import { PrintMarkdown } from '@/components/lib'
+import { Metadata } from 'next'
 
 // 1050 by 1485. p1 is currently some 642 words, needs to be ~640
 
-export const metadata = {
+export const metadata: Metadata = {
 	title: 'Em Snook, Developer Resume 2024',
 }
 
@@ -275,7 +276,7 @@ export default function Page() {
 const Alert = ({ children }) => {
 	return (
 		<div
-			style={{ '-webkit-print-color-adjust': 'exact' }}
+			style={{ WebkitPrintColorAdjust: 'exact' }}
 			className="text-cyan-content rounded border-2 border-cyan/70 bg-cyan-soft/40 py-3 px-4 text-sm"
 		>
 			{children}

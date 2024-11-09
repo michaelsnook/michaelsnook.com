@@ -1,8 +1,16 @@
+import { Tables } from '@/types/supabase'
 import Image from 'next/image'
 import Link from 'next/link'
 import { format } from 'timeago.js'
 
-const PostCard = ({ slug, image, title, excerpt, published, published_at }) => (
+const PostCard = ({
+	slug,
+	image,
+	title,
+	excerpt,
+	published,
+	published_at,
+}: Tables<'posts'>) => (
 	<Link
 		href={`/posts/${slug}${published ? '' : '/edit'}`}
 		role="listitem"
@@ -32,7 +40,11 @@ const PostCard = ({ slug, image, title, excerpt, published, published_at }) => (
 	</Link>
 )
 
-export default function PostList({ posts }) {
+interface PostListProps {
+	posts: Array<Tables<'posts'>>
+}
+
+export default function PostList({ posts }: PostListProps) {
 	return !posts ? (
 		<p className="py-6">loading posts...</p>
 	) : (

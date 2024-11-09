@@ -1,4 +1,4 @@
-import Banner from '@/components/Banner'
+import Banner from '@/components/banner'
 import { Footer } from './(public)/layout'
 
 const title = '404 - not found'

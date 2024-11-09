@@ -1,10 +1,14 @@
-const AlertBox = ({ type, children }) => {
+interface AlertBoxProps extends React.ReactPortal {
+	variant?: 'success' | 'info' | 'neato' | 'default'
+}
+
+const AlertBox = ({ variant = 'default', children }: AlertBoxProps) => {
 	const classes =
-		type === 'success'
+		variant === 'success'
 			? 'border-green-400 text-green-800 bg-green-200'
-			: type === 'info'
+			: variant === 'info'
 				? 'border-blue-400 text-blue-800 bg-blue-200'
-				: type === 'neato'
+				: variant === 'neato'
 					? 'border-pink-400 text-pink-800 bg-pink-200'
 					: 'text-gray-600'
 	return <div className={`border rounded p-10 py-6 ${classes}`}>{children}</div>

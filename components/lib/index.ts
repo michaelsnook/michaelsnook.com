@@ -1,10 +1,10 @@
-import AlertBox from './AlertBox'
-import CloseButton from './CloseButton'
-import CopyInput from './CopyInput'
-import DateSpan from './DateSpan'
-import ErrorList from './ErrorList'
-import Overlay from './Overlay'
-import PrintMarkdown from './PrintMarkdown'
+import AlertBox from './alert-box'
+import CloseButton from './close-button'
+import CopyInput from './copy-input'
+import DateSpan from './date-span'
+import ErrorList from './error-list'
+import Overlay from './overlay'
+import PrintMarkdown from './print-markdown'
 
 export {
 	AlertBox,
