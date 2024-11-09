@@ -3,7 +3,11 @@ module.exports = {
 		purgeLayersByDefault: true,
 		removeDeprecatedGapUtilities: true,
 	},
-	content: ['./app/**/*.{js,jsx,ts,tsx}', './components/**/*.js'],
+	content: [
+		'./app/**/*.{js,jsx,ts,tsx}',
+		'./components/**/*.{js,jsx,ts,tsx}',
+		'./lib/**/*.{js,jsx,ts,tsx}',
+	],
 	theme: {
 		screens: {
 			sm: '640px',
