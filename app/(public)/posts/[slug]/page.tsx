@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { DateSpan } from '@/components/lib'
-import { PostArticle } from '@/components/Post'
+import { PostArticle } from '@/components/post'
 import IffLoggedIn from '@/app/iff-logged-in'
 import { fetchPostList, fetchOnePost } from '@/lib/posts'
 import faceImage from '@/public/images/my-face-288.png'
-import Banner from '@/components/Banner'
+import Banner from '@/components/banner'
 
 const PostSidebar = ({ slug, published_at }) => {
 	return (

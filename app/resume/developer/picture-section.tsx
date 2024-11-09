@@ -9,10 +9,10 @@ export default function PictureSection({ link }) {
 		<div className="text-center flex flex-col gap-1">
 			<h1 className="text-2xl font-bold text-lilac-content">Em Snook</h1>
 			<p className="text-base/5 mb-4">Bangalore, KA</p>
-			<a href={link} alt="View this resume on the web">
+			<a href={link} title="View this resume on the web">
 				<Image
 					src={faceImage}
-					alt="A cartoon face of the author, Michael"
+					alt="A cartoon face of the author, Em"
 					className="w-36 rounded-full mx-auto mb-2"
 					width="144"
 					height="144"

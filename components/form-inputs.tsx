@@ -68,7 +68,12 @@ export function InputContent({ register }) {
 	)
 }
 
-export function InputImage({ register, error, startingValue, setImageValue }) {
+export function InputImage({
+	register,
+	error,
+	startingValue = '',
+	setImageValue,
+}) {
 	const reg = register('image', { pattern: /(?<!\bblob\:)/i })
 	return (
 		<div>

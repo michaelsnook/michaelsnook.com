@@ -2,11 +2,11 @@
 
 import Link from 'next/link'
 import useSWR from 'swr'
-import PostList from '@/components/PostList'
-import Banner from '@/components/Banner'
+import PostList from '@/components/post-list'
+import Banner from '@/components/banner'
 import { ErrorList } from '@/components/lib'
 import { fetchDraftPosts } from '@/lib/posts'
-import { useSession } from '@/app/SessionProvider'
+import { useSession } from '@/app/session-provider'
 
 export default function Page() {
 	const session = useSession()
