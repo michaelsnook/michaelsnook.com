@@ -9,7 +9,7 @@ const PostLoading = () => (
 		</div>
 		<div className="h-24 sm:h-32 md:h-40 lg:h-48 w-full bg-gray-200 rounded-md" />
 		<div className="h-60 sm:h-68 md:h-80 lg:h-96 w-full bg-gray-200 rounded-md" />
-		<div className="invisible">
+		<div className="invisible" aria-hidden={true}>
 			This invisible filler content is here only so that the browser will allow
 			it to wrap comfortably, thereby setting a width for the flex container
 			above.
@@ -17,7 +17,19 @@ const PostLoading = () => (
 	</>
 )
 
-export const PostArticle = ({ title, image, content, isLoading }) => (
+interface PostArticleProps {
+	title: string
+	image: string
+	content: string
+	isLoading: boolean
+}
+
+export const PostArticle = ({
+	title,
+	image,
+	content,
+	isLoading,
+}: PostArticleProps) => (
 	<article className="md:col-span-3 lg:col-span-4 flex flex-col gap-4 md:max-w-prose md:mx-auto">
 		{isLoading ? (
 			<PostLoading />

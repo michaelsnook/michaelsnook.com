@@ -1,8 +1,14 @@
 'use client'
 
+import { PostgrestError } from '@supabase/supabase-js'
 import { useEffect } from 'react'
 
-export default function Error({ error, reset }) {
+interface ErrorElementProps {
+	error: PostgrestError | { message: string }
+	reset: () => void
+}
+
+export default function Error({ error, reset }: ErrorElementProps) {
 	useEffect(() => {
 		// Log the error to an error reporting service
 		console.error(error)
