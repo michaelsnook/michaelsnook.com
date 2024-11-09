@@ -2,11 +2,12 @@
 
 import { createContext, useState, useEffect, useContext } from 'react'
 import supabase from '@/app/supabase-client'
+import { Session } from '@supabase/supabase-js'
 
-const SessionContext = createContext()
+const SessionContext = createContext(null)
 
 export default function SessionProvider({ children }) {
-	const [session, setSession] = useState(null)
+	const [session, setSession] = useState<Session>(null)
 
 	useEffect(() => {
 		const { data } = supabase.auth.onAuthStateChange((event, session) => {

@@ -12,7 +12,7 @@
 		"lint": "next lint",
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",
-		"types": "supabase gen types typescript --project-id hmpueymmlhhphzvebjku > ./src/types/supabase.ts",
+		"types": "supabase gen types typescript --project-id hmpueymmlhhphzvebjku > ./types/supabase.ts",
 		"prepare": "husky install"
 	},
 	"dependencies": {
@@ -39,6 +39,7 @@
 		"husky": "^7.0.4",
 		"postcss": "^8.4.47",
 		"prettier": "^3.3.3",
+		"supabase": ">=1.8.1",
 		"tailwindcss": "^3.4.14",
 		"typescript": "^5.6.3"
 	},
