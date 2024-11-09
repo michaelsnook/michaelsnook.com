@@ -1,9 +1,13 @@
 import useSWR from 'swr'
 import { fetchOnePost } from '@/lib/posts'
+import type { Tables } from '@/types/supabase'
 
-export default function usePost(slug, reset) {
+export default function usePost(
+	slug: string,
+	reset: (post: Tables<'posts'>) => void,
+) {
 	const { data, error, isLoading } = useSWR(slug, fetchOnePost, {
-		onSuccess: (post) => reset(post),
+		onSuccess: (post: Tables<'posts'>) => reset(post),
 		revalidateOnFocus: false,
 		revalidateOnReconnect: false,
 		refreshWhenOffline: false,

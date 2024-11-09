@@ -1,37 +1,34 @@
 import { useState, useEffect, useCallback } from 'react'
 import { CloseButton, Overlay } from '../components/lib'
 
-interface ModalProps extends React.ReactPortal {
+interface ModalProps {
 	showing?: boolean
+	children: React.ReactNode
 }
 
 export default function Modal({ showing, children }: ModalProps) {
 	const [isShowing, setIsShowing] = useState(showing || false)
+	const close = () => setIsShowing(false)
 
-	const escFunction = useCallback((event) => {
-		if (event.keyCode === 27) {
-			setIsShowing(false)
+	const escFunction = useCallback((event: KeyboardEvent) => {
+		if (event.key === 'Escape') {
+			close()
 		}
 	}, [])
 
 	useEffect(() => {
 		if (isShowing) document.addEventListener('keydown', escFunction, false)
 		else document.removeEventListener('keydown', escFunction, false)
-		return document.removeEventListener('keydown', escFunction, false)
 	}, [isShowing, escFunction])
 
 	return isShowing ? (
-		<Overlay
-			close={() => {
-				setIsShowing(false)
-			}}
-		>
+		<Overlay close={close}>
 			<div
 				role="dialog"
 				className="bg-white rounded max-w-xl mx-auto px-6 py-4 relative"
 			>
 				{children}
-				<CloseButton close={() => setIsShowing(false)} />
+				<CloseButton close={close} />
 			</div>
 		</Overlay>
 	) : null
