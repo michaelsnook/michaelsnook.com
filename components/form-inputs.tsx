@@ -1,4 +1,4 @@
-import ImageForm from './ImageForm'
+import ImageForm from './image-form'
 
 export function InputTitle({ register, error }) {
 	return (

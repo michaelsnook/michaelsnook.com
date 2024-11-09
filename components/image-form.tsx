@@ -60,29 +60,33 @@ const Buttons = ({
 	</nav>
 )
 
-export default function ImageForm({ onConfirm, confirmedURL }) {
+export default function ImageForm({ onConfirm, confirmedURL = '' }) {
 	const {
 		register,
 		handleSubmit,
 		setValue,
 		setError,
 		formState: { errors },
-	} = useForm()
-	const [previewURL, setPreviewURL] = useState()
-	const [isUploading, setIsUploading] = useState()
+	} = useForm({
+		defaultValues: {
+			image_upload: confirmedURL,
+		},
+	})
+	const [previewURL, setPreviewURL] = useState<string>('')
+	const [isUploading, setIsUploading] = useState<boolean>(false)
 
 	useEffect(() => {
 		setPreviewURL(confirmedURL)
-		setIsUploading()
+		setIsUploading(false)
 	}, [confirmedURL])
 
 	const clearForm = () => {
 		setValue('image_upload', '')
-		setPreviewURL()
+		setPreviewURL('')
 	}
 
 	const onSubmit = (data) => {
-		setError('image_upload', '')
+		setError('image_upload', null)
 		setIsUploading(true)
 		uploadImage(data.image_upload[0])
 			.then((filename) => {
@@ -95,7 +99,7 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
 				onConfirm(url)
 			})
 			.catch((error) => {
-				setIsUploading()
+				setIsUploading(false)
 				setError('image_upload', error)
 			})
 	}
@@ -135,7 +139,6 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
 						aria-invalid={!!errors?.image_upload}
 						{...register('image_upload', {
 							required: true,
-							defaultValue: '',
 						})}
 						onChange={(e) => {
 							const [file] = e.target.files
@@ -165,9 +168,9 @@ export default function ImageForm({ onConfirm, confirmedURL }) {
 					/>
 				) : null}
 
-				{errors?.length && (
+				{errors?.image_upload && (
 					<div className="py-12 my-6">
-						<span role="alert">{JSON.stringify(errors)}</span>
+						<span role="alert">{errors.image_upload.message}</span>
 					</div>
 				)}
 			</div>

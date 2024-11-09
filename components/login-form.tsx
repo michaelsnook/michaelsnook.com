@@ -4,10 +4,11 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
-import { useSession } from '@/app/SessionProvider'
-import Modal from './Modal'
+import { useSession } from '@/app/session-provider'
+import Modal from './modal'
 import { AlertBox, ErrorList } from './lib'
 import supabase from '@/app/supabase-client'
+import { AuthError } from '@supabase/supabase-js'
 
 export function LoginChallenge() {
 	const session = useSession()
@@ -21,7 +22,7 @@ export function LoginChallenge() {
 const ConfirmationMessage = ({ nickname, asModal }) => {
 	const router = useRouter()
 	return (
-		<AlertBox type="success">
+		<AlertBox variant="success">
 			<h1 className="mb-4 h3">Success</h1>
 			<p className="my-4">
 				You&apos;re logged in as user{' '}
@@ -50,9 +51,9 @@ const ConfirmationMessage = ({ nickname, asModal }) => {
 	)
 }
 
-export default function Login({ asModal }) {
+export default function Login({ asModal = false }) {
 	const session = useSession()
-	const [loginError, setLoginError] = useState()
+	const [loginError, setLoginError] = useState<string>(null)
 
 	const nickname = session?.user?.email?.split(/[\b\@\.]/)[0] || 'editor'
 
@@ -63,13 +64,13 @@ export default function Login({ asModal }) {
 	} = useForm()
 
 	const onSubmit = ({ email, password }) => {
-		setLoginError()
+		setLoginError(null)
 		supabase.auth
 			.signInWithPassword({
 				email,
 				password,
 			})
-			.catch((err) => {
+			.catch((err: AuthError) => {
 				console.log(err)
 				setLoginError(err.message)
 			})
@@ -91,7 +92,7 @@ export default function Login({ asModal }) {
 									{...register('email', { required: 'required' })}
 									aria-invalid={errors.email ? 'true' : 'false'}
 									className={errors.email ? 'border-red-600' : ''}
-									tabIndex="1"
+									tabIndex={1}
 									type="slug"
 									placeholder="email@domain"
 								/>
@@ -103,14 +104,14 @@ export default function Login({ asModal }) {
 									{...register('password', { required: 'required' })}
 									aria-invalid={errors.password ? 'true' : 'false'}
 									className={errors.password ? 'border-red-600' : ''}
-									tabIndex="2"
+									tabIndex={2}
 									type="password"
 									placeholder="𐦖𐦊𐦉𐦚𐦂𐦖𐦓𐦐"
 								/>
 							</div>
 							<div>
 								<button
-									tabIndex="3"
+									tabIndex={3}
 									className="button solid"
 									type="submit"
 									disabled={isSubmitting}

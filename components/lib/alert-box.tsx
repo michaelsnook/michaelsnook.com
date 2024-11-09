@@ -1,5 +1,6 @@
-interface AlertBoxProps extends React.ReactPortal {
+interface AlertBoxProps {
 	variant?: 'success' | 'info' | 'neato' | 'default'
+	children: React.ReactNode
 }
 
 const AlertBox = ({ variant = 'default', children }: AlertBoxProps) => {
