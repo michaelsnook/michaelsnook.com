@@ -6,7 +6,7 @@ import supabase from '@/app/supabase-client'
 import { AlertBox } from '@/components/lib'
 
 export default function Page() {
-	const [isFinished, setIsFinished] = useState()
+	const [isFinished, setIsFinished] = useState<boolean>(false)
 	useEffect(() => {
 		supabase.auth
 			.signOut()
@@ -19,7 +19,7 @@ export default function Page() {
 
 	return (
 		<main className="single-col">
-			<AlertBox type={isFinished ? 'neato' : 'info'}>
+			<AlertBox variant={isFinished ? 'neato' : 'info'}>
 				{!isFinished ? (
 					<h1 className="h5">Logging out...</h1>
 				) : (

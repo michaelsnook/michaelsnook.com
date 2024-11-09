@@ -33,5 +33,5 @@ export default function SessionProvider({ children }) {
 }
 
 export const useSession = () => {
-	return useContext(SessionContext)
+	return useContext(SessionContext) as Session
 }
