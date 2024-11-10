@@ -7,7 +7,7 @@ interface HasChildren {
 export function Wrapper({ children }: HasChildren) {
 	return (
 		<div className="bg-gray-300 print:bg-white md:p-10 print:p-0">
-			<div className="grid grid-cols-1 md:grid-cols-4 md:shadow-[rgba(0,_0,_0,_0.3)_0px_0px_15px_5px] print:shadow-none md:rounded bg-white p-2 mx-auto md:max-w-[1050px] md:h-[1485px]">
+			<div className="grid grid-cols-1 md:grid-cols-4 md:shadow-[rgba(0,_0,_0,_0.3)_0px_0px_15px_5px] print:shadow-none md:rounded bg-white p-2 mx-auto lg:w-[1050px] lg:h-[1485px]">
 				{children}
 			</div>
 		</div>
