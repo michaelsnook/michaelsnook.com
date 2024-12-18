@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;600&display=swap');
 
 @tailwind base;
-
 @tailwind components;
-
 @tailwind utilities;
 
 @layer base {
@@ -13,9 +11,6 @@
 	.prose img {
 		@apply shadow-lg;
 	}
-}
-
-@layer components {
 	form.form label {
 		@apply block text-gray-700 text-sm my-1;
 	}
@@ -52,9 +47,6 @@
 	main.single-col {
 		@apply max-w-prose mx-auto px-2 my-6;
 	}
-}
-
-@layer utilities {
 	.h1 {
 		@apply lg:text-6xl md:text-5xl sm:text-4xl text-3xl my-4 font-display;
 	}
@@ -73,14 +65,13 @@
 	.h5 {
 		@apply text-lg my-2 font-bold;
 	}
-}
-
-.sq {
-	@apply min-h-28 w-full px-[4cqw] pb-4 pt-6 text-center;
-	& code {
-		@apply text-sm opacity-70;
+	.sq {
+		@apply min-h-28 w-full px-[4cqw] pb-4 pt-6 text-center;
+		& code {
+			@apply text-sm opacity-70;
+		}
 	}
-}
-p.sub {
-	@apply text-sm mt-4;
+	p.sub {
+		@apply text-sm mt-4;
+	}
 }
