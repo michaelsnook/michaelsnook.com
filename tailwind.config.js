@@ -46,10 +46,6 @@ module.exports = {
 				'lilac-content': '#905d91', // sat then 35% darker
 				'lilac-soft': '#e2d3e3', //    sat then 50% lighter
 			},
-			minHeight: {
-				40: '10rem',
-				64: '16rem',
-			},
 		},
 	},
 	plugins: [require('@tailwindcss/typography')],

@@ -17,7 +17,7 @@ const PostCard = ({
 		className="border rounded flex flex-col items-stretch"
 	>
 		{image ? (
-			<div className="relative min-h-64 sm:min-h-40">
+			<div className="relative min-h-[16rem] sm:min-h-[10rem]">
 				<Image
 					className="rounded-t"
 					src={image}
