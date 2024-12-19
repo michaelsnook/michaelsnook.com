@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { useSession } from '@/app/session-provider'
-import Modal from './modal'
-import { AlertBox, ErrorList } from './lib'
+import Modal from '@/components/modal'
+import { AlertBox, ErrorList, Label } from '@/components/lib'
 import supabase from '@/app/supabase-client'
 import { AuthError } from '@supabase/supabase-js'
 
@@ -86,7 +86,7 @@ export default function Login({ asModal = false }) {
 					<form role="form" onSubmit={handleSubmit(onSubmit)} className="form">
 						<fieldset className="flex flex-col gap-y-4" disabled={isSubmitting}>
 							<div>
-								<label htmlFor="email">Email</label>
+								<Label htmlFor="email">Email</Label>
 								<input
 									id="email"
 									{...register('email', { required: 'required' })}
@@ -98,7 +98,7 @@ export default function Login({ asModal = false }) {
 								/>
 							</div>
 							<div>
-								<label htmlFor="password">Password</label>
+								<Label htmlFor="password">Password</Label>
 								<input
 									id="password"
 									{...register('password', { required: 'required' })}
