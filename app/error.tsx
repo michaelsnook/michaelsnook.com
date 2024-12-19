@@ -1,7 +1,8 @@
 'use client'
 
-import { PostgrestError } from '@supabase/supabase-js'
 import { useEffect } from 'react'
+import { PostgrestError } from '@supabase/supabase-js'
+import { Button } from '@/components/lib'
 
 interface ErrorElementProps {
 	error: PostgrestError | { message: string }
@@ -20,15 +21,16 @@ export default function Error({ error, reset }: ErrorElementProps) {
 			<code>
 				<pre>{JSON.stringify(error, null, 2)}</pre>
 			</code>
-			<button
-				className="button outlines mt-6"
+			<Button
+				variant="outlines"
+				className="mt-6"
 				onClick={
 					// Attempt to recover by trying to re-render the segment
 					() => reset()
 				}
 			>
 				Try again
-			</button>
+			</Button>
 		</div>
 	)
 }

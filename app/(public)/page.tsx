@@ -4,6 +4,7 @@ import Banner from '@/components/banner'
 import PostList from '@/components/post-list'
 import IffLoggedIn from '../iff-logged-in'
 import { fetchPostList } from '@/lib/posts'
+import { buttonStyles } from '@/components/lib'
 
 export const metadata: Metadata = {
 	title: 'em snook web site',
@@ -22,7 +23,10 @@ export default async function Page() {
 				<div className="flex flex-row justify-between items-center">
 					<h2 className="h2">All Posts</h2>
 					<IffLoggedIn>
-						<Link href="/posts/drafts" className="button outlines">
+						<Link
+							href="/posts/drafts"
+							className={buttonStyles({ variant: 'outlines' })}
+						>
 							See drafts
 						</Link>
 					</IffLoggedIn>

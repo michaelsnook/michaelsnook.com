@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import usePost from '../use-post'
 import { updateOnePost } from '@/lib/posts'
 import { useSession } from '@/app/session-provider'
-import { ErrorList } from '@/components/lib'
+import { Button, buttonStyles, ErrorList } from '@/components/lib'
 import {
 	InputTitle,
 	InputExcerpt,
@@ -63,19 +63,21 @@ export default function Client({ slug, initialData }) {
 							<InputDatestamp register={register} />
 						) : null}
 
-						<div className="flex justify-between my-4">
-							<a className="button outlines" onClick={() => back()}>
+						<div className="flex justify-between items-center my-4">
+							<a
+								className={buttonStyles({ variant: 'outlines' })}
+								onClick={() => back()}
+							>
 								{isDirty ? 'Cancel' : 'Go back'}
 							</a>
 							<span className="flex">
-								<button
+								<Button
 									type="submit"
-									className="button solid"
+									variant="solid"
 									disabled={!isDirty || isSubmitting || !session}
-									aria-disabled={!isDirty || isSubmitting || !session}
 								>
 									{isSubmitting ? 'Saving...' : 'Save edits'}
-								</button>
+								</Button>
 								{isSubmitSuccessful && !isDirty && (
 									<svg
 										xmlns="http://www.w3.org/2000/svg"

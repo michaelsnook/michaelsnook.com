@@ -1,11 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { DateSpan } from '@/components/lib'
+import { buttonStyles, DateSpan } from '@/components/lib'
 import { PostArticle } from '@/components/post'
 import IffLoggedIn from '@/app/iff-logged-in'
 import { fetchPostList, fetchOnePost } from '@/lib/posts'
 import faceImage from '@/public/images/my-face-288.png'
 import Banner from '@/components/banner'
+import { cn } from '@/lib/utils'
 
 const PostSidebar = ({ slug, published_at }) => {
 	return (
@@ -31,7 +32,10 @@ const PostSidebar = ({ slug, published_at }) => {
 			<IffLoggedIn>
 				<Link
 					href={`/posts/${slug}/edit`}
-					className="button outlines mr-auto md:mx-auto"
+					className={cn(
+						buttonStyles({ variant: 'outlines' }),
+						`mr-auto md:mx-auto`,
+					)}
 				>
 					edit post
 				</Link>

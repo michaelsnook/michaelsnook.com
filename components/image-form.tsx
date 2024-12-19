@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { uploadImage, publicImageURL } from '@/lib/media'
-import { CopyInput, CloseButton, Label } from '@/components/lib'
+import { CopyInput, CloseButton, Label, Button } from '@/components/lib'
 
 const UploadSVG = () => (
 	<svg
@@ -30,32 +30,25 @@ const Buttons = ({
 }) => (
 	<nav className="flex flex-row gap-4">
 		{previewURL ? (
-			<button
-				className="button outlines small"
-				type="reset"
-				onClick={clearForm}
-			>
+			<Button variant="outlines" size="small" type="reset" onClick={clearForm}>
 				clear
-			</button>
+			</Button>
 		) : null}
 		{previewURL && previewURL !== confirmedURL ? (
-			<button
-				className="button solid small"
+			<Button
+				variant="solid"
+				size="small"
 				type="button"
 				onClick={submitUpload}
 				disabled={isUploading}
 			>
 				{isUploading ? 'uploading...' : 'upload'}
-			</button>
+			</Button>
 		) : null}
 		{!previewURL && confirmedURL ? (
-			<button
-				className="button solid small"
-				type="button"
-				onClick={confirmClear}
-			>
+			<Button variant="solid" size="small" type="button" onClick={confirmClear}>
 				confirm clear
-			</button>
+			</Button>
 		) : null}
 	</nav>
 )
