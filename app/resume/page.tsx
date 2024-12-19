@@ -30,9 +30,9 @@ const technical_skills = [
 function Page() {
 	return (
 		<div className="bg-gray-300 md:p-10 font-display">
-			<div className="md:shadow-[rgba(0,_0,_0,_0.3)_0px_0px_15px_5px] md:rounded bg-white p-2 py-6 md:p-12 mx-auto max-w-[1100px]">
+			<div className="md:shadow-[rgba(0,_0,_0,_0.3)_0px_0px_15px_5px] md:rounded-sm bg-white p-2 py-6 md:p-12 mx-auto max-w-[1100px]">
 				<header className="flex mb-4">
-					<div id="header-left" className="flex-grow">
+					<div id="header-left" className="grow">
 						<h1 className="text-cyan-content text-4xl lg:text-6xl font-bold mb-6">
 							Michael Snook
 						</h1>
@@ -236,7 +236,7 @@ const Badge = ({ children }) => {
 	return (
 		<span
 			role="listitem"
-			className="inline-flex gap-4 border-cyan border-2 rounded py-1 px-3 text-cyan font-bold text-sm m-1"
+			className="inline-flex gap-4 border-cyan border-2 rounded-sm py-1 px-3 text-cyan font-bold text-sm m-1"
 		>
 			{children}
 		</span>

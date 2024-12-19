@@ -25,7 +25,7 @@ export default function Modal({ showing, children }: ModalProps) {
 		<Overlay close={close}>
 			<div
 				role="dialog"
-				className="bg-white rounded max-w-xl mx-auto px-6 py-4 relative"
+				className="bg-white rounded-sm max-w-xl mx-auto px-6 py-4 relative"
 			>
 				{children}
 				<CloseButton close={close} />

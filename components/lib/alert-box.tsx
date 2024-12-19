@@ -12,7 +12,9 @@ const AlertBox = ({ variant = 'default', children }: AlertBoxProps) => {
 				: variant === 'neato'
 					? 'border-pink-400 text-pink-800 bg-pink-200'
 					: 'text-gray-600'
-	return <div className={`border rounded p-10 py-6 ${classes}`}>{children}</div>
+	return (
+		<div className={`border rounded-sm p-10 py-6 ${classes}`}>{children}</div>
+	)
 }
 
 export default AlertBox

@@ -28,7 +28,7 @@ export default function Menu() {
 				className={`print:hidden shadow-lg fixed bottom-4 right-3 border rounded-full inline-block ${
 					isOpen
 						? 'bg-cyan-bright hover:border-white border-gray-400 text-white'
-						: 'text-cyan-bright hover:border-cyan-bright backdrop-blur'
+						: 'text-cyan-bright hover:border-cyan-bright backdrop-blur-sm'
 				} p-2 z-50`}
 				role="button"
 				aria-haspopup="true"
@@ -59,7 +59,7 @@ export default function Menu() {
 						setIsOpen(false)
 					}}
 				>
-					<nav className="bg-white rounded fixed right-3 bottom-16 z-30 border">
+					<nav className="bg-white rounded-sm fixed right-3 bottom-16 z-30 border">
 						<ul role="menu" id="main-menu">
 							<li className="py-3 px-10" role="none">
 								{session ? `Hi, ${nickname}` : 'Hello 👋🏼'}

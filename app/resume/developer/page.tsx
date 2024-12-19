@@ -277,7 +277,7 @@ const Alert = ({ children }) => {
 	return (
 		<div
 			style={{ WebkitPrintColorAdjust: 'exact' }}
-			className="text-cyan-content rounded border-2 border-cyan/70 bg-cyan-soft/40 py-3 px-4 text-sm"
+			className="text-cyan-content rounded-sm border-2 border-cyan/70 bg-cyan-soft/40 py-3 px-4 text-sm"
 		>
 			{children}
 		</div>

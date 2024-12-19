@@ -14,7 +14,7 @@ const PostCard = ({
 	<Link
 		href={`/posts/${slug}${published ? '' : '/edit'}`}
 		role="listitem"
-		className="border rounded flex flex-col items-stretch"
+		className="border rounded-sm flex flex-col items-stretch"
 	>
 		{image ? (
 			<div className="relative min-h-[16rem] sm:min-h-[10rem]">
