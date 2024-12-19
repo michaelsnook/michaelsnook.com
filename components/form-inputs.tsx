@@ -1,9 +1,10 @@
 import ImageForm from './image-form'
+import { Label } from '@/components/lib'
 
 export function InputTitle({ register, error }) {
 	return (
 		<div>
-			<label htmlFor="postTitle">Post title</label>
+			<Label htmlFor="postTitle">Post title</Label>
 			<input
 				id="postTitle"
 				type="text"
@@ -21,7 +22,7 @@ export function InputTitle({ register, error }) {
 export function InputDatestamp({ register }) {
 	return (
 		<div>
-			<label htmlFor="postDatestamp">Post datestamp</label>
+			<Label htmlFor="postDatestamp">Post datestamp</Label>
 			<input id="postDatestamp" type="date" {...register('published_at')} />
 		</div>
 	)
@@ -30,7 +31,7 @@ export function InputDatestamp({ register }) {
 export function InputExcerpt({ register }) {
 	return (
 		<div>
-			<label htmlFor="excerpt">Post Excerpt</label>
+			<Label htmlFor="excerpt">Post Excerpt</Label>
 			<textarea id="excerpt" rows="3" {...register('excerpt')} />
 			<span className="invisible">&nbsp;</span>
 		</div>
@@ -40,7 +41,7 @@ export function InputExcerpt({ register }) {
 export function InputSlug({ register, error }) {
 	return (
 		<div>
-			<label htmlFor="postSlug">Post slug e.g. `/posts/[slug-post-name]`</label>
+			<Label htmlFor="postSlug">Post slug e.g. `/posts/[slug-post-name]`</Label>
 			<input
 				id="postSlug"
 				type="text"
@@ -61,7 +62,7 @@ export function InputSlug({ register, error }) {
 export function InputContent({ register }) {
 	return (
 		<div>
-			<label htmlFor="content">Post content</label>
+			<Label htmlFor="content">Post content</Label>
 			<textarea id="content" rows="10" {...register('content')} />
 			<span className="invisible">&nbsp;</span>
 		</div>
@@ -78,7 +79,7 @@ export function InputImage({
 	return (
 		<div>
 			<input type="hidden" {...reg} />
-			<label>Upload image</label>
+			<Label>Upload image</Label>
 			<ImageForm onConfirm={setImageValue} confirmedURL={startingValue} />
 			<span className={error ? '' : 'invisible'} role="alert">
 				This image URL isn&rsquo;t working
@@ -91,7 +92,7 @@ export function InputPublish({ register }) {
 	return (
 		<div className="flex items-baseline gap-2 mb-4">
 			<input id="postPublish" type="checkbox" {...register('published')} />
-			<label htmlFor="postPublish">Publish post</label>
+			<Label htmlFor="postPublish">Publish post</Label>
 		</div>
 	)
 }

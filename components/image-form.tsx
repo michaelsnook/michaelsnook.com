@@ -1,7 +1,7 @@
-import { uploadImage, publicImageURL } from '../lib/media'
 import { useState, useEffect } from 'react'
-import { CopyInput, CloseButton } from './lib'
 import { useForm } from 'react-hook-form'
+import { uploadImage, publicImageURL } from '@/lib/media'
+import { CopyInput, CloseButton, Label } from '@/components/lib'
 
 const UploadSVG = () => (
 	<svg
@@ -111,7 +111,7 @@ export default function ImageForm({ onConfirm, confirmedURL = '' }) {
 		<form className="form" onSubmit={handleSubmit(onSubmit)}>
 			<div className="flex flex-col gap-1 items-center border rounded-sm p-4">
 				{previewURL ? <CopyInput val={previewURL} /> : null}
-				<label
+				<Label
 					className={`relative flex flex-col w-full fit-content hover:bg-gray-100 ${
 						previewURL ? 'shadow-lg' : 'border border-dashed rounded-sm'
 					} ${errors.image_upload ? 'border-red-600' : 'border-gray-300'}`}
@@ -149,7 +149,7 @@ export default function ImageForm({ onConfirm, confirmedURL = '' }) {
 						}}
 					/>
 					{previewURL ? <CloseButton close={clearForm} /> : null}
-				</label>
+				</Label>
 
 				{confirmedURL !== previewURL ? (
 					<Buttons
