@@ -1,8 +1,4 @@
 module.exports = {
-	future: {
-		purgeLayersByDefault: true,
-		removeDeprecatedGapUtilities: true,
-	},
 	content: [
 		'./app/**/*.{js,jsx,ts,tsx}',
 		'./components/**/*.{js,jsx,ts,tsx}',
