@@ -64,25 +64,6 @@ layer(base);
 	fieldset[disabled] {
 		@apply opacity-50;
 	}
-	button.button,
-	a.button {
-		@apply inline-block py-3 px-6 border rounded-md cursor-pointer;
-	}
-	button.button.small,
-	a.button.small {
-		@apply py-2 text-sm;
-	}
-	button.button.outlines,
-	a.button.outlines {
-		@apply text-cyan-bright hover:border-cyan-bright hover:underline;
-	}
-	button.button.solid,
-	a.button.solid {
-		@apply text-white border-white bg-cyan-bright hover:border-cyan hover:bg-cyan;
-	}
-	.button.solid[disabled] {
-		@apply opacity-50 cursor-not-allowed;
-	}
 	a.link {
 		@apply font-bold hover:underline text-cyan-bright cursor-pointer;
 	}

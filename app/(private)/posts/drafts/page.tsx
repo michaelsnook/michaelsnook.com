@@ -4,7 +4,7 @@ import Link from 'next/link'
 import useSWR from 'swr'
 import PostList from '@/components/post-list'
 import Banner from '@/components/banner'
-import { ErrorList } from '@/components/lib'
+import { buttonStyles, ErrorList } from '@/components/lib'
 import { fetchDraftPosts } from '@/lib/posts'
 import { useSession } from '@/app/session-provider'
 
@@ -25,7 +25,10 @@ export default function Page() {
 			<main className="container py-5">
 				<div className="flex flex-row justify-between items-center">
 					<h2 className="h2">Draft posts</h2>
-					<Link href="/posts/new" className="button outlines">
+					<Link
+						href="/posts/new"
+						className={buttonStyles({ variant: 'outlines' })}
+					>
 						New post
 					</Link>
 				</div>

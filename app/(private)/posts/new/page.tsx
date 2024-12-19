@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
-import { ErrorList } from '@/components/lib'
+import { Button, buttonStyles, ErrorList } from '@/components/lib'
 import {
 	InputTitle,
 	InputContent,
@@ -53,17 +53,12 @@ export default function Page() {
 					<InputContent register={register} />
 
 					<div className="flex justify-between">
-						<Link href="/" className="button outlines">
+						<Link href="/" className={buttonStyles({ variant: 'outlines' })}>
 							Back to Home
 						</Link>
-						<button
-							type="submit"
-							className="button solid"
-							disabled={isSubmitting}
-							aria-disabled={isSubmitting}
-						>
+						<Button type="submit" variant="solid" disabled={isSubmitting}>
 							Create Post
-						</button>
+						</Button>
 					</div>
 				</fieldset>
 				<ErrorList summary="Error creating post" error={formError?.message} />

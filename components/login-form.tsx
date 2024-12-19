@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { useSession } from '@/app/session-provider'
 import Modal from '@/components/modal'
-import { AlertBox, ErrorList, Label } from '@/components/lib'
+import { AlertBox, Button, ErrorList, Label } from '@/components/lib'
 import supabase from '@/app/supabase-client'
 import { AuthError } from '@supabase/supabase-js'
 
@@ -110,15 +110,15 @@ export default function Login({ asModal = false }) {
 								/>
 							</div>
 							<div>
-								<button
+								<Button
 									tabIndex={3}
-									className="button solid"
+									variant="solid"
 									type="submit"
 									disabled={isSubmitting}
 									aria-disabled={isSubmitting}
 								>
 									Log in
-								</button>
+								</Button>
 							</div>
 						</fieldset>
 						<ErrorList summary="Failed to log in" error={loginError} />
