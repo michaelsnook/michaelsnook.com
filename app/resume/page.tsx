@@ -43,11 +43,11 @@ function Page() {
 						>
 							<PWithIcon>
 								<Envelope />
-								<span>me@michaelsnook.com</span>
+								<span>me@msnook.xyz</span>
 							</PWithIcon>
 							<PWithIcon>
 								<LinkIcon />
-								<span>michaelsnook.com</span>
+								<span>msnook.xyz</span>
 							</PWithIcon>
 							<PWithIcon>
 								<Phone />

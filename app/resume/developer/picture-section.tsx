@@ -19,8 +19,8 @@ export default function PictureSection({ link }) {
 				/>
 			</a>
 			<div className="mx-auto">
-				<Link className="hover:link" href="mailto:me@michaelsnook.com">
-					me@michaelsnook.com
+				<Link className="hover:link" href="mailto:me@msnook.xyz">
+					me@msnook.xyz
 				</Link>
 				<Link className={linkClasses} href="https://github.com/michaelsnook">
 					<OctocatIcon /> michaelsnook

@@ -16,12 +16,12 @@ module.exports = {
 		remotePatterns: [
 			{
 				protocol: 'https',
-				hostname: 'michaelsnook.com',
+				hostname: 'msnook.xyz',
 				port: '',
 			},
 			{
 				protocol: 'https',
-				hostname: 'snook.pub',
+				hostname: 'michaelsnook.com',
 				port: '',
 			},
 			{

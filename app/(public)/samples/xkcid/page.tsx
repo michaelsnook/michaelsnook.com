@@ -3,7 +3,7 @@ import xkcid from './xkcid'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-	title: 'xkcID: A Friendly, K-sortable Compact Identifier | michaelsnook.com',
+	title: 'xkcID: A Friendly, K-sortable Compact Identifier | msnook.xyz',
 	description:
 		'An experiment in making a new kind of compact global identifier for more human-friendly identifiers to paste into groupchats and stash in databases',
 }

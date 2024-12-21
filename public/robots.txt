@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://michaelsnook.com/sitemap.txt
+Sitemap: https://msnook.xyz.com/sitemap.txt
